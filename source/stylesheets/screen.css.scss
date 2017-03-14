@@ -356,6 +356,7 @@ html, body {
   h1 {
     @extend %header-font;
     font-size: 30px;
+    font-weight: 400;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     border-bottom: 1px solid #ccc;
@@ -373,7 +374,8 @@ html, body {
   h2 {
     @extend %header-font;
     font-size: 20px;
-    margin-top: 4em;
+    font-weight: 400;
+    margin-top: 1em;
     margin-bottom: 0;
     border-top: 1px solid #ccc;
     padding-top: 1.2em;
@@ -624,4 +626,37 @@ html, body {
 
 .highlight, .highlight .w {
   background-color: $code-bg;
+}
+
+
+// PlugShare Styles
+table {
+  tr {
+    td:first-of-type, th:first-of-type {
+      text-align: right;
+    }
+  }
+  .field {
+    font-weight: 500;
+  }
+  .type {
+    color: #777;
+  }
+}
+.connectors {
+  tr {
+    td:first-of-type, th:first-of-type {
+      text-align: center;
+    }
+    td, th {
+      text-align: center;
+      vertical-align: middle;
+    }
+    td img {
+      height: 40px;
+    }
+    td {
+      border: 1px solid #ccc;
+    }
+  }
 }
