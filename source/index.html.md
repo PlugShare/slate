@@ -2,11 +2,11 @@
 title: PlugShare API Reference
 
 language_tabs:
-  - javascript
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
+  - API V4 - Updated 3/14/2017
 
 includes:
   - errors
@@ -40,9 +40,9 @@ let api = plugshare.authorize('plugshareapi');
 
 > Make sure to replace `plugshareapi` with your API key.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+PlugShare uses API keys to allow access to the API. You can register a new PlugShare API key at our [developer portal](http://example.com/developers).
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+PlugShare expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
 `Authorization: plugshareapi`
 
@@ -50,153 +50,210 @@ Kittn expects for the API key to be included in all API requests to the server i
 You must replace <code>plugshareapi</code> with your personal API key.
 </aside>
 
-# Filters
+# Core Data Entities
 
-You may want to apply some filters to the search queries to return only relevant stations. Filters are added as query parameters (for GET requests) or JSON fields (for POST requests).
-
-## Outlets
-
-The 'outlets' filter is a JSON formatted list of "outlet descriptor" objects. Each object has two optional properties, connector and power. Locations will only be returned if they have a station that contains one or more outlets that match one of these descriptors. A descriptor matches an outlet if each of the descriptor properties matches the corresponding property of the outlet. See [Outlet Connector Types](#outlet)
-
-## Cost
-
-* 'true' (default) = Returns all locations regardless of cost
-* 'false' = Does not return locations with a known fee (like parking or $/kw)
-
-## Access
-
-A comma separated list of access values. e.g. "1,2,3"
-
-* 1 = A public location
-* 2 = A restricted location. Not available for public use.
-* 3 = A residential location that has been shared. Not available for public use without prior permission.
-
-## Availability
-
-A comma separated list of availability values. e.g. "0, 1,2,3"
-
-* 0 = Unknown
-* 1 = Available
-* 2 = In Use
-* 3 = Offline
-
-## Amenities
-
-Only returns locations that have certain amenities. A comma separated list of amenity id's available at the location. e.g. "0, 1,2,3"
-
-* 1 = Hotel/Lodging
-
-## Networks to exclude
-
-A comma separated list of network ids. Passing "exclude_networks=1" will exclude locations which exclusively have ChargePoint stations. If a location has both a ChargePoint station and a station of another network or a non-networked station it will still be eligible to be returned. See [Networks List](#network)
-
-## Networks to exclusively include
-
-A comma separated list of network ids. Passing "networks=3,4" will only include locations with either SemaCharge or GE WattStation stations. See [Networks List](#network)
+<img src="http://developers.plugshare.com/images/image11.png">
 
 # Locations
 
 A driver identifiable destination where Charging Stations (Stations) are located. As a general rule if stations are within visible range of each other they are organized together into a location.
 
-## Get All Locations
+## Object Properties
 
-```javascript
-const plugshare = require('plugshare');
-
-let api = plugshare.authorize('plugshareapi');
-let locations = api.locations.get();
-```
-
-> The above command returns JSON structured like this:
+> Example Response:
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+{
+  "valid_outlets": [
+    {
+      "connector": 1
+    },
+    {
+      "connector": 2
+    },
+    {
+      "connector": 3
+    },
+    {
+      "connector": 13
+    },
+    {
+      "connector": 4
+    },
+    {
+      "connector": 6
+    },
+    {
+      "connector": 5
+    }
+  ],
+  "usage_availability": 100,
+  "description": "No Public Access.",
+  "custom_ports": "",
+  "opening_date": "None",
+  "nissan_nctc": false,
+  "updated_at": "2016-12-09T10:16:23Z",
+  "hours": "",
+  "phone": "",
+  "promos": [],
+  "cost": true,
+  "pwps_version": 2,
+  "address": "1015 Abbot Kinney Blvd Los Angeles, CA 90291",
+  "score": 10,
+  "id": 20840,
+  "parking_type_name": "Free",
+  "icon": "https://s3.amazonaws.com/plugshare.production.assets/icons/B.png",
+  "cost_description": "",
+  "reviews": [],
+  "name": "Recargo Research and Development",
+  "url": "http://api.plugshare.com/view/location/20840",
+  "created_at": "2013-11-19T22:26:33Z",
+  "icon_type": "B",
+  "all_promos": [
+    {
+      "link_url": null,
+      "tag": null,
+      "image_url": null,
+      "name": "EZ-Charge",
+      "link_action": null,
+      "lat": null,
+      "lng": null,
+      "image_url_2x": null,
+      "id": 2,
+      "app_id": null
+    }
+  ],
+  "longitude": -118.4721,
+  "access": 2,
+  "locale": "US",
+  "under_repair": true,
+  "amenities": [
+    {
+      "location_id": 20840,
+      "type": 1
+    }
+  ],
+  "poi_name": "Workplace Private",
+  "coming_soon": null,
+  "latitude": 33.992476,
+  "photos": [
+    {
+      "user_id": 75733,
+      "url": "https://s3.amazonaws.com/plugshare.production.photos/photos/165827.jpg",
+      "created_at": "2016-11-29T17:57:14Z",
+      "thumbnail": "https://s3.amazonaws.com/plugshare.production.photos/thumb/165827.png",
+      "caption": "Recargo Garage",
+      "thumbnail2x": "https://s3.amazonaws.com/plugshare.production.photos/thumb2x/165827.png",
+      "order": 1,
+      "id": 165827
+    }
+  ],
+  "open247": false,
+  "stations": [
+    {
+      "volts": null,
+      "network_ext_id": "172083G01001010000",
+      "qr_enabled": true,
+      "cost": 2,
+      "pwps_version": 2,
+      "location_id": 20840,
+      "id": 33221,
+      "cost_description": "$1/hour: first 4 hours. $20/hour thereafter. 50 cent minimum. Fees continue while car is connected even if not charging.",
+      "pre_charge_instructions": null,
+      "network": {
+        "description": "GE's networked platform that allows users to manage and monitor the charging of their electric cars.",
+        "url": "https://www.gewattstation.com/connect/",
+        "image": "https://s3.amazonaws.com/plugshare.production.assets/network-images/watt.png",
+        "action_name": "Sign Up",
+        "phone": "8554433873",
+        "action_url": "https://www.gewattstation.com/connect/",
+        "id": 4,
+        "name": "GE WattStation"
+      },
+      "payment_enabled": null,
+      "latitude": 33.992305,
+      "available": 1,
+      "outlets": [
+        {
+          "available": null,
+          "description": null,
+          "power": 0,
+          "connector": 2,
+          "id": 69821,
+          "outlet_index": null
+        }
+      ],
+      "hours": "",
+      "promos": [],
+      "ocpp_version": null,
+      "kilowatts": null,
+      "requiresAccessCard": false,
+      "manufacturer": "GE WattStation",
+      "name": "PRIVATE LOCATION",
+      "network_id": 4,
+      "created_at": "2013-11-19T22:26:35Z",
+      "longitude": -118.472993,
+      "amps": null,
+      "model": "",
+      "available_changed_at": "2017-03-10T23:26:05Z"
+    }
+  ]
+}
 ```
-
-This endpoint retrieves all locations.
-
-### HTTP Request
-
-`GET https://api.plugshare.com/locations`
-
-## Object Properties
 
 <table>
   <tr>
-    <th>Parameter</th>
+    <th>Property</th>
     <th>Description</th>
-    <th>Can be null?</th>
   </tr>
   <tr>
     <td>
       <div class="field">id</div>
       <div class="type">Number (integer)</div>
     </td>
-    <td>unique and immutable identifier</td>
-    <td>No</td>
+    <td>Unique and immutable identifier.</td>
   </tr>
   <tr>
     <td>
       <div class="field">name</div>
       <div class="type">String</div>
     </td>
-    <td>Descriptive name of the parking structure, business etc.</td>
-    <td>No</td>
+    <td>Descriptive name of the parking structure, business, etc.</td>
   </tr>
   <tr>
     <td>
       <div class="field">icon</div>
       <div class="type">String (URL)</div>
     </td>
-    <td>A recommended icon for displaying the location</td>
-    <td>No</td>
+    <td>A recommended icon for displaying the location.</td>
   </tr>
   <tr>
     <td>
       <div class="field">latitude</div>
       <div class="type">Number</div>
     </td>
-      <td></td>
-      <td>No</td>
+      <td>Latitude coordinate for this location.</td>
   </tr>
   <tr>
     <td>
       <div class="field">longitude</div>
       <div class="type">Number</div> 
     </td>
-      <td></td>
-      <td>No</td>
+      <td>Longitude coordinate for this location.</td>
   </tr>
   <tr>
     <td>
       <div class="field">created_at</div>
       <div class="type">String (timestamp)</div>
     </td>
-    <td>ISO 8601 Format  "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"</td>
-    <td>No</td>
+    <td>ISO 8601 Format "yyyy-mm-ddThh:mm:ssZ"</td>
   </tr>
   <tr>
     <td>
       <div class="field">description</div>
       <div class="type">String</div>
     </td>
-    <td>Unicode string describing a location can include HTML elements</td>
-    <td>Yes</td>
+    <td>Unicode string describing a location, can include HTML elements.</td>
   </tr>
   <tr>
     <td>
@@ -204,143 +261,138 @@ This endpoint retrieves all locations.
       <div class="type">Array</div>
     </td>
     <td>Contains station objects. Each location will have at least 1 station object.</td>
-    <td>No</td>
   </tr>
   <tr>
     <td>
       <div class="field">reviews</div>
       <div class="type">Array</div>
     </td>
-    <td>Contains review objects. Ordered from the most recent to oldest</td>
-    <td>Can be Empty</td>
+    <td>Contains review objects. Ordered from the most recent to oldest. This array can be empty.</td>
   </tr>
   <tr>
     <td>
       <div class="field">score</div>
       <div class="type">Number (decimal)</div>
     </td>
-    <td>The location’s PlugScore - If a location has enough data to be scored this is a decimal number with 1 significant digit from 0.0 (worst) - 10.0 (best). Score is based on recency weighted reviews and may also be affected by cost, ailable power and other factors</td>
-    <td>Yes</td>
+    <td>The location’s PlugScore - If a location has enough data to be scored this is a decimal number with 1 significant digit from 0.0 (worst) - 10.0 (best). Score is based on recency weighted reviews and may also be affected by cost, available power, and other factors.</td>
   </tr>
   <tr>
     <td>
       <div class="field">custom_ports</div>
-      <div class="type">String</div>
+      <div class="type deprecated">String (deprecated)</div>
     </td>
-    <td>Lists any non-standard outlets including legacy charging standards no longer being produced. Example include Large Paddle and Small Padde Inductive</td>
-    <td>Yes</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">enabled</div>
-      <div class="type">Boolean</div>
-    </td>
-    <td>If false the location will not be returned by search queries and should no longer be considered in service. Disabled locations can still be retrieved directly via a REST call.</td>
-    <td>Yes</td>
+    <td>Lists any non-standard outlets including legacy charging standards no longer being produced. Example include Large Paddle and Small Paddle Inductive.</td>
   </tr>
   <tr>
     <td>
       <div class="field">cost</div>
       <div class="type">Boolean</div>
     </td>
-    <td>cost (Boolean) - if true, then there is a cost associated with this location (check cost_description). if false, then cost is unknown. this field supplements cost values at each station location. generally cost values at stations are ovided by 3rd parties, while cost values at locations are provided by PlugShare members</td>
-    <td>No</td>
+    <td>If true, then there is a cost associated with this location (check cost_description). If false, then cost is unknown. This field supplements cost values at each station location. Generally cost values at stations are provided by 3rd parties, while cost values at locations are provided by PlugShare members.</td>
   </tr>
   <tr>
     <td>
       <div class="field">cost_description</div>
       <div class="type">String</div>
     </td>
-    <td>A description of fees for charging and parking at this location</td>
-    <td>Yes</td>
+    <td>A description of fees for charging and parking at this location.</td>
   </tr>
   <tr>
     <td>
-      <div class="field">access</div>
+      <div class="field" id="access-values">access</div>
       <div class="type">Number (integer enum)</div>
     </td>
-    <td>1 = A public location<br>2 = A restricted location. Not available for general public use. Examples include workplace charging and car dealerships with charging policy restrictions.<br>3 = A residential location that has been shared. Not available for public use without prior permission.</td>
-    <td>No</td>
+    <td><b>1</b> = A public location.<br>
+    <b>2</b> = A restricted location. Not available for general public use. Examples include workplace charging and car dealerships with charging policy restrictions.<br>
+    <b>3</b> = A residential location that has been shared. Not available for public use without prior permission.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field" id="availability-values">availability</div>
+      <div class="type">Number (integer enum)</div>
+    </td>
+    <td><b>0</b> = Unknown<br>
+    <b>1</b> = Available<br>
+    <b>2</b> = In Use<br>
+    <b>3</b> = Offline</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field" id="amenity-values">amenities</div>
+      <div class="type">Number (integer enum)</div>
+    </td>
+    <td><b>1</b> = Hotel/Lodging<br>
+    <b>2</b> = Dining<br>
+    <b>3</b> = Restroom<br>
+    <b>4</b> = EV Parking<br>
+    <b>5</b> = Valet<br>
+    <b>6</b> = Park<br>
+    <b>7</b> = Wifi<br>
+    <b>8</b> = Shopping<br>
+    <b>9</b> = Grocery</td>
   </tr>
   <tr>
     <td>
       <div class="field">url</div>
       <div class="type">String (URL)</div>
     </td>
-    <td>A shareable link that redirects to this PlugShare location (platform aware: opens apps if user is on mobile, otherwise directs to web)</td>
-    <td>Yes</td>
+    <td>A shareable link that redirects to this PlugShare location (platform aware: opens apps if user is on mobile, otherwise directs to web).</td>
   </tr>
   <tr>
     <td>
       <div class="field">phone</div>
       <div class="type">String</div>
     </td>
-    <td>Formatting of this field is not currently guaranteed</td>
-    <td>Yes</td>
+    <td>Formatting of this field is not currently guaranteed.</td>
   </tr>
   <tr>
     <td>
       <div class="field">address</div>
-      <div class="type">Yes</div>
+      <div class="type">String</div>
     </td>
-    <td>Address as provided by network, driver, or adjusted by editor</td>
-    <td>Yes</td>
+    <td>Street address of the location.</td>
   </tr>
   <tr>
     <td>
       <div class="field">reverse_geocoded_address</div>
       <div class="type">String</div>
     </td>
-    <td>Formatted Address string as reverse geocoded from the latitude/longitude</td>
-    <td>Yes</td>
+    <td>Formatted Address string as reverse geocoded from the latitude/longitude.</td>
   </tr>
   <tr>
     <td>
       <div class="field">reverse_geocoded_address_components</div>
       <div class="type">Array</div>
     </td>
-    <td>List of geocoded components (See https://developers.google.com/maps/documentation/geocoding/#Types for definitions)</td>
-    <td>Yes</td>
+    <td>List of geocoded components (See https://developers.google.com/maps/documentation/geocoding/#Types for definitions).</td>
   </tr>
   <tr>
     <td>
       <div class="field">payment_enabled</div>
       <div class="type">Boolean</div>
     </td>
-    <td>True if this location accepts Pay with PlugShare payments</td>
-    <td>Yes</td>
+    <td>True if this location accepts Pay with PlugShare payments.</td>
   </tr>
   <tr>
     <td>
       <div class="field">valid_outlets</div>
-      <div class="type">Array</div>
+      <div class="type deprecated">Array (deprecated)</div>
     </td>
-    <td>Deprecated - The types of outlets that are valid for this location’s locale. This is not a list of outlet types that are present.</td>
-    <td>Yes</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">nissan_nctc</div>
-      <div class="type">Boolean</div>
-    </td>
-    <td>True if at least one station at the location qualifies for Nissan’s No Charge To Charge Program</td>
-    <td>Yes</td>
+    <td>The types of outlets that are valid for this location’s locale. This is not a list of outlet types that are present.</td>
   </tr>
   <tr>
     <td>
       <div class="field">qr_enabled</div>
       <div class="type">Boolean</div>
     </td>
-    <td>True if this station is tagged with a QR code for station identification and activation flows</td>
-    <td>Yes</td>
+    <td>True if this station is tagged with a QR code for station identification and activation flows.</td>
   </tr>
   <tr>
     <td>
       <div class="field">pwps_version</div>
       <div class="type">Number (Integer)</div>
     </td>
-    <td>The Pay with PlugShare version protocol required to be supported by the client to activate this station</td>
-    <td>Yes</td>
+    <td>The Pay with PlugShare version protocol required to be supported by the client to activate this station.</td>
   </tr>
   <tr>
     <td>
@@ -348,7 +400,6 @@ This endpoint retrieves all locations.
       <div class="type">Number (Float)</div>
     </td>
     <td>A compass bearing from the specified address or coordinate.  Note: this field will only appear for locations returned by the /locations/nearby endpoint.</td>
-    <td>Yes</td>
   </tr>
   <tr>
     <td>
@@ -356,9 +407,853 @@ This endpoint retrieves all locations.
       <div class="type">Number (Float)</div>
     </td>
     <td>A distance in meters from the specified address or coordinate.  Note: this field will only appear for locations returned by the /locations/nearby endpoint.</td>
-    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">usage_availability</div>
+      <div class="type">Number (Int)</div>
+    </td>
+    <td>Integer from 0 to 100. This number changes based on how often the stations at this location are being used (?). Can be null.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">opening_date</div>
+      <div class="type">Date</div>
+    </td>
+    <td>Date when location is anticipated to open in the future. "yyyy-mm-dd" format (deprecated (?))</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">updated_at</div>
+      <div class="type">Timestamp</div>
+    </td>
+    <td>Timestamp of the last time this location was updated. "yyyy-mm-dd hh:mm:ss" format.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">hours</div>
+      <div class="type">String</div>
+    </td>
+    <td>String for hours of availability. Commonly 24/7 or specified time frames.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">promos</div>
+      <div class="type">Array</div>
+    </td>
+    <td>Contains promo objects. This array can be empty. (referring to the 1-2 promos we have on the site? (?))</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">parking_type_name</div>
+      <div class="type">String</div>
+    </td>
+    <td>The types of parking available. Customers Only, Free, Pay, Restricted, Unknown, '', or null.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">icon_type</div>
+      <div class="type"></div>
+    </td>
+    <td>This field DOE in db (?)</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">all_promos</div>
+      <div class="type">Array</div>
+    </td>
+    <td>Contains promo objects. This array can be empty. (difference between this vs. promos field (?))</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">locale</div>
+      <div class="type">String</div>
+    </td>
+    <td>This location's locale. US, UK, EU, AU, JP, WW.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">under_repair</div>
+      <div class="type">Boolean</div>
+    </td>
+    <td>Flag if the location is currently under repair.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">poi_name</div>
+      <div class="type">String</div>
+    </td>
+    <td>Point of interest / location type name. Selected from a list of 40+ types, including Gas Station, Park, Restaurant, etc.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">coming_soon</div>
+      <div class="type">Boolean</div>
+    </td>
+    <td>Flag if the location is not currently active and is anticipated to be coming soon. (can be NULL but why (?))</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">photos</div>
+      <div class="type">Array</div>
+    </td>
+    <td>Contains photo objects. Ordered from the most recent to oldest. This array can be empty.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">open247</div>
+      <div class="type">Boolean</div>
+    </td>
+    <td>Flag if the location is open 24 hours a day, 7 days a week.</td>
   </tr>
 </table>
+
+## Get Location
+
+> Example Request:
+
+```plaintext
+GET https://api.plugshare.com/locations/20840
+```
+
+> Example Response:
+
+```json
+{
+    "valid_outlets": [],
+    "usage_availability": 100,
+    "description": "No Public Access.",
+    "custom_ports": "",
+    "opening_date": "None",
+    "nissan_nctc": false,
+    "updated_at": "2016-12-09T10:16:23Z",
+    "hours": "",
+    "phone": "",
+    "promos": [],
+    "cost": true,
+    "pwps_version": 2,
+    "address": "1015 Abbot Kinney Blvd Los Angeles, CA 90291",
+    "score": 10,
+    "id": 20840,
+    "parking_type_name": "Free",
+    "icon": "https://s3.amazonaws.com/plugshare.production.assets/icons/B.png",
+    "cost_description": "",
+    "reviews": [],
+    "confidence": 1,
+    "locked": true,
+    "name": "Recargo Research and Development",
+    "payment_enabled": false,
+    "url": "http://api.plugshare.com/view/location/20840",
+    "created_at": "2013-11-19T22:26:33Z",
+    "icon_type": "B",
+    "enabled": true,
+    "all_promos": [],
+    "longitude": -118.4721,
+    "access": 2,
+    "locale": "US",
+    "datasources": [],
+    "under_repair": true,
+    "amenities": [],
+    "poi_name": "Workplace Private",
+    "coming_soon": null,
+    "latitude": 33.992476,
+    "photos": [],
+    "open247": false,
+    "stations": []
+}
+```
+
+This endpoint retrieves a locations based on location id.
+
+### HTTP Request
+
+`GET https://api.plugshare.com/locations/{id}`
+
+### Arguments
+
+<table>
+  <tr>
+    <td>
+      <div class="field">id</div>
+      <div class="type required">required</div>
+    </td>
+    <td>Location id of target location</td>
+  </tr>
+</table>
+
+<aside class="notice">
+Optional location filters do not apply to this endpoint because this only returns 0 or 1 location object(s).
+</aside>
+
+### Returns
+
+Returns a `location` object if the call succeeded.
+
+## Get Nearby Locations
+
+> Example Request:
+
+```plaintext
+GET https://api.plugshare.com/locations/nearby?latitude=33.992476&longitude=-118.4721&count=10
+```
+
+> Example Response:
+
+```json
+[
+    {
+        "valid_outlets": [],
+        "usage_availability": 100,
+        "description": "No Public Access.",
+        "custom_ports": "",
+        "opening_date": "None",
+        "nissan_nctc": false,
+        "updated_at": "2016-12-09T10:16:23Z",
+        "hours": "",
+        "phone": "",
+        "promos": [],
+        "cost": true,
+        "pwps_version": 2,
+        "address": "1015 Abbot Kinney Blvd Los Angeles, CA 90291",
+        "score": 10,
+        "id": 20840,
+        "parking_type_name": "Free",
+        "icon": "https://s3.amazonaws.com/plugshare.production.assets/icons/B.png",
+        "cost_description": "",
+        "confidence": 1,
+        "locked": true,
+        "name": "Recargo Research and Development",
+        "payment_enabled": false,
+        "url": "http://api.plugshare.com/view/location/20840",
+        "created_at": "2013-11-19T22:26:33Z",
+        "icon_type": "B",
+        "enabled": true,
+        "all_promos": [],
+        "longitude": -118.4721,
+        "access": 2,
+        "locale": "US",
+        "under_repair": true,
+        "amenities": [],
+        "poi_name": "Workplace Private",
+        "coming_soon": null,
+        "latitude": 33.992476,
+        "open247": false,
+        "stations": []
+    }
+]
+```
+
+This endpoint retrieves locations near a given coordinate.
+
+### HTTP Request
+
+`GET https://api.plugshare.com/locations/nearby`
+
+### Arguments
+
+<table>
+  <tr>
+    <td>
+      <div class="field">latitude</div>
+      <div class="type required">conditional</div>
+    </td>
+    <td>Latitude of target search location<br>
+    <i>This endpoint requires either lat/lng coordinates or an address</i></td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">longitude</div>
+      <div class="type required">conditional</div>
+    </td>
+    <td>Longitude of target search location<br>
+    <i>This endpoint requires either lat/lng coordinates or an address</i></td>
+  </tr>
+  <tr>
+  <tr>
+    <td>
+      <div class="field">address</div>
+      <div class="type required">conditional</div>
+    </td>
+    <td>Address of target search location<br>
+    <i>This endpoint requires either lat/lng coordinates or an address</i><br>
+    Will return {code:1} if address cannot be geolocated, and {code:2} if address is ambiguous. Otherwise returns list of locations</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">count</div>
+      <div class="type">optional</div>
+    </td>
+    <td>Maximum count of locations to return<br>
+    200-500 is a recommended value for most applications</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">radius</div>
+      <div class="type">optional</div>
+    </td>
+    <td>Search radius in meters</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">outlets</div>
+      <div class="type">optional</div>
+    </td>
+    <td>The 'outlets' filter is a JSON formatted list of "outlet descriptor" objects. Each object has two optional properties, connector and power. Locations will only be returned if they have a station that contains one or more outlets that match one of these descriptors. A descriptor matches an outlet if each of the descriptor properties matches the corresponding property of the outlet. See <a href="#outlet-connector-types">Outlet Connector Types</a></td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">cost</div>
+      <div class="type">optional, default is <b>true</b></div>
+    </td>
+    <td>True = Returns all locations regardless of cost<br>
+    False = Does not return locations with a known fee (like parking or $/kw)</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">access</div>
+      <div class="type">optional</div>
+    </td>
+    <td>Filter on a comma separated list of access values. Matches if at least one access value is present.<br>
+    See <a href="#access-values">Access Values</a></td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">availability</div>
+      <div class="type">optional</div>
+    </td>
+    <td>Filter on a comma separated list of availability values. Matches if at least one availability value is present.<br>
+    See <a href="#availability-values">Availability Values</a></td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">amenities</div>
+      <div class="type">optional</div>
+    </td>
+    <td>Filter on a comma separated list of amenities. Matches if at least one listed amenity is present.<br>
+    See <a href="#amenity-values">Amenity Values</a></td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">exclude_networks</div>
+      <div class="type">optional</div>
+    </td>
+    <td>Filter on a comma separated list of network ids to exlude. Passing “exclude_networks=1” will exclude locations which exclusively have ChargePoint stations. If a location has both a ChargePoint station and a station of another network or a non-networked station it will still be eligible to be returned.<br>
+    See <a href="#networks-list">Networks List</a></td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">networks</div>
+      <div class="type">optional</div>
+    </td>
+    <td>Filter on a comma separated list of network ids to include. Matches if at least one network is present.<br>
+    See <a href="#networks-list">Networks List</a></td>
+  </tr>
+</table>
+
+<aside class="notice">
+You may want to apply some filters to the search queries to return only relevant locations. Filters are added as query parameters (for GET requests) or JSON fields (for POST requests).
+</aside>
+
+### Additional Examples
+
+`GET https://api.plugshare.com/locations/nearby?address=venice%2C%20ca&count=10&radius=1000`
+
+`GET https://api.plugshare.com/locations/nearby?address=venice%2C%20ca&count=10&outlets=[{"connector":2},{"connector":6,"power":1}]`
+
+`GET https://api.plugshare.com/locations/nearby?latitude=33.992476&longitude=-118.4721&count=10&cost=false`
+
+`GET https://api.plugshare.com/locations/nearby?latitude=33.992476&longitude=-118.4721&count=10&access=1,3`
+
+`GET https://api.plugshare.com/locations/nearby?latitude=33.992476&longitude=-118.4721&count=10&availability=3`
+
+`GET https://api.plugshare.com/locations/nearby?latitude=33.992476&longitude=-118.4721&count=10&amenities=1,2`
+
+`GET https://api.plugshare.com/locations/nearby?latitude=33.992476&longitude=-118.4721&count=10&exclude_networks=1`
+
+`GET https://api.plugshare.com/locations/nearby?latitude=33.992476&longitude=-118.4721&count=10&networks=3,4`
+
+### Returns
+
+Returns an array of `location` objects, containing up to `count` locations
+
+## Get Region Locations
+
+> Example Request:
+
+```plaintext
+GET https://api.plugshare.com/locations/region?spanLat=0.15&spanLng=0.10&latitude=33.992476&longitude=-118.4721&count=10
+```
+
+> Example Response:
+
+```json
+[
+    {
+        "valid_outlets": [],
+        "description": "",
+        "custom_ports": "",
+        "opening_date": "None",
+        "nissan_nctc": false,
+        "updated_at": "2016-09-15T10:06:01Z",
+        "hours": "",
+        "phone": "",
+        "promos": [],
+        "cost": true,
+        "pwps_version": null,
+        "address": "330 Distel Cir, Los Altos, CA 94022",
+        "id": 95548,
+        "parking_type_name": "Free",
+        "icon": "https://s3.amazonaws.com/plugshare.production.assets/icons/G.png",
+        "cost_description": "Variable: $3.00/hour to $6.00/hour",
+        "confidence": 2,
+        "locked": false,
+        "name": "Midpeninsula Regional Open Space",
+        "payment_enabled": true,
+        "url": "http://api.plugshare.com/view/location/95548",
+        "created_at": "2016-09-13T20:51:23Z",
+        "icon_type": "G",
+        "enabled": true,
+        "all_promos": [],
+        "longitude": -122.105989,
+        "access": 1,
+        "locale": "US",
+        "under_repair": false,
+        "amenities": [],
+        "poi_name": "Workplace Public",
+        "coming_soon": null,
+        "latitude": 37.396454,
+        "open247": false,
+        "stations": []
+    }
+]
+```
+
+This endpoint retrieves locations in a region based on a given coordinate with latitude and longitude spans.
+
+### HTTP Request
+
+`GET https://api.plugshare.com/locations/region`
+
+### Arguments
+
+<table>
+  <tr>
+    <td>
+      <div class="field">spanLat</div>
+      <div class="type required">required</div>
+    </td>
+    <td>Latitude span in degrees of target search region</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">spanLng</div>
+      <div class="type required">required</div>
+    </td>
+    <td>Longitude span in degrees of target search region</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">latitude</div>
+      <div class="type required">required</div>
+    </td>
+    <td>Latitude of target search location</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">longitude</div>
+      <div class="type required">required</div>
+    </td>
+    <td>Longitude of target search location</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">count</div>
+      <div class="type required">required</div>
+    </td>
+    <td>Maximum count of locations to return<br>
+    200-500 is a recommended value for most applications</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">outlets</div>
+      <div class="type">optional</div>
+    </td>
+    <td>The 'outlets' filter is a JSON formatted list of "outlet descriptor" objects. Each object has two optional properties, connector and power. Locations will only be returned if they have a station that contains one or more outlets that match one of these descriptors. A descriptor matches an outlet if each of the descriptor properties matches the corresponding property of the outlet. See <a href="#outlet-connector-types">Outlet Connector Types</a></td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">cost</div>
+      <div class="type">optional, default is <b>true</b></div>
+    </td>
+    <td>True = Returns all locations regardless of cost<br>
+    False = Does not return locations with a known fee (like parking or $/kw)</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">access</div>
+      <div class="type">optional</div>
+    </td>
+    <td>Filter on a comma separated list of access values. Matches if at least one access value is present.<br>
+    See <a href="#access-values">Access Values</a></td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">availability</div>
+      <div class="type">optional</div>
+    </td>
+    <td>Filter on a comma separated list of availability values. Matches if at least one availability value is present.<br>
+    See <a href="#availability-values">Availability Values</a></td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">amenities</div>
+      <div class="type">optional</div>
+    </td>
+    <td>Filter on a comma separated list of amenities. Matches if at least one listed amenity is present.<br>
+    See <a href="#amenity-values">Amenity Values</a></td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">exclude_networks</div>
+      <div class="type">optional</div>
+    </td>
+    <td>Filter on a comma separated list of network ids to exlude. Passing “exclude_networks=1” will exclude locations which exclusively have ChargePoint stations. If a location has both a ChargePoint station and a station of another network or a non-networked station it will still be eligible to be returned.<br>
+    See <a href="#networks-list">Networks List</a></td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">networks</div>
+      <div class="type">optional</div>
+    </td>
+    <td>Filter on a comma separated list of network ids to include. Matches if at least one network is present.<br>
+    See <a href="#networks-list">Networks List</a></td>
+  </tr>
+</table>
+
+<aside class="notice">
+You may want to apply some filters to the search queries to return only relevant locations. Filters are added as query parameters (for GET requests) or JSON fields (for POST requests).
+</aside>
+
+### Additional Examples
+
+`GET https://api.plugshare.com/locations/region?spanLat=0.15&spanLng=0.10&latitude=33.992476&longitude=-118.4721&count=10&outlets`
+
+`GET https://api.plugshare.com/locations/region?spanLat=0.15&spanLng=0.10&latitude=33.992476&longitude=-118.4721&count=10&cost=false`
+
+`GET https://api.plugshare.com/locations/region?spanLat=0.15&spanLng=0.10&latitude=33.992476&longitude=-118.4721&count=10&access=1,3`
+
+`GET https://api.plugshare.com/locations/region?spanLat=0.15&spanLng=0.10&latitude=33.992476&longitude=-118.4721&count=10&availability=3`
+
+`GET https://api.plugshare.com/locations/region?spanLat=0.15&spanLng=0.10&latitude=33.992476&longitude=-118.4721&count=10&amenities=1,2`
+
+`GET https://api.plugshare.com/locations/region?spanLat=0.15&spanLng=0.10&latitude=33.992476&longitude=-118.4721&count=10&exclude_networks=1`
+
+`GET https://api.plugshare.com/locations/region?spanLat=0.15&spanLng=0.10&latitude=33.992476&longitude=-118.4721&count=10&networks=3,4`
+
+### Returns
+
+Returns an array of `location` objects, containing up to `count` locations
+
+## Search Locations
+
+> Example Request:
+
+```plaintext
+GET https://api.plugshare.com/locations/search?query=venice%2C%20ca&count=10
+```
+
+> Example Response:
+
+```json
+[
+  {
+    "valid_outlets": [],
+    "description": "Please call first.",
+    "custom_ports": "",
+    "opening_date": "None",
+    "nissan_nctc": false,
+    "updated_at": "2014-10-15T22:53:50Z",
+    "hours": "",
+    "phone": "3108800661",
+    "promos": [],
+    "cost": false,
+    "pwps_version": null,
+    "reverse_geocoded_address": "2124 Glencoe Avenue, Venice, CA 90291, USA",
+    "address": "Glencoe Ave Venice, CA 90291",
+    "owner": "",
+    "id": 54369,
+    "parking_type_name": null,
+    "icon": "https://s3.amazonaws.com/plugshare.production.assets/icons/H.png",
+    "cost_description": "",
+    "confidence": null,
+    "locked": false,
+    "name": "",
+    "payment_enabled": null,
+    "url": "http://api.plugshare.com/view/location/54369",
+    "created_at": "2014-09-06T01:21:10Z",
+    "icon_type": "H",
+    "enabled": true,
+    "all_promos": [],
+    "longitude": -118.449509,
+    "access": 3,
+    "locale": "US",
+    "under_repair": false,
+    "amenities": [],
+    "poi_name": null,
+    "coming_soon": null,
+    "latitude": 34.000126,
+    "open247": false,
+    "stations": []
+  }
+]
+```
+
+This endpoint returns locations whose name or address contains a specified search query.
+
+### HTTP Request
+
+`GET https://api.plugshare.com/locations/search`
+
+### Arguments
+
+<table>
+  <tr>
+    <td>
+      <div class="field">query</div>
+      <div class="type required">required</div>
+    </td>
+    <td>The search query. Matches on name or address</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">count</div>
+      <div class="type">optional</div>
+    </td>
+    <td>Maximum count of locations to return<br>
+    200-500 is a recommended value for most applications</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">page</div>
+      <div class="type">optional</div>
+    </td>
+    <td>This method supports paging. If page is specified, count must be specified as well<br>
+    This returns results based on the page index number, with 100 results showing per page</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">outlets</div>
+      <div class="type">optional</div>
+    </td>
+    <td>The 'outlets' filter is a JSON formatted list of "outlet descriptor" objects. Each object has two optional properties, connector and power. Locations will only be returned if they have a station that contains one or more outlets that match one of these descriptors. A descriptor matches an outlet if each of the descriptor properties matches the corresponding property of the outlet. See <a href="#outlet-connector-types">Outlet Connector Types</a></td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">cost</div>
+      <div class="type">optional, default is <b>true</b></div>
+    </td>
+    <td>True = Returns all locations regardless of cost<br>
+    False = Does not return locations with a known fee (like parking or $/kw)</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">access</div>
+      <div class="type">optional</div>
+    </td>
+    <td>Filter on a comma separated list of access values. Matches if at least one access value is present.<br>
+    See <a href="#access-values">Access Values</a></td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">exclude_networks</div>
+      <div class="type">optional</div>
+    </td>
+    <td>Filter on a comma separated list of network ids to exlude. Passing “exclude_networks=1” will exclude locations which exclusively have ChargePoint stations. If a location has both a ChargePoint station and a station of another network or a non-networked station it will still be eligible to be returned.<br>
+    See <a href="#networks-list">Networks List</a></td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">networks</div>
+      <div class="type">optional</div>
+    </td>
+    <td>Filter on a comma separated list of network ids to include. Matches if at least one network is present.<br>
+    See <a href="#networks-list">Networks List</a></td>
+  </tr>
+</table>
+
+<aside class="notice">
+You may want to apply some filters to the search queries to return only relevant locations. Filters are added as query parameters (for GET requests) or JSON fields (for POST requests).
+</aside>
+
+### Additional Examples
+
+`GET https://api.plugshare.com/locations/search?query=recargo`
+
+`GET https://api.plugshare.com/locations/search?query=california&count=500&page=2`
+
+`GET https://api.plugshare.com/locations/search?query=venice%2C%20ca&count=10&outlets=[{"connector":2},{"connector":6,"power":1}]`
+
+`GET https://api.plugshare.com/locations/search?query=palo%20alto&count=100&networks=3,4&outlets=[{"connector":2},{"connector":6,"power":1}]`
+
+`GET https://api.plugshare.com/locations/search?query=palo%20alto&count=100&access=1,2,3&cost=false`
+
+### Returns
+
+Returns an array of `location` objects, containing up to `count` locations
+
+## Fetch Locations Along Route
+
+> Example Request:
+
+```plaintext
+POST https://api.plugshare.com/locations/polyline?minimal=1
+
+POST body:
+```
+
+```json
+{
+   "distance":9654,
+   "outlets":"[{\"connector\":2},{\"connector\":6,\"power\":1}]",
+   "fast":"add",
+   "access":"1,2,3",
+   "polyline":"33.96515,-118.38001000000001,33.96537,33.992140000000006,-118.47224000000001",
+   "exclude_networks":"2,19,3,1,26,34,5"
+}
+```
+
+> Example Response:
+
+```json
+[
+   {
+      "access":1,
+      "url":"http://api.plugshare.com/view/location/1553",
+      "score":10.0,
+      "name":"Washington St. Garage",
+      "stations":[
+         {
+            "id":1549,
+            "outlets":[
+               {
+                  "connector":2,
+                  "id":41783,
+                  "power":0
+               }
+            ]
+         }
+      ],
+      "latitude":34.00208,
+      "owner":{
+         "first_name":"julius",
+         "id":115704
+      },
+      "icon_type":"G",
+      "id":1553,
+      "longitude":-81.04077,
+      "icon":"https://s3.amazonaws.com/plugshare.staging.assets/icons/G.png"
+   }
+]
+```
+
+This endpoint returns locations who are a certain `distance` away from the `polyline` path.
+
+### HTTP Request
+
+`POST https://api.plugshare.com/locations/polyline?minimal=1`
+
+### Arguments
+
+<table>
+  <tr>
+    <td>
+      <div class="field">polyline</div>
+      <div class="type required">required</div>
+    </td>
+    <td>A list of coordinates describing the route in the form of lat1,lng1,lat2,lng2...</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">distance</div>
+      <div class="type required">required</div>
+    </td>
+    <td>The search distance in meters around the route.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">count</div>
+      <div class="type">optional</div>
+    </td>
+    <td>Maximum count of locations to return<br>
+    200-500 is a recommended value for most applications</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">page</div>
+      <div class="type">optional</div>
+    </td>
+    <td>This method supports paging. If page is specified, count must be specified as well<br>
+    This returns results based on the page index number, with 100 results showing per page</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">outlets</div>
+      <div class="type">optional</div>
+    </td>
+    <td>The 'outlets' filter is a JSON formatted list of "outlet descriptor" objects. Each object has two optional properties, connector and power. Locations will only be returned if they have a station that contains one or more outlets that match one of these descriptors. A descriptor matches an outlet if each of the descriptor properties matches the corresponding property of the outlet. See <a href="#outlet-connector-types">Outlet Connector Types</a></td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">cost</div>
+      <div class="type">optional, default is <b>true</b></div>
+    </td>
+    <td>True = Returns all locations regardless of cost<br>
+    False = Does not return locations with a known fee (like parking or $/kw)</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">access</div>
+      <div class="type">optional</div>
+    </td>
+    <td>Filter on a comma separated list of access values. Matches if at least one access value is present.<br>
+    See <a href="#access-values">Access Values</a></td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">exclude_networks</div>
+      <div class="type">optional</div>
+    </td>
+    <td>Filter on a comma separated list of network ids to exlude. Passing “exclude_networks=1” will exclude locations which exclusively have ChargePoint stations. If a location has both a ChargePoint station and a station of another network or a non-networked station it will still be eligible to be returned.<br>
+    See <a href="#networks-list">Networks List</a></td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">networks</div>
+      <div class="type">optional</div>
+    </td>
+    <td>Filter on a comma separated list of network ids to include. Matches if at least one network is present.<br>
+    See <a href="#networks-list">Networks List</a></td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">minimal</div>
+      <div class="type">optional</div>
+    </td>
+    <td><b>1</b> = Return minimalized data as response is typically very large</td>
+  </tr>
+</table>
+
+<aside class="notice">
+You may want to apply some filters to the search queries to return only relevant locations. Filters are added as query parameters (for GET requests) or JSON fields (for POST requests).
+</aside>
+
+### Additional Examples
+
+`POST https://api.plugshare.com/locations/polyline`
+
+### Returns
+
+Returns an array of `location` objects, containing up to `count` locations
 
 # Station
 
@@ -366,11 +1261,47 @@ A physical charging unit installed on the ground or wall. In EV industry terms t
 
 ## Object Properties
 
+> Example Response:
+
+```json
+[
+    {
+        "volts": null,
+        "network_ext_id": "172083G01001010000",
+        "qr_enabled": true,
+        "cost": 2,
+        "pwps_version": 2,
+        "location_id": 20840,
+        "id": 33221,
+        "cost_description": "$1/hour: first 4 hours. $20/hour thereafter. 50 cent minimum. Fees continue while car is connected even if not charging.",
+        "pre_charge_instructions": null,
+        "nissan_nctc": false,
+        "network": "",
+        "payment_enabled": null,
+        "latitude": 33.992305,
+        "available": 1,
+        "outlets": [],
+        "hours": "",
+        "promos": [],
+        "ocpp_version": null,
+        "kilowatts": null,
+        "requiresAccessCard": false,
+        "manufacturer": "GE WattStation",
+        "name": "PRIVATE LOCATION",
+        "network_id": 4,
+        "created_at": "2013-11-19T22:26:35Z",
+        "longitude": -118.472993,
+        "amps": null,
+        "model": "",
+        "available_changed_at": "2017-03-10T23:26:05Z"
+    }
+]
+```
+
 <table>
   <tr>
     <th>Property</th>
     <th>Description</th>
-    <th>Can be null?</th>
   </tr>
   <tr>
     <td>
@@ -378,7 +1309,6 @@ A physical charging unit installed on the ground or wall. In EV industry terms t
       <div class="type">Number (integer)</div>
     </td>
     <td>Unique and immutable identifier</td>
-    <td>No</td>
   </tr>
   <tr>
     <td>
@@ -386,7 +1316,6 @@ A physical charging unit installed on the ground or wall. In EV industry terms t
       <div class="type">String (date)</div>
     </td>
     <td>ISO 8601 Format  "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"</td>
-    <td>No</td>
   </tr>
   <tr>
     <td>
@@ -394,7 +1323,6 @@ A physical charging unit installed on the ground or wall. In EV industry terms t
       <div class="type">Object</div>
     </td>
     <td>The network that owns or directly manages this station</td>
-    <td>Yes</td>
   </tr>
   <tr>
     <td>
@@ -402,15 +1330,13 @@ A physical charging unit installed on the ground or wall. In EV industry terms t
       <div class="type">String</div>
     </td>
     <td>The unique identifier on the parent network. Used to cross reference against 3rd party database. IDs between different networks can collide but used with the network property this is guaranteed to be unique.</td>
-    <td>Yes</td>
   </tr>
   <tr>
     <td>
       <div class="field">cost</div>
       <div class="type">Number (integer enum)</td>
     </div>
-    <td>0=Unknown, 1=Free, 2=Fee</div>
-    <td>No</td>
+    <td><b>0</b> = Unknown<br><b>1</b> = Free<br><b>2</b> = Fee</div>
   </td>
   <tr>
     <td>
@@ -418,7 +1344,6 @@ A physical charging unit installed on the ground or wall. In EV industry terms t
       <div class="type">String</div>
     </td>
     <td>Describes the cost of charging at this location. Examples include $2/hr, $0.10/kWh, $8 per session.</td>
-    <td>Yes</td>
   </tr>
   <tr>
     <td>
@@ -426,7 +1351,6 @@ A physical charging unit installed on the ground or wall. In EV industry terms t
       <div class="type">String</div>
     </td>
     <td>The manufacturer of this station</td>
-    <td>Yes</td>
   </tr>
   <tr>
     <td>
@@ -434,7 +1358,6 @@ A physical charging unit installed on the ground or wall. In EV industry terms t
       <div class="type">String</div>
     </td>
     <td>The hardware model type</td>
-    <td>Yes</td>
   </tr>
 </table>
 
@@ -444,11 +1367,25 @@ A physical vehicle-to-station connection point: either a plug or a socket. Stati
 
 ## Object Properties
 
+> Example Response:
+
+```json
+[
+    {
+        "available": null,
+        "description": null,
+        "power": 0,
+        "connector": 2,
+        "id": 69821,
+        "outlet_index": null
+    }
+]
+```
+
 <table>
   <tr>
     <th>Property</th>
     <th>Description</th>
-    <th>Can be null?</th>
   </tr>
   <tr>
     <td>
@@ -456,23 +1393,20 @@ A physical vehicle-to-station connection point: either a plug or a socket. Stati
       <div class="type">number (integer)</div>
     </td>
     <td>Unique and immutable identifier</td>
-    <td>No</td>
   </tr>
   <tr>
     <td>
       <div class="field">connector</div>
       <div class="type">Number (integer enum)</div>
     </td>
-    <td>See Outlet Connector Types</td>
-    <td>No</td>
+    <td>See [Outlet Connector Types](#outlet-connector-types)</td>
   </tr>
   <tr>
     <td>
       <div class="field">Power</div>
       <div class="type">Number (integer enum)</div>
     </td>
-    <td>See Outlet Connector Types</td>
-    <td>Yes</td>
+    <td>See [Outlet Connector Types](#outlet-connector-types)</td>
   </tr>
   <tr>
     <td>
@@ -480,7 +1414,6 @@ A physical vehicle-to-station connection point: either a plug or a socket. Stati
       <div class="type">string</div>
     </td>
     <td>If null, outlet level availability is unknown (Note: generally, see Station availability instead)</td>
-    <td>Yes</td>
   </tr>
 </table>
 
@@ -673,11 +1606,25 @@ A company that operates stations and provides subscription services or access co
 
 ## Object Properties
 
+> Example Response:
+
+```json
+{
+    "description": "GE's networked platform that allows users to manage and monitor the charging of their electric cars.",
+    "url": "https://www.gewattstation.com/connect/",
+    "image": "https://s3.amazonaws.com/plugshare.production.assets/network-images/watt.png",
+    "action_name": "Sign Up",
+    "phone": "8554433873",
+    "action_url": "https://www.gewattstation.com/connect/",
+    "id": 4,
+    "name": "GE WattStation"
+}
+```
+
 <table>
   <tr>
     <th>Property</th>
     <th>Description</th>
-    <th>Can be null?</th>
   </tr>
   <tr>
     <td>
@@ -685,7 +1632,6 @@ A company that operates stations and provides subscription services or access co
       <div class="type">number (integer)</div>
     </td>
     <td>Unique and immutable identifier</td>
-    <td>No</td>
   </tr>
   <tr>
     <td>
@@ -693,7 +1639,6 @@ A company that operates stations and provides subscription services or access co
       <div class="type">string</div>
     </td>
     <td>The driver-friendly name for the Network’s Brand such as “SemaCharge”</td>
-    <td>No</td>
   </tr>
   <tr>
     <td>
@@ -701,7 +1646,6 @@ A company that operates stations and provides subscription services or access co
       <div class="type">string</div>
     </td>
     <td>A short marketing summary of the Network’s service offerings.</td>
-    <td>Yes</td>
   </tr>
   <tr>
     <td>
@@ -709,7 +1653,6 @@ A company that operates stations and provides subscription services or access co
       <div class="type">string</div>
     </td>
     <td>A description of the URL destination. Examples include “Sign Up” or “Learn More”</td>
-    <td>Yes</td>
   </tr>
   <tr>
     <td>
@@ -717,7 +1660,6 @@ A company that operates stations and provides subscription services or access co
       <div class="type">string (URL)</div>
     </td>
     <td>A URL generally to aid in registration with a network</td>
-    <td>Yes</td>
   </tr>
   <tr>
     <td>
@@ -725,7 +1667,6 @@ A company that operates stations and provides subscription services or access co
       <div class="type">string</div>
     </td>
     <td>Phone number for customer service or activation by phone requests</td>
-    <td>Yes</td>
   </tr>
   <tr>
     <td>
@@ -733,36 +1674,20 @@ A company that operates stations and provides subscription services or access co
       <div class="type">string (URL)</div>
     </td>
     <td>If available, an approved logo for the Network.</td>
-    <td>Yes</td>
   </tr>
 </table>
 
 ## Networks List
 
-id | network
--- | -------
-1 | ChargePoint
-2 | Blink
-3 | SemaCharge
-4 | GE WattStation
-5 | Sun Country
-6 | Circuit Electrique
-7 | AddEnergie
-8 | Tesla Supercharger
-9 | AeroVironment
-11 | OpenChargeMap
-13 | RWE
-14 | Oplaadpalen
-15 | Endesa
-16 | ESB
-17 | Uppladdning
-18 | Clever
-19 | EVgo
-22 | Lastestasjoner
-23 | Enel Drive
-25 | Volta
-26 | Greenlots
-34 | JNSH
+id | network |   | id | network |   | id | network |   | id | network
+-- | ------- | - | -- | ------- | - | -- | ------- | - | -- | -------
+1 | ChargePoint  | | 7 | AddEnergie | | 15 | Endesa | | 23 | Enel Drive
+2 | Blink  | | 8 | Tesla Supercharger | | 16 | ESB | | 25 | Volta
+3 | SemaCharge |  | 9 | AeroVironment | | 17 | Uppladdning | | 26 | Greenlots
+4 | GE WattStation |  | 11 | OpenChargeMap | | 18 | Clever | | 34 | JNSH
+5 | Sun Country |  | 13 | RWE | | 19 | EVgo | 
+6 | Circuit Electrique |  | 14 | Oplaadpalen | | 22 | Lastestasjoner |
+
 
 # Photo
 
@@ -770,11 +1695,27 @@ A location photo contributed by the PlugShare community.
 
 ## Object Properties
 
+> Example Response:
+
+```json
+[
+    {
+        "user_id": 75733,
+        "url": "https://s3.amazonaws.com/plugshare.production.photos/photos/165827.jpg",
+        "created_at": "2016-11-29T17:57:14Z",
+        "thumbnail": "https://s3.amazonaws.com/plugshare.production.photos/thumb/165827.png",
+        "caption": "Recargo Garage",
+        "thumbnail2x": "https://s3.amazonaws.com/plugshare.production.photos/thumb2x/165827.png",
+        "order": 1,
+        "id": 165827
+    }
+]
+```
+
 <table>
   <tr>
     <th>Property</th>
     <th>Description</th>
-    <th>Can be null?</th>
   </tr>
   <tr>
     <td>
@@ -782,7 +1723,6 @@ A location photo contributed by the PlugShare community.
       <div class="type">Number (integer)</div>
     </td>
     <td>Unique and immutable identifier</td>
-    <td>No</td>
   </tr>
   <tr>
     <td>
@@ -790,7 +1730,6 @@ A location photo contributed by the PlugShare community.
       <div class="type">String (timestamp)</div>
     </td>
     <td>See Connector List</td>
-    <td>No</td>
   </tr>
   <tr>
     <td>
@@ -798,7 +1737,6 @@ A location photo contributed by the PlugShare community.
       <div class="type">String (URL)</div>
     </td>
     <td>The URL to the full size photo</td>
-    <td>No</td>
   </tr>
   <tr>
     <td>
@@ -806,9 +1744,10 @@ A location photo contributed by the PlugShare community.
       <div class="type">String (URL)</div>
     </td>
     <td>If available, link to a smaller version of the photo*</td>
-    <td>Yes</td>
   </tr>
 </table>
+
+*Service side processing of additional formats and dimensions are available as needed.
 
 # Review (Check-In)
 
@@ -820,11 +1759,62 @@ Check-Ins include:
 
 ## Object Properties
 
+> Example Response:
+
+```json
+[
+    {
+        "comment": "",
+        "rating": 1,
+        "connector_type": 2,
+        "volts": null,
+        "created_at": "2014-08-11T23:54:42Z",
+        "finished": "2014-08-12T00:53:22Z",
+        "waiting": false,
+        "user": {
+            "allow_notifications": true,
+            "first_name": "Brian",
+            "last_name": "Kariger",
+            "notify_nearby_radius": 10000,
+            "hide_address": true,
+            "receive_grid_alerts": 0,
+            "vehicle_description": "",
+            "created_at": "2010-03-10T22:08:56Z",
+            "language_code": null,
+            "vehicle_color": 9,
+            "phone": "",
+            "photos": [
+                {
+                    "user_id": 133,
+                    "url": "https://s3.amazonaws.com/plugshare.production.photos/photos/41329.jpg",
+                    "created_at": "2013-12-30T07:01:35Z",
+                    "thumbnail": "https://s3.amazonaws.com/plugshare.production.photos/thumb/41329.png",
+                    "caption": "",
+                    "thumbnail2x": "https://s3.amazonaws.com/plugshare.production.photos/thumb2x/41329.png",
+                    "order": 0,
+                    "id": 41329
+                }
+            ],
+            "last_login": "2017-03-13T23:02:56Z",
+            "country_code": null,
+            "hide_phone": true,
+            "vehicle_subtype": 5,
+            "about": "",
+            "vehicle_type": 52,
+            "id": 133,
+            "notify_nearby": 1
+        },
+        "amps": null,
+        "vehicle_type": 4,
+        "id": 134676
+    }
+]
+```
+
 <table>
   <tr>
     <th>Property</th>
     <th>Description</th>
-    <th>Can be null?</th>
   </tr>
   <tr>
     <td>
@@ -832,15 +1822,13 @@ Check-Ins include:
       <div class="type">Number (integer)</div>
     </td>
     <td>Unique and immutable identifier</td>
-    <td>No</td>
   </tr>
   <tr>
     <td>
       <div class="field">rating</div>
       <div class="type">Number (integer)</div>
     </td>
-    <td>1 = Positive / Success<br>0 = Neutral / Tips etc.<br>-1 = Trouble charging or other problem</td>
-    <td>No</td>
+    <td><b>1</b> = Positive / Success<br><b>0</b> = Neutral / Tips etc.<br>-<b>1</b> = Trouble charging or other problem</td>
   </tr>
   <tr>
     <td>
@@ -848,7 +1836,6 @@ Check-Ins include:
       <div class="type">String (timestamp)</div>
     </td>
     <td>When the Check-In was submitted</td>
-    <td>No</td>
   </tr>
   <tr>
     <td>
@@ -856,7 +1843,6 @@ Check-Ins include:
       <div class="type">String (timestamp)</div>
     </td>
     <td>The date the user plans to leave (or left) the location.</td>
-    <td>Yes</td>
   </tr>
   <tr>
     <td>
@@ -864,7 +1850,6 @@ Check-Ins include:
       <div class="type">String</div>
     </td>
     <td>The driver’s comment</td>
-    <td>Yes</td>
   </tr>
   <tr>
     <td>
@@ -872,7 +1857,6 @@ Check-Ins include:
       <div class="type">Object (User)</div>
     </td>
   <td></td>
-    <td>Yes</td>
   </tr>
   <tr>
     <td>
@@ -880,7 +1864,6 @@ Check-Ins include:
       <div class="type">Number (integer)</div>
     </td>
     <td>If average volts were recorded during this visit. Note: depending on vehicle capabilities or limitations, this may be lower than the station’s maximum capabilities.</td>
-    <td>Yes</td>
   </tr>
   <tr>
     <td>
@@ -888,7 +1871,6 @@ Check-Ins include:
       <div class="type">Number (integer)</div>
     </td>
     <td>If average amps were recorded during this visit. Note: depending on vehicle capabilities or limitations, this may be lower than the station’s maximum capabilities.</td>
-    <td>Yes</td>
   </tr>
 </table>
 

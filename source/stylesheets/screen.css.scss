@@ -641,6 +641,14 @@ table {
   }
   .type {
     color: #777;
+    white-space: nowrap;
+  }
+  .type.required {
+    color: #003ca6;
+    font-weight: 600;
+  }
+  .type.deprecated {
+    color: #ff4040;
   }
 }
 .connectors {
