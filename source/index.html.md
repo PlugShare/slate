@@ -4,7 +4,7 @@ title: PlugShare API Reference
 language_tabs:
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
+  - <a href='access'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
   - API V4 - Updated 3/14/2017
 
@@ -52,7 +52,7 @@ You must replace <code>plugshareapi</code> with your personal API key.
 
 # Core Data Entities
 
-<img src="http://developers.plugshare.com/images/image11.png">
+<img src="images/tables.png">
 
 # Locations
 
@@ -246,7 +246,7 @@ A driver identifiable destination where Charging Stations (Stations) are located
       <div class="field">created_at</div>
       <div class="type">String (timestamp)</div>
     </td>
-    <td>ISO 8601 Format "yyyy-mm-ddThh:mm:ssZ"</td>
+    <td>ISO 8601 Format "yyyy-mm-ddThh:mm:ssZ".</td>
   </tr>
   <tr>
     <td>
@@ -308,7 +308,7 @@ A driver identifiable destination where Charging Stations (Stations) are located
   </tr>
   <tr>
     <td>
-      <div class="field" id="availability-values">availability</div>
+      <div class="field" id="availability-values">availability (actually not a field (?))</div>
       <div class="type">Number (integer enum)</div>
     </td>
     <td><b>0</b> = Unknown<br>
@@ -318,7 +318,7 @@ A driver identifiable destination where Charging Stations (Stations) are located
   </tr>
   <tr>
     <td>
-      <div class="field" id="amenity-values">amenities</div>
+      <div class="field" id="amenity-values">amenities (actually not a field (?))</div>
       <div class="type">Number (integer enum)</div>
     </td>
     <td><b>1</b> = Hotel/Lodging<br>
@@ -390,42 +390,42 @@ A driver identifiable destination where Charging Stations (Stations) are located
   <tr>
     <td>
       <div class="field">pwps_version</div>
-      <div class="type">Number (Integer)</div>
+      <div class="type">Number (integer)</div>
     </td>
     <td>The Pay with PlugShare version protocol required to be supported by the client to activate this station.</td>
   </tr>
   <tr>
     <td>
       <div class="field">compass_bearing</div>
-      <div class="type">Number (Float)</div>
+      <div class="type">Number (float)</div>
     </td>
     <td>A compass bearing from the specified address or coordinate.  Note: this field will only appear for locations returned by the /locations/nearby endpoint.</td>
   </tr>
   <tr>
     <td>
       <div class="field">distance_meters</div>
-      <div class="type">Number (Float)</div>
+      <div class="type">Number (float)</div>
     </td>
     <td>A distance in meters from the specified address or coordinate.  Note: this field will only appear for locations returned by the /locations/nearby endpoint.</td>
   </tr>
   <tr>
     <td>
       <div class="field">usage_availability</div>
-      <div class="type">Number (Int)</div>
+      <div class="type">Number (integer)</div>
     </td>
     <td>Integer from 0 to 100. This number changes based on how often the stations at this location are being used (?). Can be null.</td>
   </tr>
   <tr>
     <td>
       <div class="field">opening_date</div>
-      <div class="type">Date</div>
+      <div class="type">String (date)</div>
     </td>
     <td>Date when location is anticipated to open in the future. "yyyy-mm-dd" format (deprecated (?))</td>
   </tr>
   <tr>
     <td>
       <div class="field">updated_at</div>
-      <div class="type">Timestamp</div>
+      <div class="type">String (timestamp)</div>
     </td>
     <td>Timestamp of the last time this location was updated. "yyyy-mm-dd hh:mm:ss" format.</td>
   </tr>
@@ -1267,7 +1267,6 @@ A physical charging unit installed on the ground or wall. In EV industry terms t
 [
     {
         "volts": null,
-        "network_ext_id": "172083G01001010000",
         "qr_enabled": true,
         "cost": 2,
         "pwps_version": 2,
@@ -1275,12 +1274,20 @@ A physical charging unit installed on the ground or wall. In EV industry terms t
         "id": 33221,
         "cost_description": "$1/hour: first 4 hours. $20/hour thereafter. 50 cent minimum. Fees continue while car is connected even if not charging.",
         "pre_charge_instructions": null,
-        "nissan_nctc": false,
         "network": "",
         "payment_enabled": null,
         "latitude": 33.992305,
         "available": 1,
-        "outlets": [],
+        "outlets": [
+          {
+            "available": null,
+            "description": null,
+            "power": 0,
+            "connector": 2,
+            "id": 69821,
+            "outlet_index": null
+          }
+        ],
         "hours": "",
         "promos": [],
         "ocpp_version": null,
@@ -1308,35 +1315,30 @@ A physical charging unit installed on the ground or wall. In EV industry terms t
       <div class="field">id</div>
       <div class="type">Number (integer)</div>
     </td>
-    <td>Unique and immutable identifier</td>
+    <td>Unique and immutable identifier.</td>
   </tr>
   <tr>
     <td>
       <div class="field">created_at</div>
       <div class="type">String (date)</div>
     </td>
-    <td>ISO 8601 Format  "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"</td>
+    <td>ISO 8601 Format "yyyy-mm-ddThh:mm:ssZ".</td>
   </tr>
   <tr>
     <td>
       <div class="field">network</div>
       <div class="type">Object</div>
     </td>
-    <td>The network that owns or directly manages this station</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">network_ext_id</div>
-      <div class="type">String</div>
-    </td>
-    <td>The unique identifier on the parent network. Used to cross reference against 3rd party database. IDs between different networks can collide but used with the network property this is guaranteed to be unique.</td>
+    <td>The network that owns or directly manages this station.</td>
   </tr>
   <tr>
     <td>
       <div class="field">cost</div>
       <div class="type">Number (integer enum)</td>
     </div>
-    <td><b>0</b> = Unknown<br><b>1</b> = Free<br><b>2</b> = Fee</div>
+    <td><b>0</b> = Unknown<br>
+    <b>1</b> = Free<br>
+    <b>2</b> = Fee</div>
   </td>
   <tr>
     <td>
@@ -1350,14 +1352,151 @@ A physical charging unit installed on the ground or wall. In EV industry terms t
       <div class="field">manufacturer</div>
       <div class="type">String</div>
     </td>
-    <td>The manufacturer of this station</td>
+    <td>The manufacturer of this station.</td>
   </tr>
   <tr>
     <td>
       <div class="field">model</div>
       <div class="type">String</div>
     </td>
-    <td>The hardware model type</td>
+    <td>The hardware model type.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">volts</div>
+      <div class="type">Number (integer)</div>
+    </td>
+    <td>Voltage at this station. 208, 240, 400, 480, 500, or NULL.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">qr_enabled</div>
+      <div class="type">Boolean</div>
+    </td>
+    <td>True if this station is tagged with a QR code for station identification and activation flows. (checked or NULL, no unchecked (0) inconsistent (?))</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">pwps_version</div>
+      <div class="type">Number (integer)</div>
+    </td>
+    <td>The Pay with PlugShare version protocol required to be supported by the client to activate this station.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">location_id</div>
+      <div class="type">Number (integer)</div>
+    </td>
+    <td>The id of the station's parent location.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">pre_charge_instructions</div>
+      <div class="type">String</div>
+    </td>
+    <td>Optional network provided instructions to display before charging.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">payment_enabled</div>
+      <div class="type">Boolean</div>
+    </td>
+    <td>True if this station accepts Pay with PlugShare payments.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">latitude</div>
+      <div class="type">Number</div>
+    </td>
+      <td>Latitude coordinate for this station.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">longitude</div>
+      <div class="type">Number</div> 
+    </td>
+      <td>Longitude coordinate for this station.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">available</div>
+      <div class="type">Number (integer enum)</div>
+    </td>
+    <td><b>1</b> = Unknown<br>
+    <b>2</b> = Available<br>
+    <b>3</b> = In Use<br>
+    <b>4</b> = Offline<br>
+    <b>5</b> = Under Repair</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">outlets</div>
+      <div class="type">Array</div>
+    </td>
+    <td>Contains outlet objects. Each station will have at least 1 outlet object.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">hours</div>
+      <div class="type">String</div>
+    </td>
+    <td>String for hours of availability. Commonly 24/7 or specified time frames.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">promos</div>
+      <div class="type">Array</div>
+    </td>
+    <td>Contains promo objects. This array can be empty. (referring to the 1-2 promos we have on the site? (?))</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">ocpp_version</div>
+      <div class="type">Number (integer)</div>
+    </td>
+    <td>Don't know what this is (?)</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">kilowatts</div>
+      <div class="type"></div>
+    </td>
+    <td>Power at this station. 6, 20, 50, or NULL.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">requiresAccessCard</div>
+      <div class="type">Boolean</div>
+    </td>
+    <td>Requires an access card to use this station.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">name</div>
+      <div class="type">String</div>
+    </td>
+    <td>Name describing the station, typically a combination of an identifying number and network name.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">network_id</div>
+      <div class="type">Number (integer)</div>
+    </td>
+    <td>Network id of the station.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">amps</div>
+      <div class="type">Number (integer)</div>
+    </td>
+    <td>Current at this station. 30, 88, 120, or NULL.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">available_changed_at</div>
+      <div class="type">String (timestamp)</div>
+    </td>
+    <td>Timestamp of the last time the availability of this station was updated. (possibly deprecated? Only 3 distinct entries (?))</td>
   </tr>
 </table>
 
@@ -1399,14 +1538,14 @@ A physical vehicle-to-station connection point: either a plug or a socket. Stati
       <div class="field">connector</div>
       <div class="type">Number (integer enum)</div>
     </td>
-    <td>See [Outlet Connector Types](#outlet-connector-types)</td>
+    <td>See <a href="#outlet-connector-types">Outlet Connector Types</a></td>
   </tr>
   <tr>
     <td>
       <div class="field">Power</div>
       <div class="type">Number (integer enum)</div>
     </td>
-    <td>See [Outlet Connector Types](#outlet-connector-types)</td>
+    <td>See <a href="#outlet-connector-types">Outlet Connector Types</a></td>
   </tr>
   <tr>
     <td>
@@ -1414,6 +1553,20 @@ A physical vehicle-to-station connection point: either a plug or a socket. Stati
       <div class="type">string</div>
     </td>
     <td>If null, outlet level availability is unknown (Note: generally, see Station availability instead)</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">description</div>
+      <div class="type">string</div>
+    </td>
+    <td>Not used? Only NULL (?)</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">outlet_index</div>
+      <div class="type">string</div>
+    </td>
+    <td>Confirm if used, only 1 or 2 (?)</td>
   </tr>
 </table>
 
@@ -1631,14 +1784,14 @@ A company that operates stations and provides subscription services or access co
       <div class="field">id</div>
       <div class="type">number (integer)</div>
     </td>
-    <td>Unique and immutable identifier</td>
+    <td>Unique and immutable identifier.</td>
   </tr>
   <tr>
     <td>
       <div class="field">name</div>
       <div class="type">string</div>
     </td>
-    <td>The driver-friendly name for the Network’s Brand such as “SemaCharge”</td>
+    <td>The driver-friendly name for the Network’s Brand such as “SemaCharge”.</td>
   </tr>
   <tr>
     <td>
@@ -1652,21 +1805,28 @@ A company that operates stations and provides subscription services or access co
       <div class="field">action_name</div>
       <div class="type">string</div>
     </td>
-    <td>A description of the URL destination. Examples include “Sign Up” or “Learn More”</td>
+    <td>A description of the URL destination. Examples include “Sign Up” or “Learn More”.</td>
   </tr>
   <tr>
     <td>
       <div class="field">action_url</div>
       <div class="type">string (URL)</div>
     </td>
-    <td>A URL generally to aid in registration with a network</td>
+    <td>A URL generally to aid in registration with a network.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">url</div>
+      <div class="type">string (URL)</div>
+    </td>
+    <td>A URL generally to aid in registration with a network.</td>
   </tr>
   <tr>
     <td>
       <div class="field">phone</div>
       <div class="type">string</div>
     </td>
-    <td>Phone number for customer service or activation by phone requests</td>
+    <td>Phone number for customer service or activation by phone requests.</td>
   </tr>
   <tr>
     <td>
@@ -1722,28 +1882,56 @@ A location photo contributed by the PlugShare community.
       <div class="field">id</div>
       <div class="type">Number (integer)</div>
     </td>
-    <td>Unique and immutable identifier</td>
+    <td>Unique and immutable identifier.</td>
   </tr>
   <tr>
     <td>
       <div class="field">created_at</div>
       <div class="type">String (timestamp)</div>
     </td>
-    <td>See Connector List</td>
+    <td>ISO 8601 Format “yyyy-mm-ddThh:mm:ssZ”.</td>
   </tr>
   <tr>
     <td>
       <div class="field">url</div>
       <div class="type">String (URL)</div>
     </td>
-    <td>The URL to the full size photo</td>
+    <td>The URL to the full size photo.</td>
   </tr>
   <tr>
     <td>
       <div class="field">thumbnail</div>
       <div class="type">String (URL)</div>
     </td>
-    <td>If available, link to a smaller version of the photo*</td>
+    <td>If available, link to a smaller version of the photo*.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">thumbnail2x</div>
+      <div class="type">String (URL)</div>
+    </td>
+    <td>If available, link to a smaller version of the photo*, rendered at 2x the standard thumbnail size.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">caption</div>
+      <div class="type">String</div>
+    </td>
+    <td>User provided caption of the photo.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">order</div>
+      <div class="type">Number (integer)</div>
+    </td>
+    <td>Arrangement order of photos at this location. (?)</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">user_id</div>
+      <div class="type">Number (integer)</div>
+    </td>
+    <td>The id of the user who uploaded this photo.</td>
   </tr>
 </table>
 
@@ -1771,39 +1959,7 @@ Check-Ins include:
         "created_at": "2014-08-11T23:54:42Z",
         "finished": "2014-08-12T00:53:22Z",
         "waiting": false,
-        "user": {
-            "allow_notifications": true,
-            "first_name": "Brian",
-            "last_name": "Kariger",
-            "notify_nearby_radius": 10000,
-            "hide_address": true,
-            "receive_grid_alerts": 0,
-            "vehicle_description": "",
-            "created_at": "2010-03-10T22:08:56Z",
-            "language_code": null,
-            "vehicle_color": 9,
-            "phone": "",
-            "photos": [
-                {
-                    "user_id": 133,
-                    "url": "https://s3.amazonaws.com/plugshare.production.photos/photos/41329.jpg",
-                    "created_at": "2013-12-30T07:01:35Z",
-                    "thumbnail": "https://s3.amazonaws.com/plugshare.production.photos/thumb/41329.png",
-                    "caption": "",
-                    "thumbnail2x": "https://s3.amazonaws.com/plugshare.production.photos/thumb2x/41329.png",
-                    "order": 0,
-                    "id": 41329
-                }
-            ],
-            "last_login": "2017-03-13T23:02:56Z",
-            "country_code": null,
-            "hide_phone": true,
-            "vehicle_subtype": 5,
-            "about": "",
-            "vehicle_type": 52,
-            "id": 133,
-            "notify_nearby": 1
-        },
+        "user": ""
         "amps": null,
         "vehicle_type": 4,
         "id": 134676
@@ -1821,21 +1977,23 @@ Check-Ins include:
       <div class="field">id</div>
       <div class="type">Number (integer)</div>
     </td>
-    <td>Unique and immutable identifier</td>
+    <td>Unique and immutable identifier.</td>
   </tr>
   <tr>
     <td>
       <div class="field">rating</div>
       <div class="type">Number (integer)</div>
     </td>
-    <td><b>1</b> = Positive / Success<br><b>0</b> = Neutral / Tips etc.<br>-<b>1</b> = Trouble charging or other problem</td>
+    <td><b>1</b> = Positive / Success<br>
+    <b>0</b> = Neutral / Tips etc.<br>
+    -<b>1</b> = Trouble charging or other problem</td>
   </tr>
   <tr>
     <td>
       <div class="field">created_at</div>
       <div class="type">String (timestamp)</div>
     </td>
-    <td>When the Check-In was submitted</td>
+    <td>When the Check-In was submitted.</td>
   </tr>
   <tr>
     <td>
@@ -1849,83 +2007,214 @@ Check-Ins include:
       <div class="field">comment</div>
       <div class="type">String</div>
     </td>
-    <td>The driver’s comment</td>
+    <td>The user's review.</td>
   </tr>
   <tr>
     <td>
       <div class="field">user</div>
       <div class="type">Object (User)</div>
     </td>
-  <td></td>
+  <td>User object including in depth information about the user who submitted this review (check-in).</td>
   </tr>
   <tr>
     <td>
       <div class="field">volts</div>
       <div class="type">Number (integer)</div>
     </td>
-    <td>If average volts were recorded during this visit. Note: depending on vehicle capabilities or limitations, this may be lower than the station’s maximum capabilities.</td>
+    <td>Average volts if recorded during this visit, else NULL. Note: depending on vehicle capabilities or limitations, this may be lower than the station’s maximum capabilities.</td>
   </tr>
   <tr>
     <td>
       <div class="field">amps</div>
       <div class="type">Number (integer)</div>
     </td>
-    <td>If average amps were recorded during this visit. Note: depending on vehicle capabilities or limitations, this may be lower than the station’s maximum capabilities.</td>
+    <td>Average amps if recorded during this visit, else NULL. Note: depending on vehicle capabilities or limitations, this may be lower than the station’s maximum capabilities.</td>
   </tr>
 </table>
 
-<!-- ## Get a Specific Kitten
+# User
 
-```ruby
-require 'kittn'
+A PlugShare user who may be owner of reviews, check-ins, or private locations.
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
+## Object Properties
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
+> Example Response:
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+    "allow_notifications": true,
+    "first_name": "Brian",
+    "last_name": "Kariger",
+    "notify_nearby_radius": 10000,
+    "hide_address": true,
+    "receive_grid_alerts": 0,
+    "vehicle_description": "",
+    "created_at": "2010-03-10T22:08:56Z",
+    "language_code": null,
+    "vehicle_color": 9,
+    "phone": "",
+    "photos": [
+        {
+            "user_id": 133,
+            "url": "https://s3.amazonaws.com/plugshare.production.photos/photos/41329.jpg",
+            "created_at": "2013-12-30T07:01:35Z",
+            "thumbnail": "https://s3.amazonaws.com/plugshare.production.photos/thumb/41329.png",
+            "caption": "",
+            "thumbnail2x": "https://s3.amazonaws.com/plugshare.production.photos/thumb2x/41329.png",
+            "order": 0,
+            "id": 41329
+        }
+    ],
+    "last_login": "2017-03-13T23:02:56Z",
+    "country_code": null,
+    "hide_phone": true,
+    "vehicle_subtype": 5,
+    "about": "",
+    "vehicle_type": 52,
+    "id": 133,
+    "notify_nearby": 1
 }
 ```
 
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
- -->
+<table>
+  <tr>
+    <th>Property</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">id</div>
+      <div class="type">Number (integer)</div>
+    </td>
+    <td>Unique and immutable identifier.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">allow_notifications</div>
+      <div class="type">Boolean</div>
+    </td>
+    <td>Flag if user allows notifications.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">first_name</div>
+      <div class="type">String</div>
+    </td>
+    <td>User's First Name.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">last_name</div>
+      <div class="type">String</div>
+    </td>
+    <td>User's Last Name.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">notify_nearby</div>
+      <div class="type">Number (integer enum)</div>
+    </td>
+    <td><b>0</b> = None.<br>
+    <b>1</b> = Nearby All<br>
+    <b>2</b> = Nearby Private<br>
+    <b>3</b> = Nearby Public</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">notify_nearby_radius</div>
+      <div class="type">Number (integer)</div>
+    </td>
+    <td>User's set notify if charger within nearby radius. Possible values: 1000, 1600, 5000, 8000, 10000, 16000.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">hide_address</div>
+      <div class="type">Boolean</div>
+    </td>
+    <td>Flag if user opted to hide personal address information.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">receive_grid_alerts</div>
+      <div class="type">Boolean</div>
+    </td>
+    <td>No entries, all NULL (?)</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">vehicle_description</div>
+      <div class="type">String</div>
+    </td>
+    <td>User input, self describe their own vehicle.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">created_at</div>
+      <div class="type">String (timestamp)</div>
+    </td>
+    <td>ISO 8601 Format “yyyy-mm-ddThh:mm:ssZ”.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">language_code</div>
+      <div class="type">String</div>
+    </td>
+    <td>User's language settings. en-US or NULL. (?)</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">vehicle_color</div>
+      <div class="type">Number (integer enum)</div>
+    </td>
+    <td>Number indicating user's selection of one of many preset vehicle colors.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">phone</div>
+      <div class="type">String</div>
+    </td>
+    <td>Formatting of this field is not currently guaranteed.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">last_login</div>
+      <div class="type">String (timestamp)</div>
+    </td>
+    <td>ISO 8601 Format “yyyy-mm-ddThh:mm:ssZ”.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">country_code</div>
+      <div class="type">String</div>
+    </td>
+    <td>User's country code, US or NULL. (?)</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">hide_phone</div>
+      <div class="type">Boolean</div>
+    </td>
+    <td>Flag if user opted to hide personal phone number.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">vehicle_subtype</div>
+      <div class="type">Number (integer enum)</div>
+    </td>
+    <td>Number indicating user's selection of one of many preset vehicle subtypes.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">about</div>
+      <div class="type">String</div>
+    </td>
+    <td>User input, public-facing about me section.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">vehicle_type</div>
+      <div class="type">Number (integer enum)</div>
+    </td>
+    <td>Number indicating user's selection of one of many preset vehicle types.</td>
+  </tr>
+</table>
