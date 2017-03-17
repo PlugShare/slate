@@ -4,12 +4,11 @@ title: PlugShare API Reference
 language_tabs:
 
 toc_footers:
-  - <a href='access'>Sign Up for a Developer Key</a>
+  - <a href='/access'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
   - API V4 - Updated 3/14/2017
 
 includes:
-  - errors
 
 search: true
 ---
@@ -28,6 +27,10 @@ URL: [https://api.plugshare.com/](https://api.plugshare.com/)
 
 HTTPS + HTTP Basic auth is required when making API requests. Your username and password will be provided.
 
+## Localization
+
+Many of our fields are localized, so we suggest you build on these dynamic values instead of hardcoding static ones. By passing a locale token, you will get localized arrays for fields such as outlet connector types, vehicle_type, vehicle_subtype. Read more on locatization [here](#localization) **__TODO__**
+
 # Authentication
 
 > To authorize, use this code:
@@ -40,7 +43,7 @@ let api = plugshare.authorize('plugshareapi');
 
 > Make sure to replace `plugshareapi` with your API key.
 
-PlugShare uses API keys to allow access to the API. You can register a new PlugShare API key at our [developer portal](http://example.com/developers).
+PlugShare uses API keys to allow access to the API. You can register a new PlugShare API key at our [developer portal](/access).
 
 PlugShare expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
@@ -53,6 +56,8 @@ You must replace <code>plugshareapi</code> with your personal API key.
 # Core Data Entities
 
 <img src="images/tables.png">
+
+A location or station may also have zero to many promos, and a location may also have zero to many amenities.
 
 # Locations
 
@@ -87,11 +92,8 @@ A driver identifiable destination where Charging Stations (Stations) are located
       "connector": 5
     }
   ],
-  "usage_availability": 100,
   "description": "No Public Access.",
-  "custom_ports": "",
   "opening_date": "None",
-  "nissan_nctc": false,
   "updated_at": "2016-12-09T10:16:23Z",
   "hours": "",
   "phone": "",
@@ -100,13 +102,13 @@ A driver identifiable destination where Charging Stations (Stations) are located
   "pwps_version": 2,
   "address": "1015 Abbot Kinney Blvd Los Angeles, CA 90291",
   "score": 10,
-  "id": 20840,
+  "id": 20667,
   "parking_type_name": "Free",
   "icon": "https://s3.amazonaws.com/plugshare.production.assets/icons/B.png",
   "cost_description": "",
   "reviews": [],
-  "name": "Recargo Research and Development",
-  "url": "http://api.plugshare.com/view/location/20840",
+  "name": "PlugShare API Station",
+  "url": "http://api.plugshare.com/view/location/20667",
   "created_at": "2013-11-19T22:26:33Z",
   "icon_type": "B",
   "all_promos": [
@@ -129,7 +131,7 @@ A driver identifiable destination where Charging Stations (Stations) are located
   "under_repair": true,
   "amenities": [
     {
-      "location_id": 20840,
+      "location_id": 20667,
       "type": 1
     }
   ],
@@ -138,26 +140,25 @@ A driver identifiable destination where Charging Stations (Stations) are located
   "latitude": 33.992476,
   "photos": [
     {
-      "user_id": 75733,
+      "user_id": 85274,
       "url": "https://s3.amazonaws.com/plugshare.production.photos/photos/165827.jpg",
       "created_at": "2016-11-29T17:57:14Z",
       "thumbnail": "https://s3.amazonaws.com/plugshare.production.photos/thumb/165827.png",
-      "caption": "Recargo Garage",
+      "caption": "PlugShare Garage",
       "thumbnail2x": "https://s3.amazonaws.com/plugshare.production.photos/thumb2x/165827.png",
       "order": 1,
-      "id": 165827
+      "id": 127483
     }
   ],
   "open247": false,
   "stations": [
     {
-      "volts": null,
       "network_ext_id": "172083G01001010000",
       "qr_enabled": true,
       "cost": 2,
       "pwps_version": 2,
       "location_id": 20840,
-      "id": 33221,
+      "id": 37558,
       "cost_description": "$1/hour: first 4 hours. $20/hour thereafter. 50 cent minimum. Fees continue while car is connected even if not charging.",
       "pre_charge_instructions": null,
       "network": {
@@ -179,23 +180,19 @@ A driver identifiable destination where Charging Stations (Stations) are located
           "description": null,
           "power": 0,
           "connector": 2,
-          "id": 69821,
+          "id": 95845,
           "outlet_index": null
         }
       ],
       "hours": "",
       "promos": [],
-      "ocpp_version": null,
-      "kilowatts": null,
       "requiresAccessCard": false,
       "manufacturer": "GE WattStation",
       "name": "PRIVATE LOCATION",
       "network_id": 4,
       "created_at": "2013-11-19T22:26:35Z",
       "longitude": -118.472993,
-      "amps": null,
       "model": "",
-      "available_changed_at": "2017-03-10T23:26:05Z"
     }
   ]
 }
@@ -278,13 +275,6 @@ A driver identifiable destination where Charging Stations (Stations) are located
   </tr>
   <tr>
     <td>
-      <div class="field">custom_ports</div>
-      <div class="type deprecated">String (deprecated)</div>
-    </td>
-    <td>Lists any non-standard outlets including legacy charging standards no longer being produced. Example include Large Paddle and Small Paddle Inductive.</td>
-  </tr>
-  <tr>
-    <td>
       <div class="field">cost</div>
       <div class="type">Boolean</div>
     </td>
@@ -305,31 +295,6 @@ A driver identifiable destination where Charging Stations (Stations) are located
     <td><b>1</b> = A public location.<br>
     <b>2</b> = A restricted location. Not available for general public use. Examples include workplace charging and car dealerships with charging policy restrictions.<br>
     <b>3</b> = A residential location that has been shared. Not available for public use without prior permission.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field" id="availability-values">availability (actually not a field (?))</div>
-      <div class="type">Number (integer enum)</div>
-    </td>
-    <td><b>0</b> = Unknown<br>
-    <b>1</b> = Available<br>
-    <b>2</b> = In Use<br>
-    <b>3</b> = Offline</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field" id="amenity-values">amenities (actually not a field (?))</div>
-      <div class="type">Number (integer enum)</div>
-    </td>
-    <td><b>1</b> = Hotel/Lodging<br>
-    <b>2</b> = Dining<br>
-    <b>3</b> = Restroom<br>
-    <b>4</b> = EV Parking<br>
-    <b>5</b> = Valet<br>
-    <b>6</b> = Park<br>
-    <b>7</b> = Wifi<br>
-    <b>8</b> = Shopping<br>
-    <b>9</b> = Grocery</td>
   </tr>
   <tr>
     <td>
@@ -376,7 +341,7 @@ A driver identifiable destination where Charging Stations (Stations) are located
   <tr>
     <td>
       <div class="field">valid_outlets</div>
-      <div class="type deprecated">Array (deprecated)</div>
+      <div class="type deprecated">Array</div>
     </td>
     <td>The types of outlets that are valid for this location’s locale. This is not a list of outlet types that are present.</td>
   </tr>
@@ -410,17 +375,10 @@ A driver identifiable destination where Charging Stations (Stations) are located
   </tr>
   <tr>
     <td>
-      <div class="field">usage_availability</div>
-      <div class="type">Number (integer)</div>
-    </td>
-    <td>Integer from 0 to 100. This number changes based on how often the stations at this location are being used (?). Can be null.</td>
-  </tr>
-  <tr>
-    <td>
       <div class="field">opening_date</div>
       <div class="type">String (date)</div>
     </td>
-    <td>Date when location is anticipated to open in the future. "yyyy-mm-dd" format (deprecated (?))</td>
+    <td>Date when location is anticipated to open in the future. "yyyy-mm-dd" format.</td>
   </tr>
   <tr>
     <td>
@@ -441,7 +399,7 @@ A driver identifiable destination where Charging Stations (Stations) are located
       <div class="field">promos</div>
       <div class="type">Array</div>
     </td>
-    <td>Contains promo objects. This array can be empty. (referring to the 1-2 promos we have on the site? (?))</td>
+    <td>Contains promo objects. This will only return promos at the location level. This array can be empty.</td>
   </tr>
   <tr>
     <td>
@@ -453,16 +411,16 @@ A driver identifiable destination where Charging Stations (Stations) are located
   <tr>
     <td>
       <div class="field">icon_type</div>
-      <div class="type"></div>
+      <div class="type">String</div>
     </td>
-    <td>This field DOE in db (?)</td>
+    <td>The stripped file name of the icon's URL path.</td>
   </tr>
   <tr>
     <td>
       <div class="field">all_promos</div>
       <div class="type">Array</div>
     </td>
-    <td>Contains promo objects. This array can be empty. (difference between this vs. promos field (?))</td>
+    <td>Contains promo objects. This will return all promos at both the location level and station level. This array can be empty.</td>
   </tr>
   <tr>
     <td>
@@ -490,7 +448,7 @@ A driver identifiable destination where Charging Stations (Stations) are located
       <div class="field">coming_soon</div>
       <div class="type">Boolean</div>
     </td>
-    <td>Flag if the location is not currently active and is anticipated to be coming soon. (can be NULL but why (?))</td>
+    <td>Flag if the location is not currently active and is anticipated to be coming soon.</td>
   </tr>
   <tr>
     <td>
@@ -513,7 +471,7 @@ A driver identifiable destination where Charging Stations (Stations) are located
 > Example Request:
 
 ```plaintext
-GET https://api.plugshare.com/locations/20840
+GET https://api.plugshare.com/locations/38606
 ```
 
 > Example Response:
@@ -521,11 +479,8 @@ GET https://api.plugshare.com/locations/20840
 ```json
 {
     "valid_outlets": [],
-    "usage_availability": 100,
     "description": "No Public Access.",
-    "custom_ports": "",
     "opening_date": "None",
-    "nissan_nctc": false,
     "updated_at": "2016-12-09T10:16:23Z",
     "hours": "",
     "phone": "",
@@ -534,16 +489,16 @@ GET https://api.plugshare.com/locations/20840
     "pwps_version": 2,
     "address": "1015 Abbot Kinney Blvd Los Angeles, CA 90291",
     "score": 10,
-    "id": 20840,
+    "id": 38606,
     "parking_type_name": "Free",
     "icon": "https://s3.amazonaws.com/plugshare.production.assets/icons/B.png",
     "cost_description": "",
     "reviews": [],
     "confidence": 1,
     "locked": true,
-    "name": "Recargo Research and Development",
+    "name": "PlugShare API Station",
     "payment_enabled": false,
-    "url": "http://api.plugshare.com/view/location/20840",
+    "url": "http://api.plugshare.com/view/location/38606",
     "created_at": "2013-11-19T22:26:33Z",
     "icon_type": "B",
     "enabled": true,
@@ -603,11 +558,8 @@ GET https://api.plugshare.com/locations/nearby?latitude=33.992476&longitude=-118
 [
     {
         "valid_outlets": [],
-        "usage_availability": 100,
         "description": "No Public Access.",
-        "custom_ports": "",
         "opening_date": "None",
-        "nissan_nctc": false,
         "updated_at": "2016-12-09T10:16:23Z",
         "hours": "",
         "phone": "",
@@ -616,15 +568,15 @@ GET https://api.plugshare.com/locations/nearby?latitude=33.992476&longitude=-118
         "pwps_version": 2,
         "address": "1015 Abbot Kinney Blvd Los Angeles, CA 90291",
         "score": 10,
-        "id": 20840,
+        "id": 45911,
         "parking_type_name": "Free",
         "icon": "https://s3.amazonaws.com/plugshare.production.assets/icons/B.png",
         "cost_description": "",
         "confidence": 1,
         "locked": true,
-        "name": "Recargo Research and Development",
+        "name": "PlugShare API Station",
         "payment_enabled": false,
-        "url": "http://api.plugshare.com/view/location/20840",
+        "url": "http://api.plugshare.com/view/location/45911",
         "created_at": "2013-11-19T22:26:33Z",
         "icon_type": "B",
         "enabled": true,
@@ -657,16 +609,16 @@ This endpoint retrieves locations near a given coordinate.
       <div class="field">latitude</div>
       <div class="type required">conditional</div>
     </td>
-    <td>Latitude of target search location<br>
-    <i>This endpoint requires either lat/lng coordinates or an address</i></td>
+    <td>Latitude coordinate of target search location.<br>
+    <i>This endpoint requires either lat/lng coordinates or an address.</i></td>
   </tr>
   <tr>
     <td>
       <div class="field">longitude</div>
       <div class="type required">conditional</div>
     </td>
-    <td>Longitude of target search location<br>
-    <i>This endpoint requires either lat/lng coordinates or an address</i></td>
+    <td>Longitude coordinate of target search location.<br>
+    <i>This endpoint requires either lat/lng coordinates or an address.</i></td>
   </tr>
   <tr>
   <tr>
@@ -674,24 +626,24 @@ This endpoint retrieves locations near a given coordinate.
       <div class="field">address</div>
       <div class="type required">conditional</div>
     </td>
-    <td>Address of target search location<br>
-    <i>This endpoint requires either lat/lng coordinates or an address</i><br>
-    Will return {code:1} if address cannot be geolocated, and {code:2} if address is ambiguous. Otherwise returns list of locations</td>
+    <td>Address of target search location.<br>
+    <i>This endpoint requires either lat/lng coordinates or an address.</i><br>
+    Will return {code:1} if address cannot be geolocated, and {code:2} if address is ambiguous. Otherwise returns list of locations.</td>
   </tr>
   <tr>
     <td>
       <div class="field">count</div>
       <div class="type">optional</div>
     </td>
-    <td>Maximum count of locations to return<br>
-    200-500 is a recommended value for most applications</td>
+    <td>Maximum count of locations to return.<br>
+    200-500 is a recommended value for most applications.</td>
   </tr>
   <tr>
     <td>
       <div class="field">radius</div>
       <div class="type">optional</div>
     </td>
-    <td>Search radius in meters</td>
+    <td>Search radius in meters.</td>
   </tr>
   <tr>
     <td>
@@ -705,8 +657,8 @@ This endpoint retrieves locations near a given coordinate.
       <div class="field">cost</div>
       <div class="type">optional, default is <b>true</b></div>
     </td>
-    <td>True = Returns all locations regardless of cost<br>
-    False = Does not return locations with a known fee (like parking or $/kw)</td>
+    <td><b>True</b> = Returns all locations regardless of cost.<br>
+    <b>False</b> = Does not return locations with a known fee (like parking or $/kw).</td>
   </tr>
   <tr>
     <td>
@@ -730,7 +682,7 @@ This endpoint retrieves locations near a given coordinate.
       <div class="type">optional</div>
     </td>
     <td>Filter on a comma separated list of amenities. Matches if at least one listed amenity is present.<br>
-    See <a href="#amenity-values">Amenity Values</a></td>
+    See <a href="#amenities-list">Amenity Values</a></td>
   </tr>
   <tr>
     <td>
@@ -791,25 +743,23 @@ GET https://api.plugshare.com/locations/region?spanLat=0.15&spanLng=0.10&latitud
     {
         "valid_outlets": [],
         "description": "",
-        "custom_ports": "",
         "opening_date": "None",
-        "nissan_nctc": false,
         "updated_at": "2016-09-15T10:06:01Z",
         "hours": "",
         "phone": "",
         "promos": [],
         "cost": true,
         "pwps_version": null,
-        "address": "330 Distel Cir, Los Altos, CA 94022",
-        "id": 95548,
+        "address": "210 Market Ave, Los Altos, CA 94022",
+        "id": 40025,
         "parking_type_name": "Free",
         "icon": "https://s3.amazonaws.com/plugshare.production.assets/icons/G.png",
         "cost_description": "Variable: $3.00/hour to $6.00/hour",
         "confidence": 2,
         "locked": false,
-        "name": "Midpeninsula Regional Open Space",
+        "name": "Central Charging Station",
         "payment_enabled": true,
-        "url": "http://api.plugshare.com/view/location/95548",
+        "url": "http://api.plugshare.com/view/location/40025",
         "created_at": "2016-09-13T20:51:23Z",
         "icon_type": "G",
         "enabled": true,
@@ -842,36 +792,36 @@ This endpoint retrieves locations in a region based on a given coordinate with l
       <div class="field">spanLat</div>
       <div class="type required">required</div>
     </td>
-    <td>Latitude span in degrees of target search region</td>
+    <td>Latitude span in degrees of target search region.</td>
   </tr>
   <tr>
     <td>
       <div class="field">spanLng</div>
       <div class="type required">required</div>
     </td>
-    <td>Longitude span in degrees of target search region</td>
+    <td>Longitude span in degrees of target search region.</td>
   </tr>
   <tr>
     <td>
       <div class="field">latitude</div>
       <div class="type required">required</div>
     </td>
-    <td>Latitude of target search location</td>
+    <td>Latitude coordinate of target search location.</td>
   </tr>
   <tr>
     <td>
       <div class="field">longitude</div>
       <div class="type required">required</div>
     </td>
-    <td>Longitude of target search location</td>
+    <td>Longitude coordinate of target search location.</td>
   </tr>
   <tr>
     <td>
       <div class="field">count</div>
       <div class="type required">required</div>
     </td>
-    <td>Maximum count of locations to return<br>
-    200-500 is a recommended value for most applications</td>
+    <td>Maximum count of locations to return.<br>
+    200-500 is a recommended value for most applications.</td>
   </tr>
   <tr>
     <td>
@@ -885,8 +835,8 @@ This endpoint retrieves locations in a region based on a given coordinate with l
       <div class="field">cost</div>
       <div class="type">optional, default is <b>true</b></div>
     </td>
-    <td>True = Returns all locations regardless of cost<br>
-    False = Does not return locations with a known fee (like parking or $/kw)</td>
+    <td><b>True</b> = Returns all locations regardless of cost.<br>
+    <b>False</b> = Does not return locations with a known fee (like parking or $/kw).</td>
   </tr>
   <tr>
     <td>
@@ -910,7 +860,7 @@ This endpoint retrieves locations in a region based on a given coordinate with l
       <div class="type">optional</div>
     </td>
     <td>Filter on a comma separated list of amenities. Matches if at least one listed amenity is present.<br>
-    See <a href="#amenity-values">Amenity Values</a></td>
+    See <a href="#amenities-list">Amenity Values</a></td>
   </tr>
   <tr>
     <td>
@@ -969,19 +919,16 @@ GET https://api.plugshare.com/locations/search?query=venice%2C%20ca&count=10
   {
     "valid_outlets": [],
     "description": "Please call first.",
-    "custom_ports": "",
     "opening_date": "None",
-    "nissan_nctc": false,
     "updated_at": "2014-10-15T22:53:50Z",
     "hours": "",
-    "phone": "3108800661",
+    "phone": "3109231567",
     "promos": [],
     "cost": false,
     "pwps_version": null,
-    "reverse_geocoded_address": "2124 Glencoe Avenue, Venice, CA 90291, USA",
     "address": "Glencoe Ave Venice, CA 90291",
     "owner": "",
-    "id": 54369,
+    "id": 58226,
     "parking_type_name": null,
     "icon": "https://s3.amazonaws.com/plugshare.production.assets/icons/H.png",
     "cost_description": "",
@@ -989,7 +936,7 @@ GET https://api.plugshare.com/locations/search?query=venice%2C%20ca&count=10
     "locked": false,
     "name": "",
     "payment_enabled": null,
-    "url": "http://api.plugshare.com/view/location/54369",
+    "url": "http://api.plugshare.com/view/location/58226",
     "created_at": "2014-09-06T01:21:10Z",
     "icon_type": "H",
     "enabled": true,
@@ -1022,23 +969,23 @@ This endpoint returns locations whose name or address contains a specified searc
       <div class="field">query</div>
       <div class="type required">required</div>
     </td>
-    <td>The search query. Matches on name or address</td>
+    <td>The search query. Matches on name or address.</td>
   </tr>
   <tr>
     <td>
       <div class="field">count</div>
       <div class="type">optional</div>
     </td>
-    <td>Maximum count of locations to return<br>
-    200-500 is a recommended value for most applications</td>
+    <td>Maximum count of locations to return.<br>
+    200-500 is a recommended value for most applications.</td>
   </tr>
   <tr>
     <td>
       <div class="field">page</div>
       <div class="type">optional</div>
     </td>
-    <td>This method supports paging. If page is specified, count must be specified as well<br>
-    This returns results based on the page index number, with 100 results showing per page</td>
+    <td>This method supports paging. If page is specified, count must be specified as well.<br>
+    This returns results based on the page index number, with 100 results showing per page.</td>
   </tr>
   <tr>
     <td>
@@ -1052,8 +999,8 @@ This endpoint returns locations whose name or address contains a specified searc
       <div class="field">cost</div>
       <div class="type">optional, default is <b>true</b></div>
     </td>
-    <td>True = Returns all locations regardless of cost<br>
-    False = Does not return locations with a known fee (like parking or $/kw)</td>
+    <td><b>True</b> = Returns all locations regardless of cost.<br>
+    <b>False</b> = Does not return locations with a known fee (like parking or $/kw).</td>
   </tr>
   <tr>
     <td>
@@ -1130,14 +1077,14 @@ POST body:
       "access":1,
       "url":"http://api.plugshare.com/view/location/1553",
       "score":10.0,
-      "name":"Washington St. Garage",
+      "name":"Electric St. Garage",
       "stations":[
          {
-            "id":1549,
+            "id":2385,
             "outlets":[
                {
                   "connector":2,
-                  "id":41783,
+                  "id":50627,
                   "power":0
                }
             ]
@@ -1146,10 +1093,10 @@ POST body:
       "latitude":34.00208,
       "owner":{
          "first_name":"julius",
-         "id":115704
+         "id":137549
       },
       "icon_type":"G",
-      "id":1553,
+      "id":2116,
       "longitude":-81.04077,
       "icon":"https://s3.amazonaws.com/plugshare.staging.assets/icons/G.png"
    }
@@ -1184,7 +1131,7 @@ This endpoint returns locations who are a certain `distance` away from the `poly
       <div class="field">count</div>
       <div class="type">optional</div>
     </td>
-    <td>Maximum count of locations to return<br>
+    <td>Maximum count of locations to return.<br>
     200-500 is a recommended value for most applications</td>
   </tr>
   <tr>
@@ -1192,8 +1139,8 @@ This endpoint returns locations who are a certain `distance` away from the `poly
       <div class="field">page</div>
       <div class="type">optional</div>
     </td>
-    <td>This method supports paging. If page is specified, count must be specified as well<br>
-    This returns results based on the page index number, with 100 results showing per page</td>
+    <td>This method supports paging. If page is specified, count must be specified as well.<br>
+    This returns results based on the page index number, with 100 results showing per page.</td>
   </tr>
   <tr>
     <td>
@@ -1207,8 +1154,8 @@ This endpoint returns locations who are a certain `distance` away from the `poly
       <div class="field">cost</div>
       <div class="type">optional, default is <b>true</b></div>
     </td>
-    <td>True = Returns all locations regardless of cost<br>
-    False = Does not return locations with a known fee (like parking or $/kw)</td>
+    <td><b>True</b> = Returns all locations regardless of cost.<br>
+    <b>False</b> = Does not return locations with a known fee (like parking or $/kw).</td>
   </tr>
   <tr>
     <td>
@@ -1239,7 +1186,7 @@ This endpoint returns locations who are a certain `distance` away from the `poly
       <div class="field">minimal</div>
       <div class="type">optional</div>
     </td>
-    <td><b>1</b> = Return minimalized data as response is typically very large</td>
+    <td><b>1</b> = Return minimalized data as response is typically very large.</td>
   </tr>
 </table>
 
@@ -1255,6 +1202,14 @@ You may want to apply some filters to the search queries to return only relevant
 
 Returns an array of `location` objects, containing up to `count` locations
 
+## Amenities List
+
+id | amenity |   | id | amenity |   | id | amenity
+-- | ------- | - | -- | ------- | - | -- | -------
+1 | Lodging | | 4 | EV Parking | |  7 | Wifi
+2 | Dining | | 5 | Valet | | 8 | Shopping
+3 | Restroom | | 6 | Park | | 9 | Grocery 
+
 # Station
 
 A physical charging unit installed on the ground or wall. In EV industry terms this is also frequently referred to as an EVSE (Electric Vehicle Service Equipment). Stations can be network managed. Stations frequently support near time availability data.
@@ -1266,12 +1221,11 @@ A physical charging unit installed on the ground or wall. In EV industry terms t
 ```json
 [
     {
-        "volts": null,
         "qr_enabled": true,
         "cost": 2,
         "pwps_version": 2,
         "location_id": 20840,
-        "id": 33221,
+        "id": 38416,
         "cost_description": "$1/hour: first 4 hours. $20/hour thereafter. 50 cent minimum. Fees continue while car is connected even if not charging.",
         "pre_charge_instructions": null,
         "network": "",
@@ -1284,23 +1238,19 @@ A physical charging unit installed on the ground or wall. In EV industry terms t
             "description": null,
             "power": 0,
             "connector": 2,
-            "id": 69821,
+            "id": 78351,
             "outlet_index": null
           }
         ],
         "hours": "",
         "promos": [],
-        "ocpp_version": null,
-        "kilowatts": null,
         "requiresAccessCard": false,
         "manufacturer": "GE WattStation",
         "name": "PRIVATE LOCATION",
         "network_id": 4,
         "created_at": "2013-11-19T22:26:35Z",
         "longitude": -118.472993,
-        "amps": null,
         "model": "",
-        "available_changed_at": "2017-03-10T23:26:05Z"
     }
 ]
 ```
@@ -1363,17 +1313,10 @@ A physical charging unit installed on the ground or wall. In EV industry terms t
   </tr>
   <tr>
     <td>
-      <div class="field">volts</div>
-      <div class="type">Number (integer)</div>
-    </td>
-    <td>Voltage at this station. 208, 240, 400, 480, 500, or NULL.</td>
-  </tr>
-  <tr>
-    <td>
       <div class="field">qr_enabled</div>
       <div class="type">Boolean</div>
     </td>
-    <td>True if this station is tagged with a QR code for station identification and activation flows. (checked or NULL, no unchecked (0) inconsistent (?))</td>
+    <td>True if this station is tagged with a QR code for station identification and activation flows.</td>
   </tr>
   <tr>
     <td>
@@ -1419,7 +1362,7 @@ A physical charging unit installed on the ground or wall. In EV industry terms t
   </tr>
   <tr>
     <td>
-      <div class="field">available</div>
+      <div class="field" id="availability-values">available</div>
       <div class="type">Number (integer enum)</div>
     </td>
     <td><b>1</b> = Unknown<br>
@@ -1447,21 +1390,7 @@ A physical charging unit installed on the ground or wall. In EV industry terms t
       <div class="field">promos</div>
       <div class="type">Array</div>
     </td>
-    <td>Contains promo objects. This array can be empty. (referring to the 1-2 promos we have on the site? (?))</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">ocpp_version</div>
-      <div class="type">Number (integer)</div>
-    </td>
-    <td>Don't know what this is (?)</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">kilowatts</div>
-      <div class="type"></div>
-    </td>
-    <td>Power at this station. 6, 20, 50, or NULL.</td>
+    <td>Contains promo objects. This will only return promos on the station level. This array can be empty.</td>
   </tr>
   <tr>
     <td>
@@ -1484,20 +1413,6 @@ A physical charging unit installed on the ground or wall. In EV industry terms t
     </td>
     <td>Network id of the station.</td>
   </tr>
-  <tr>
-    <td>
-      <div class="field">amps</div>
-      <div class="type">Number (integer)</div>
-    </td>
-    <td>Current at this station. 30, 88, 120, or NULL.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">available_changed_at</div>
-      <div class="type">String (timestamp)</div>
-    </td>
-    <td>Timestamp of the last time the availability of this station was updated. (possibly deprecated? Only 3 distinct entries (?))</td>
-  </tr>
 </table>
 
 # Outlet
@@ -1512,11 +1427,9 @@ A physical vehicle-to-station connection point: either a plug or a socket. Stati
 [
     {
         "available": null,
-        "description": null,
         "power": 0,
         "connector": 2,
-        "id": 69821,
-        "outlet_index": null
+        "id": 85911,
     }
 ]
 ```
@@ -1531,7 +1444,7 @@ A physical vehicle-to-station connection point: either a plug or a socket. Stati
       <div class="field">id</div>
       <div class="type">number (integer)</div>
     </td>
-    <td>Unique and immutable identifier</td>
+    <td>Unique and immutable identifier.</td>
   </tr>
   <tr>
     <td>
@@ -1552,21 +1465,7 @@ A physical vehicle-to-station connection point: either a plug or a socket. Stati
       <div class="field">available</div>
       <div class="type">string</div>
     </td>
-    <td>If null, outlet level availability is unknown (Note: generally, see Station availability instead)</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">description</div>
-      <div class="type">string</div>
-    </td>
-    <td>Not used? Only NULL (?)</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">outlet_index</div>
-      <div class="type">string</div>
-    </td>
-    <td>Confirm if used, only 1 or 2 (?)</td>
+    <td>If null, outlet level availability is unknown (Note: generally, see Station availability instead).</td>
   </tr>
 </table>
 
@@ -1812,14 +1711,14 @@ A company that operates stations and provides subscription services or access co
       <div class="field">action_url</div>
       <div class="type">string (URL)</div>
     </td>
-    <td>A URL generally to aid in registration with a network.</td>
+    <td>A URL provided by a network that usually includes a call to action or contact information.</td>
   </tr>
   <tr>
     <td>
       <div class="field">url</div>
       <div class="type">string (URL)</div>
     </td>
-    <td>A URL generally to aid in registration with a network.</td>
+    <td>A URL that generally links to a network's home page.</td>
   </tr>
   <tr>
     <td>
@@ -1867,7 +1766,7 @@ A location photo contributed by the PlugShare community.
         "caption": "Recargo Garage",
         "thumbnail2x": "https://s3.amazonaws.com/plugshare.production.photos/thumb2x/165827.png",
         "order": 1,
-        "id": 165827
+        "id": 192372
     }
 ]
 ```
@@ -1924,7 +1823,7 @@ A location photo contributed by the PlugShare community.
       <div class="field">order</div>
       <div class="type">Number (integer)</div>
     </td>
-    <td>Arrangement order of photos at this location. (?)</td>
+    <td>Arrangement order of pinned photos at this location.</td>
   </tr>
   <tr>
     <td>
@@ -1962,7 +1861,7 @@ Check-Ins include:
         "user": ""
         "amps": null,
         "vehicle_type": 4,
-        "id": 134676
+        "id": 152385
     }
 ]
 ```
@@ -2021,14 +1920,14 @@ Check-Ins include:
       <div class="field">volts</div>
       <div class="type">Number (integer)</div>
     </td>
-    <td>Average volts if recorded during this visit, else NULL. Note: depending on vehicle capabilities or limitations, this may be lower than the station’s maximum capabilities.</td>
+    <td>User submitted data of maximum volts if recorded during this visit, else NULL. Note: depending on vehicle capabilities or limitations, this may be lower than the station’s maximum capabilities.</td>
   </tr>
   <tr>
     <td>
       <div class="field">amps</div>
       <div class="type">Number (integer)</div>
     </td>
-    <td>Average amps if recorded during this visit, else NULL. Note: depending on vehicle capabilities or limitations, this may be lower than the station’s maximum capabilities.</td>
+    <td>User submitted data of maximum amps if recorded during this visit, else NULL. Note: depending on vehicle capabilities or limitations, this may be lower than the station’s maximum capabilities.</td>
   </tr>
 </table>
 
@@ -2043,35 +1942,30 @@ A PlugShare user who may be owner of reviews, check-ins, or private locations.
 ```json
 {
     "allow_notifications": true,
-    "first_name": "Brian",
-    "last_name": "Kariger",
+    "first_name": "Steven",
     "notify_nearby_radius": 10000,
     "hide_address": true,
-    "receive_grid_alerts": 0,
     "vehicle_description": "",
     "created_at": "2010-03-10T22:08:56Z",
-    "language_code": null,
     "vehicle_color": 9,
     "phone": "",
     "photos": [
         {
-            "user_id": 133,
+            "user_id": 253,
             "url": "https://s3.amazonaws.com/plugshare.production.photos/photos/41329.jpg",
             "created_at": "2013-12-30T07:01:35Z",
             "thumbnail": "https://s3.amazonaws.com/plugshare.production.photos/thumb/41329.png",
             "caption": "",
             "thumbnail2x": "https://s3.amazonaws.com/plugshare.production.photos/thumb2x/41329.png",
             "order": 0,
-            "id": 41329
+            "id": 38376
         }
     ],
     "last_login": "2017-03-13T23:02:56Z",
-    "country_code": null,
-    "hide_phone": true,
     "vehicle_subtype": 5,
     "about": "",
     "vehicle_type": 52,
-    "id": 133,
+    "id": 3590,
     "notify_nearby": 1
 }
 ```
@@ -2100,14 +1994,7 @@ A PlugShare user who may be owner of reviews, check-ins, or private locations.
       <div class="field">first_name</div>
       <div class="type">String</div>
     </td>
-    <td>User's First Name.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">last_name</div>
-      <div class="type">String</div>
-    </td>
-    <td>User's Last Name.</td>
+    <td>User's public facing username.</td>
   </tr>
   <tr>
     <td>
@@ -2135,13 +2022,6 @@ A PlugShare user who may be owner of reviews, check-ins, or private locations.
   </tr>
   <tr>
     <td>
-      <div class="field">receive_grid_alerts</div>
-      <div class="type">Boolean</div>
-    </td>
-    <td>No entries, all NULL (?)</td>
-  </tr>
-  <tr>
-    <td>
       <div class="field">vehicle_description</div>
       <div class="type">String</div>
     </td>
@@ -2153,13 +2033,6 @@ A PlugShare user who may be owner of reviews, check-ins, or private locations.
       <div class="type">String (timestamp)</div>
     </td>
     <td>ISO 8601 Format “yyyy-mm-ddThh:mm:ssZ”.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">language_code</div>
-      <div class="type">String</div>
-    </td>
-    <td>User's language settings. en-US or NULL. (?)</td>
   </tr>
   <tr>
     <td>
@@ -2184,20 +2057,6 @@ A PlugShare user who may be owner of reviews, check-ins, or private locations.
   </tr>
   <tr>
     <td>
-      <div class="field">country_code</div>
-      <div class="type">String</div>
-    </td>
-    <td>User's country code, US or NULL. (?)</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">hide_phone</div>
-      <div class="type">Boolean</div>
-    </td>
-    <td>Flag if user opted to hide personal phone number.</td>
-  </tr>
-  <tr>
-    <td>
       <div class="field">vehicle_subtype</div>
       <div class="type">Number (integer enum)</div>
     </td>
@@ -2218,3 +2077,5 @@ A PlugShare user who may be owner of reviews, check-ins, or private locations.
     <td>Number indicating user's selection of one of many preset vehicle types.</td>
   </tr>
 </table>
+
+<br><br><br><br><br><br><br><br><br><br>
