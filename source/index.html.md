@@ -153,7 +153,6 @@ A driver identifiable destination where Charging Stations (Stations) are located
   "open247": false,
   "stations": [
     {
-      "network_ext_id": "172083G01001010000",
       "qr_enabled": true,
       "cost": 2,
       "pwps_version": 2,
@@ -494,19 +493,15 @@ GET https://api.plugshare.com/locations/38606
     "icon": "https://s3.amazonaws.com/plugshare.production.assets/icons/B.png",
     "cost_description": "",
     "reviews": [],
-    "confidence": 1,
-    "locked": true,
     "name": "PlugShare API Station",
     "payment_enabled": false,
     "url": "http://api.plugshare.com/view/location/38606",
     "created_at": "2013-11-19T22:26:33Z",
     "icon_type": "B",
-    "enabled": true,
     "all_promos": [],
     "longitude": -118.4721,
     "access": 2,
     "locale": "US",
-    "datasources": [],
     "under_repair": true,
     "amenities": [],
     "poi_name": "Workplace Private",
@@ -572,14 +567,10 @@ GET https://api.plugshare.com/locations/nearby?latitude=33.992476&longitude=-118
         "parking_type_name": "Free",
         "icon": "https://s3.amazonaws.com/plugshare.production.assets/icons/B.png",
         "cost_description": "",
-        "confidence": 1,
-        "locked": true,
         "name": "PlugShare API Station",
-        "payment_enabled": false,
         "url": "http://api.plugshare.com/view/location/45911",
         "created_at": "2013-11-19T22:26:33Z",
         "icon_type": "B",
-        "enabled": true,
         "all_promos": [],
         "longitude": -118.4721,
         "access": 2,
@@ -755,14 +746,10 @@ GET https://api.plugshare.com/locations/region?spanLat=0.15&spanLng=0.10&latitud
         "parking_type_name": "Free",
         "icon": "https://s3.amazonaws.com/plugshare.production.assets/icons/G.png",
         "cost_description": "Variable: $3.00/hour to $6.00/hour",
-        "confidence": 2,
-        "locked": false,
         "name": "Central Charging Station",
-        "payment_enabled": true,
         "url": "http://api.plugshare.com/view/location/40025",
         "created_at": "2016-09-13T20:51:23Z",
         "icon_type": "G",
-        "enabled": true,
         "all_promos": [],
         "longitude": -122.105989,
         "access": 1,
@@ -932,14 +919,10 @@ GET https://api.plugshare.com/locations/search?query=venice%2C%20ca&count=10
     "parking_type_name": null,
     "icon": "https://s3.amazonaws.com/plugshare.production.assets/icons/H.png",
     "cost_description": "",
-    "confidence": null,
-    "locked": false,
     "name": "",
-    "payment_enabled": null,
     "url": "http://api.plugshare.com/view/location/58226",
     "created_at": "2014-09-06T01:21:10Z",
     "icon_type": "H",
-    "enabled": true,
     "all_promos": [],
     "longitude": -118.449509,
     "access": 3,
@@ -1206,7 +1189,7 @@ Returns an array of `location` objects, containing up to `count` locations
 
 id | amenity |   | id | amenity |   | id | amenity
 -- | ------- | - | -- | ------- | - | -- | -------
-1 | Lodging | | 4 | EV Parking | |  7 | Wifi
+1 | Hotel/Lodging | | 4 | EV Parking | |  7 | Wifi
 2 | Dining | | 5 | Valet | | 8 | Shopping
 3 | Restroom | | 6 | Park | | 9 | Grocery 
 
@@ -1229,7 +1212,6 @@ A physical charging unit installed on the ground or wall. In EV industry terms t
         "cost_description": "$1/hour: first 4 hours. $20/hour thereafter. 50 cent minimum. Fees continue while car is connected even if not charging.",
         "pre_charge_instructions": null,
         "network": "",
-        "payment_enabled": null,
         "latitude": 33.992305,
         "available": 1,
         "outlets": [
@@ -1338,13 +1320,6 @@ A physical charging unit installed on the ground or wall. In EV industry terms t
       <div class="type">String</div>
     </td>
     <td>Optional network provided instructions to display before charging.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">payment_enabled</div>
-      <div class="type">Boolean</div>
-    </td>
-    <td>True if this station accepts Pay with PlugShare payments.</td>
   </tr>
   <tr>
     <td>
