@@ -23,35 +23,17 @@ Generally, you'll want to use a search method to return a list of locations. Eac
 
 ## Access Instructions
 
-URL: [https://api.plugshare.com/](https://api.plugshare.com/)
+PlugShare uses API keys to allow access to the API. You can register a new PlugShare API key at our [developer portal](/access).
 
 HTTPS + HTTP Basic auth is required when making API requests. Your username and password will be provided.
 
+URL: [https://api.plugshare.com/](https://api.plugshare.com/)
+
 ## Localization
 
-Many of our fields are localized, so we suggest you build on these dynamic values instead of hardcoding static ones. By passing a locale token, you will get localized arrays for fields such as outlet connector types, vehicle_type, vehicle_subtype. Read more on locatization [here](#localization) **__TODO__**
+Many of our fields are localized, so we suggest you build on these dynamic values instead of hardcoding static ones. By providing your country code, you will get localized datasets for your region.
 
-# Authentication
-
-> To authorize, use this code:
-
-```javascript
-const plugshare = require('plugshare');
-
-let api = plugshare.authorize('plugshareapi');
-```
-
-> Make sure to replace `plugshareapi` with your API key.
-
-PlugShare uses API keys to allow access to the API. You can register a new PlugShare API key at our [developer portal](/access).
-
-PlugShare expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: plugshareapi`
-
-<aside class="notice">
-You must replace <code>plugshareapi</code> with your personal API key.
-</aside>
+Passing your country code locale will result in an assignment of one of the following regions: 'US', 'JP', 'AU', 'UK', 'EU', or 'WW' (worldwide). You will then get localized arrays for outlet configurations, connectors, and an available make vehicle list.
 
 # Core Data Entities
 
@@ -170,7 +152,6 @@ A driver identifiable destination where Charging Stations (Stations) are located
         "id": 4,
         "name": "GE WattStation"
       },
-      "payment_enabled": null,
       "latitude": 33.992305,
       "available": 1,
       "outlets": [
@@ -218,13 +199,6 @@ A driver identifiable destination where Charging Stations (Stations) are located
   </tr>
   <tr>
     <td>
-      <div class="field">icon</div>
-      <div class="type">String (URL)</div>
-    </td>
-    <td>A recommended icon for displaying the location.</td>
-  </tr>
-  <tr>
-    <td>
       <div class="field">latitude</div>
       <div class="type">Number</div>
     </td>
@@ -236,13 +210,6 @@ A driver identifiable destination where Charging Stations (Stations) are located
       <div class="type">Number</div> 
     </td>
       <td>Longitude coordinate for this location.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">created_at</div>
-      <div class="type">String (timestamp)</div>
-    </td>
-    <td>ISO 8601 Format "yyyy-mm-ddThh:mm:ssZ".</td>
   </tr>
   <tr>
     <td>
@@ -264,6 +231,34 @@ A driver identifiable destination where Charging Stations (Stations) are located
       <div class="type">Array</div>
     </td>
     <td>Contains review objects. Ordered from the most recent to oldest. This array can be empty.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">valid_outlets</div>
+      <div class="type deprecated">Array</div>
+    </td>
+    <td>The types of outlets that are valid for this location’s locale. This is not a list of outlet types that are present.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">photos</div>
+      <div class="type">Array</div>
+    </td>
+    <td>Contains photo objects. Ordered from the most recent to oldest. This array can be empty.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">promos</div>
+      <div class="type">Array</div>
+    </td>
+    <td>Contains promo objects. This will only return promos at the location level. This array can be empty.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">all_promos</div>
+      <div class="type">Array</div>
+    </td>
+    <td>Contains promo objects. This will return all promos at both the location level and station level. This array can be empty.</td>
   </tr>
   <tr>
     <td>
@@ -304,6 +299,20 @@ A driver identifiable destination where Charging Stations (Stations) are located
   </tr>
   <tr>
     <td>
+      <div class="field">icon</div>
+      <div class="type">String (URL)</div>
+    </td>
+    <td>A recommended icon for displaying the location.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">icon_type</div>
+      <div class="type">String</div>
+    </td>
+    <td>The stripped file name of the icon's URL path.</td>
+  </tr>
+  <tr>
+    <td>
       <div class="field">phone</div>
       <div class="type">String</div>
     </td>
@@ -318,31 +327,24 @@ A driver identifiable destination where Charging Stations (Stations) are located
   </tr>
   <tr>
     <td>
-      <div class="field">reverse_geocoded_address</div>
-      <div class="type">String</div>
+      <div class="field">pwps_version</div>
+      <div class="type">Number (integer)</div>
     </td>
-    <td>Formatted Address string as reverse geocoded from the latitude/longitude.</td>
+    <td>The Pay with PlugShare version protocol required to be supported by the client to activate this station.</td>
   </tr>
   <tr>
     <td>
-      <div class="field">reverse_geocoded_address_components</div>
-      <div class="type">Array</div>
+      <div class="field">created_at</div>
+      <div class="type">String (timestamp)</div>
     </td>
-    <td>List of geocoded components (See https://developers.google.com/maps/documentation/geocoding/#Types for definitions).</td>
+    <td>ISO 8601 Format "yyyy-mm-ddThh:mm:ssZ".</td>
   </tr>
   <tr>
     <td>
-      <div class="field">payment_enabled</div>
-      <div class="type">Boolean</div>
+      <div class="field">updated_at</div>
+      <div class="type">String (timestamp)</div>
     </td>
-    <td>True if this location accepts Pay with PlugShare payments.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">valid_outlets</div>
-      <div class="type deprecated">Array</div>
-    </td>
-    <td>The types of outlets that are valid for this location’s locale. This is not a list of outlet types that are present.</td>
+    <td>Timestamp of the last time this location was updated. "yyyy-mm-dd hh:mm:ss" format.</td>
   </tr>
   <tr>
     <td>
@@ -353,10 +355,59 @@ A driver identifiable destination where Charging Stations (Stations) are located
   </tr>
   <tr>
     <td>
-      <div class="field">pwps_version</div>
-      <div class="type">Number (integer)</div>
+      <div class="field">poi_name</div>
+      <div class="type">String</div>
     </td>
-    <td>The Pay with PlugShare version protocol required to be supported by the client to activate this station.</td>
+    <td>Point of interest / location type name. Selected from a list of 40+ types, including Gas Station, Park, Restaurant, etc.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">parking_type_name</div>
+      <div class="type">String</div>
+    </td>
+    <td>The types of parking available. Customers Only, Free, Pay, Restricted, Unknown, '', or null.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">locale</div>
+      <div class="type">String</div>
+    </td>
+    <td>This location's locale. US, UK, EU, AU, JP, WW.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">opening_date</div>
+      <div class="type">String (date)</div>
+    </td>
+    <td>Date when location is anticipated to open in the future. "yyyy-mm-dd" format.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">hours</div>
+      <div class="type">String</div>
+    </td>
+    <td>String for hours of availability. Commonly 24/7 or specified time frames.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">open247</div>
+      <div class="type">Boolean</div>
+    </td>
+    <td>Flag if the location is open 24 hours a day, 7 days a week.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">coming_soon</div>
+      <div class="type">Boolean</div>
+    </td>
+    <td>Flag if the location is not currently active and is anticipated to be coming soon.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">under_repair</div>
+      <div class="type">Boolean</div>
+    </td>
+    <td>Flag if the location is currently under repair.</td>
   </tr>
   <tr>
     <td>
@@ -371,97 +422,6 @@ A driver identifiable destination where Charging Stations (Stations) are located
       <div class="type">Number (float)</div>
     </td>
     <td>A distance in meters from the specified address or coordinate.  Note: this field will only appear for locations returned by the /locations/nearby endpoint.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">opening_date</div>
-      <div class="type">String (date)</div>
-    </td>
-    <td>Date when location is anticipated to open in the future. "yyyy-mm-dd" format.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">updated_at</div>
-      <div class="type">String (timestamp)</div>
-    </td>
-    <td>Timestamp of the last time this location was updated. "yyyy-mm-dd hh:mm:ss" format.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">hours</div>
-      <div class="type">String</div>
-    </td>
-    <td>String for hours of availability. Commonly 24/7 or specified time frames.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">promos</div>
-      <div class="type">Array</div>
-    </td>
-    <td>Contains promo objects. This will only return promos at the location level. This array can be empty.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">parking_type_name</div>
-      <div class="type">String</div>
-    </td>
-    <td>The types of parking available. Customers Only, Free, Pay, Restricted, Unknown, '', or null.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">icon_type</div>
-      <div class="type">String</div>
-    </td>
-    <td>The stripped file name of the icon's URL path.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">all_promos</div>
-      <div class="type">Array</div>
-    </td>
-    <td>Contains promo objects. This will return all promos at both the location level and station level. This array can be empty.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">locale</div>
-      <div class="type">String</div>
-    </td>
-    <td>This location's locale. US, UK, EU, AU, JP, WW.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">under_repair</div>
-      <div class="type">Boolean</div>
-    </td>
-    <td>Flag if the location is currently under repair.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">poi_name</div>
-      <div class="type">String</div>
-    </td>
-    <td>Point of interest / location type name. Selected from a list of 40+ types, including Gas Station, Park, Restaurant, etc.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">coming_soon</div>
-      <div class="type">Boolean</div>
-    </td>
-    <td>Flag if the location is not currently active and is anticipated to be coming soon.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">photos</div>
-      <div class="type">Array</div>
-    </td>
-    <td>Contains photo objects. Ordered from the most recent to oldest. This array can be empty.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">open247</div>
-      <div class="type">Boolean</div>
-    </td>
-    <td>Flag if the location is open 24 hours a day, 7 days a week.</td>
   </tr>
 </table>
 
@@ -494,7 +454,6 @@ GET https://api.plugshare.com/locations/38606
     "cost_description": "",
     "reviews": [],
     "name": "PlugShare API Station",
-    "payment_enabled": false,
     "url": "http://api.plugshare.com/view/location/38606",
     "created_at": "2013-11-19T22:26:33Z",
     "icon_type": "B",
@@ -1251,10 +1210,10 @@ A physical charging unit installed on the ground or wall. In EV industry terms t
   </tr>
   <tr>
     <td>
-      <div class="field">created_at</div>
-      <div class="type">String (date)</div>
+      <div class="field">name</div>
+      <div class="type">String</div>
     </td>
-    <td>ISO 8601 Format "yyyy-mm-ddThh:mm:ssZ".</td>
+    <td>Name describing the station, typically a combination of an identifying number and network name.</td>
   </tr>
   <tr>
     <td>
@@ -1262,6 +1221,13 @@ A physical charging unit installed on the ground or wall. In EV industry terms t
       <div class="type">Object</div>
     </td>
     <td>The network that owns or directly manages this station.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">network_id</div>
+      <div class="type">Number (integer)</div>
+    </td>
+    <td>Network id of the station.</td>
   </tr>
   <tr>
     <td>
@@ -1295,31 +1261,10 @@ A physical charging unit installed on the ground or wall. In EV industry terms t
   </tr>
   <tr>
     <td>
-      <div class="field">qr_enabled</div>
-      <div class="type">Boolean</div>
-    </td>
-    <td>True if this station is tagged with a QR code for station identification and activation flows.</td>
-  </tr>
-  <tr>
-    <td>
       <div class="field">pwps_version</div>
       <div class="type">Number (integer)</div>
     </td>
     <td>The Pay with PlugShare version protocol required to be supported by the client to activate this station.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">location_id</div>
-      <div class="type">Number (integer)</div>
-    </td>
-    <td>The id of the station's parent location.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">pre_charge_instructions</div>
-      <div class="type">String</div>
-    </td>
-    <td>Optional network provided instructions to display before charging.</td>
   </tr>
   <tr>
     <td>
@@ -1337,6 +1282,20 @@ A physical charging unit installed on the ground or wall. In EV industry terms t
   </tr>
   <tr>
     <td>
+      <div class="field">outlets</div>
+      <div class="type">Array</div>
+    </td>
+    <td>Contains outlet objects. Each station will have at least 1 outlet object.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">promos</div>
+      <div class="type">Array</div>
+    </td>
+    <td>Contains promo objects. This will only return promos on the station level. This array can be empty.</td>
+  </tr>
+  <tr>
+    <td>
       <div class="field" id="availability-values">available</div>
       <div class="type">Number (integer enum)</div>
     </td>
@@ -1348,13 +1307,6 @@ A physical charging unit installed on the ground or wall. In EV industry terms t
   </tr>
   <tr>
     <td>
-      <div class="field">outlets</div>
-      <div class="type">Array</div>
-    </td>
-    <td>Contains outlet objects. Each station will have at least 1 outlet object.</td>
-  </tr>
-  <tr>
-    <td>
       <div class="field">hours</div>
       <div class="type">String</div>
     </td>
@@ -1362,10 +1314,24 @@ A physical charging unit installed on the ground or wall. In EV industry terms t
   </tr>
   <tr>
     <td>
-      <div class="field">promos</div>
-      <div class="type">Array</div>
+      <div class="field">location_id</div>
+      <div class="type">Number (integer)</div>
     </td>
-    <td>Contains promo objects. This will only return promos on the station level. This array can be empty.</td>
+    <td>The id of the station's parent location.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">pre_charge_instructions</div>
+      <div class="type">String</div>
+    </td>
+    <td>Optional network provided instructions to display before charging.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">qr_enabled</div>
+      <div class="type">Boolean</div>
+    </td>
+    <td>True if this station is tagged with a QR code for station identification and activation flows.</td>
   </tr>
   <tr>
     <td>
@@ -1376,17 +1342,10 @@ A physical charging unit installed on the ground or wall. In EV industry terms t
   </tr>
   <tr>
     <td>
-      <div class="field">name</div>
-      <div class="type">String</div>
+      <div class="field">created_at</div>
+      <div class="type">String (date)</div>
     </td>
-    <td>Name describing the station, typically a combination of an identifying number and network name.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">network_id</div>
-      <div class="type">Number (integer)</div>
-    </td>
-    <td>Network id of the station.</td>
+    <td>ISO 8601 Format "yyyy-mm-ddThh:mm:ssZ".</td>
   </tr>
 </table>
 
@@ -1738,7 +1697,7 @@ A location photo contributed by the PlugShare community.
         "url": "https://s3.amazonaws.com/plugshare.production.photos/photos/165827.jpg",
         "created_at": "2016-11-29T17:57:14Z",
         "thumbnail": "https://s3.amazonaws.com/plugshare.production.photos/thumb/165827.png",
-        "caption": "Recargo Garage",
+        "caption": "PlugShare Garage",
         "thumbnail2x": "https://s3.amazonaws.com/plugshare.production.photos/thumb2x/165827.png",
         "order": 1,
         "id": 192372
@@ -1757,13 +1716,6 @@ A location photo contributed by the PlugShare community.
       <div class="type">Number (integer)</div>
     </td>
     <td>Unique and immutable identifier.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">created_at</div>
-      <div class="type">String (timestamp)</div>
-    </td>
-    <td>ISO 8601 Format “yyyy-mm-ddThh:mm:ssZ”.</td>
   </tr>
   <tr>
     <td>
@@ -1806,6 +1758,13 @@ A location photo contributed by the PlugShare community.
       <div class="type">Number (integer)</div>
     </td>
     <td>The id of the user who uploaded this photo.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">created_at</div>
+      <div class="type">String (timestamp)</div>
+    </td>
+    <td>ISO 8601 Format “yyyy-mm-ddThh:mm:ssZ”.</td>
   </tr>
 </table>
 
@@ -1864,31 +1823,10 @@ Check-Ins include:
   </tr>
   <tr>
     <td>
-      <div class="field">created_at</div>
-      <div class="type">String (timestamp)</div>
-    </td>
-    <td>When the Check-In was submitted.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">finished</div>
-      <div class="type">String (timestamp)</div>
-    </td>
-    <td>The date the user plans to leave (or left) the location.</td>
-  </tr>
-  <tr>
-    <td>
       <div class="field">comment</div>
       <div class="type">String</div>
     </td>
     <td>The user's review.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">user</div>
-      <div class="type">Object (User)</div>
-    </td>
-  <td>User object including in depth information about the user who submitted this review (check-in).</td>
   </tr>
   <tr>
     <td>
@@ -1903,6 +1841,27 @@ Check-Ins include:
       <div class="type">Number (integer)</div>
     </td>
     <td>User submitted data of maximum amps if recorded during this visit, else NULL. Note: depending on vehicle capabilities or limitations, this may be lower than the station’s maximum capabilities.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">finished</div>
+      <div class="type">String (timestamp)</div>
+    </td>
+    <td>The date the user plans to leave (or left) the location.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">user</div>
+      <div class="type">Object (User)</div>
+    </td>
+  <td>User object including in depth information about the user who submitted this review (check-in).</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">created_at</div>
+      <div class="type">String (timestamp)</div>
+    </td>
+    <td>When the Check-In was submitted.</td>
   </tr>
 </table>
 
@@ -1959,17 +1918,31 @@ A PlugShare user who may be owner of reviews, check-ins, or private locations.
   </tr>
   <tr>
     <td>
-      <div class="field">allow_notifications</div>
-      <div class="type">Boolean</div>
-    </td>
-    <td>Flag if user allows notifications.</td>
-  </tr>
-  <tr>
-    <td>
       <div class="field">first_name</div>
       <div class="type">String</div>
     </td>
     <td>User's public facing username.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">phone</div>
+      <div class="type">String</div>
+    </td>
+    <td>Formatting of this field is not currently guaranteed.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">about</div>
+      <div class="type">String</div>
+    </td>
+    <td>User input, public-facing about me section.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">allow_notifications</div>
+      <div class="type">Boolean</div>
+    </td>
+    <td>Flag if user allows notifications.</td>
   </tr>
   <tr>
     <td>
@@ -1990,45 +1963,10 @@ A PlugShare user who may be owner of reviews, check-ins, or private locations.
   </tr>
   <tr>
     <td>
-      <div class="field">hide_address</div>
-      <div class="type">Boolean</div>
-    </td>
-    <td>Flag if user opted to hide personal address information.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">vehicle_description</div>
-      <div class="type">String</div>
-    </td>
-    <td>User input, self describe their own vehicle.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">created_at</div>
-      <div class="type">String (timestamp)</div>
-    </td>
-    <td>ISO 8601 Format “yyyy-mm-ddThh:mm:ssZ”.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">vehicle_color</div>
+      <div class="field">vehicle_type</div>
       <div class="type">Number (integer enum)</div>
     </td>
-    <td>Number indicating user's selection of one of many preset vehicle colors.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">phone</div>
-      <div class="type">String</div>
-    </td>
-    <td>Formatting of this field is not currently guaranteed.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">last_login</div>
-      <div class="type">String (timestamp)</div>
-    </td>
-    <td>ISO 8601 Format “yyyy-mm-ddThh:mm:ssZ”.</td>
+    <td>Number indicating user's selection of one of many preset vehicle types.</td>
   </tr>
   <tr>
     <td>
@@ -2039,17 +1977,38 @@ A PlugShare user who may be owner of reviews, check-ins, or private locations.
   </tr>
   <tr>
     <td>
-      <div class="field">about</div>
-      <div class="type">String</div>
+      <div class="field">vehicle_color</div>
+      <div class="type">Number (integer enum)</div>
     </td>
-    <td>User input, public-facing about me section.</td>
+    <td>Number indicating user's selection of one of many preset vehicle colors.</td>
   </tr>
   <tr>
     <td>
-      <div class="field">vehicle_type</div>
-      <div class="type">Number (integer enum)</div>
+      <div class="field">vehicle_description</div>
+      <div class="type">String</div>
     </td>
-    <td>Number indicating user's selection of one of many preset vehicle types.</td>
+    <td>User input, self describe their own vehicle.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">hide_address</div>
+      <div class="type">Boolean</div>
+    </td>
+    <td>Flag if user opted to hide personal address information.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">last_login</div>
+      <div class="type">String (timestamp)</div>
+    </td>
+    <td>ISO 8601 Format “yyyy-mm-ddThh:mm:ssZ”.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">created_at</div>
+      <div class="type">String (timestamp)</div>
+    </td>
+    <td>ISO 8601 Format “yyyy-mm-ddThh:mm:ssZ”.</td>
   </tr>
 </table>
 
