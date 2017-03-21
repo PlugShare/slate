@@ -6,7 +6,7 @@ language_tabs:
 toc_footers:
   - <a href='/access'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
-  - API V4 - Updated 3/14/2017
+  - API V3 - Updated 3/14/2017
 
 includes:
 
@@ -472,7 +472,7 @@ GET https://api.plugshare.com/locations/38606
 }
 ```
 
-This endpoint retrieves a locations based on location id.
+This endpoint retrieves a location based on location id.
 
 ### HTTP Request
 
@@ -607,8 +607,8 @@ This endpoint retrieves locations near a given coordinate.
       <div class="field">cost</div>
       <div class="type">optional, default is <b>true</b></div>
     </td>
-    <td><b>True</b> = Returns all locations regardless of cost.<br>
-    <b>False</b> = Does not return locations with a known fee (like parking or $/kw).</td>
+    <td><b>1</b> = Returns all locations regardless of cost.<br>
+    <b>2</b> = Does not return locations with a known fee (like parking or $/kw).</td>
   </tr>
   <tr>
     <td>
@@ -639,7 +639,7 @@ This endpoint retrieves locations near a given coordinate.
       <div class="field">exclude_networks</div>
       <div class="type">optional</div>
     </td>
-    <td>Filter on a comma separated list of network ids to exlude. Passing “exclude_networks=1” will exclude locations which exclusively have ChargePoint stations. If a location has both a ChargePoint station and a station of another network or a non-networked station it will still be eligible to be returned.<br>
+    <td>Filter on a comma separated list of network ids to exclude. Passing “exclude_networks=1” will exclude locations which exclusively have ChargePoint stations. If a location has both a ChargePoint station and a station of another network or a non-networked station it will still be eligible to be returned.<br>
     See <a href="#networks-list">Networks List</a></td>
   </tr>
   <tr>
@@ -678,7 +678,7 @@ You may want to apply some filters to the search queries to return only relevant
 
 Returns an array of `location` objects, containing up to `count` locations
 
-## Get Region Locations
+## Get Locations in Region
 
 > Example Request:
 
@@ -781,8 +781,8 @@ This endpoint retrieves locations in a region based on a given coordinate with l
       <div class="field">cost</div>
       <div class="type">optional, default is <b>true</b></div>
     </td>
-    <td><b>True</b> = Returns all locations regardless of cost.<br>
-    <b>False</b> = Does not return locations with a known fee (like parking or $/kw).</td>
+    <td><b>1</b> = Returns all locations regardless of cost.<br>
+    <b>2</b> = Does not return locations with a known fee (like parking or $/kw).</td>
   </tr>
   <tr>
     <td>
@@ -941,8 +941,8 @@ This endpoint returns locations whose name or address contains a specified searc
       <div class="field">cost</div>
       <div class="type">optional, default is <b>true</b></div>
     </td>
-    <td><b>True</b> = Returns all locations regardless of cost.<br>
-    <b>False</b> = Does not return locations with a known fee (like parking or $/kw).</td>
+    <td><b>1</b> = Returns all locations regardless of cost.<br>
+    <b>2</b> = Does not return locations with a known fee (like parking or $/kw).</td>
   </tr>
   <tr>
     <td>
@@ -1096,8 +1096,8 @@ This endpoint returns locations who are a certain `distance` away from the `poly
       <div class="field">cost</div>
       <div class="type">optional, default is <b>true</b></div>
     </td>
-    <td><b>True</b> = Returns all locations regardless of cost.<br>
-    <b>False</b> = Does not return locations with a known fee (like parking or $/kw).</td>
+    <td><b>1</b> = Returns all locations regardless of cost.<br>
+    <b>2</b> = Does not return locations with a known fee (like parking or $/kw).</td>
   </tr>
   <tr>
     <td>
