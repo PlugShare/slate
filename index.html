@@ -233,7 +233,7 @@
         <ul class="toc-footer">
             <li><a href='/access'>Sign Up for a Developer Key</a></li>
             <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
-            <li>API V4 - Updated 3/14/2017</li>
+            <li>API V3 - Updated 3/14/2017</li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -695,7 +695,7 @@
     </span><span class="s2">"stations"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves a locations based on location id.</p>
+<p>This endpoint retrieves a location based on location id.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -828,8 +828,8 @@ Optional location filters do not apply to this endpoint because this only return
       <div class="field">cost</div>
       <div class="type">optional, default is <b>true</b></div>
     </td>
-    <td><b>True</b> = Returns all locations regardless of cost.<br>
-    <b>False</b> = Does not return locations with a known fee (like parking or $/kw).</td>
+    <td><b>1</b> = Returns all locations regardless of cost.<br>
+    <b>2</b> = Does not return locations with a known fee (like parking or $/kw).</td>
   </tr>
   <tr>
     <td>
@@ -860,7 +860,7 @@ Optional location filters do not apply to this endpoint because this only return
       <div class="field">exclude_networks</div>
       <div class="type">optional</div>
     </td>
-    <td>Filter on a comma separated list of network ids to exlude. Passing “exclude_networks=1” will exclude locations which exclusively have ChargePoint stations. If a location has both a ChargePoint station and a station of another network or a non-networked station it will still be eligible to be returned.<br>
+    <td>Filter on a comma separated list of network ids to exclude. Passing “exclude_networks=1” will exclude locations which exclusively have ChargePoint stations. If a location has both a ChargePoint station and a station of another network or a non-networked station it will still be eligible to be returned.<br>
     See <a href="#networks-list">Networks List</a></td>
   </tr>
   <tr>
@@ -899,7 +899,7 @@ You may want to apply some filters to the search queries to return only relevant
 
 <p>Returns an array of <code class="prettyprint">location</code> objects, containing up to <code class="prettyprint">count</code> locations</p>
 
-<h2 id="get-region-locations">Get Region Locations</h2>
+<h2 id="get-locations-in-region">Get Locations in Region</h2>
 
 <blockquote>
 <p>Example Request:</p>
@@ -1000,8 +1000,8 @@ You may want to apply some filters to the search queries to return only relevant
       <div class="field">cost</div>
       <div class="type">optional, default is <b>true</b></div>
     </td>
-    <td><b>True</b> = Returns all locations regardless of cost.<br>
-    <b>False</b> = Does not return locations with a known fee (like parking or $/kw).</td>
+    <td><b>1</b> = Returns all locations regardless of cost.<br>
+    <b>2</b> = Does not return locations with a known fee (like parking or $/kw).</td>
   </tr>
   <tr>
     <td>
@@ -1158,8 +1158,8 @@ You may want to apply some filters to the search queries to return only relevant
       <div class="field">cost</div>
       <div class="type">optional, default is <b>true</b></div>
     </td>
-    <td><b>True</b> = Returns all locations regardless of cost.<br>
-    <b>False</b> = Does not return locations with a known fee (like parking or $/kw).</td>
+    <td><b>1</b> = Returns all locations regardless of cost.<br>
+    <b>2</b> = Does not return locations with a known fee (like parking or $/kw).</td>
   </tr>
   <tr>
     <td>
@@ -1308,8 +1308,8 @@ POST body:
       <div class="field">cost</div>
       <div class="type">optional, default is <b>true</b></div>
     </td>
-    <td><b>True</b> = Returns all locations regardless of cost.<br>
-    <b>False</b> = Does not return locations with a known fee (like parking or $/kw).</td>
+    <td><b>1</b> = Returns all locations regardless of cost.<br>
+    <b>2</b> = Does not return locations with a known fee (like parking or $/kw).</td>
   </tr>
   <tr>
     <td>
