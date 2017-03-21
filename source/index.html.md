@@ -609,8 +609,8 @@ This endpoint retrieves locations near a given coordinate.
       <div class="field">cost</div>
       <div class="type">optional, default is <b>true</b></div>
     </td>
-    <td><b>1</b> = Returns all locations regardless of cost.<br>
-    <b>2</b> = Does not return locations with a known fee (like parking or $/kw).</td>
+    <td><b>true</b> = Returns all locations regardless of cost.<br>
+    <b>false</b> = Does not return locations with a known fee (like parking or $/kw).</td>
   </tr>
   <tr>
     <td>
@@ -783,8 +783,8 @@ This endpoint retrieves locations in a region based on a given coordinate with l
       <div class="field">cost</div>
       <div class="type">optional, default is <b>true</b></div>
     </td>
-    <td><b>1</b> = Returns all locations regardless of cost.<br>
-    <b>2</b> = Does not return locations with a known fee (like parking or $/kw).</td>
+    <td><b>true</b> = Returns all locations regardless of cost.<br>
+    <b>false</b> = Does not return locations with a known fee (like parking or $/kw).</td>
   </tr>
   <tr>
     <td>
@@ -943,8 +943,8 @@ This endpoint returns locations whose name or address contains a specified searc
       <div class="field">cost</div>
       <div class="type">optional, default is <b>true</b></div>
     </td>
-    <td><b>1</b> = Returns all locations regardless of cost.<br>
-    <b>2</b> = Does not return locations with a known fee (like parking or $/kw).</td>
+    <td><b>true</b> = Returns all locations regardless of cost.<br>
+    <b>false</b> = Does not return locations with a known fee (like parking or $/kw).</td>
   </tr>
   <tr>
     <td>
@@ -1098,8 +1098,8 @@ This endpoint returns locations who are a certain `distance` away from the `poly
       <div class="field">cost</div>
       <div class="type">optional, default is <b>true</b></div>
     </td>
-    <td><b>1</b> = Returns all locations regardless of cost.<br>
-    <b>2</b> = Does not return locations with a known fee (like parking or $/kw).</td>
+    <td><b>true</b> = Returns all locations regardless of cost.<br>
+    <b>false</b> = Does not return locations with a known fee (like parking or $/kw).</td>
   </tr>
   <tr>
     <td>
