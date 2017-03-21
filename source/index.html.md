@@ -15,17 +15,18 @@ search: true
 
 # Introduction
 
-Welcome to the PlugShare API! You can use our API to access PlugShare API endpoints, which can get information on charging stations, reviews, and photos in our database.
+Welcome to the PlugShare API! You can use our REST API to access PlugShare API endpoints, which can get information on charging stations, reviews, and photos in our database. The PlugShare API is a REST API
 
 ## Using The API
 
-Generally, you'll want to use a search method to return a list of locations. Each location will contain one or more stations, each of which may contain one or more outlets. Not all information about a location is returned from the search method; for reviews, photos, and more you'll want to request the location directly using its unique identifier.
+Generally, you'll want to use a search method to return a list of locations. Each location will contain one or more stations, each of which may contain one or more outlets. Not all information about a location is returned from the search method; for reviews, photos, and more you'll want to request the location directly using its unique identifier.  
+Here are some examples to get you started. Try out [`GET /locations/nearby`](#get-nearby-locations) and [`GET /locations/region`](#get-locations-in-region)
 
 ## Access Instructions
 
 PlugShare uses API keys to allow access to the API. You can register a new PlugShare API key at our [developer portal](/access).
 
-HTTPS + HTTP Basic auth is required when making API requests. Your username and password will be provided.
+HTTPS + HTTP Basic auth is required when making API requests. After obtaining an API key/secret, the key and secret have to be specified in the request with HTTP Basic Auth, i.e. converted into an Authorization header.
 
 URL: [https://api.plugshare.com/](https://api.plugshare.com/)
 
@@ -35,13 +36,15 @@ Many of our fields are localized, so we suggest you build on these dynamic value
 
 Passing your country code locale will result in an assignment of one of the following regions: 'US', 'JP', 'AU', 'UK', 'EU', or 'WW' (worldwide). You will then get localized arrays for outlet configurations, connectors, and an available make vehicle list.
 
+### Alex is writing some more extensive/accurate information on this section
+
 # Core Data Entities
 
 <img src="images/tables.png">
 
 A location or station may also have zero to many promos, and a location may also have zero to many amenities.
 
-# Locations
+# Location
 
 A driver identifiable destination where Charging Stations (Stations) are located. As a general rule if stations are within visible range of each other they are organized together into a location.
 
@@ -166,7 +169,6 @@ A driver identifiable destination where Charging Stations (Stations) are located
       ],
       "hours": "",
       "promos": [],
-      "requiresAccessCard": false,
       "manufacturer": "GE WattStation",
       "name": "PRIVATE LOCATION",
       "network_id": 4,
@@ -585,7 +587,7 @@ This endpoint retrieves locations near a given coordinate.
       <div class="field">count</div>
       <div class="type">optional</div>
     </td>
-    <td>Maximum count of locations to return.<br>
+    <td>Maximum count of locations to return. Count is capped at 500 regardless of specified value.<br>
     200-500 is a recommended value for most applications.</td>
   </tr>
   <tr>
@@ -766,7 +768,7 @@ This endpoint retrieves locations in a region based on a given coordinate with l
       <div class="field">count</div>
       <div class="type required">required</div>
     </td>
-    <td>Maximum count of locations to return.<br>
+    <td>Maximum count of locations to return. Count is capped at 500 regardless of specified value.<br>
     200-500 is a recommended value for most applications.</td>
   </tr>
   <tr>
@@ -813,7 +815,7 @@ This endpoint retrieves locations in a region based on a given coordinate with l
       <div class="field">exclude_networks</div>
       <div class="type">optional</div>
     </td>
-    <td>Filter on a comma separated list of network ids to exlude. Passing “exclude_networks=1” will exclude locations which exclusively have ChargePoint stations. If a location has both a ChargePoint station and a station of another network or a non-networked station it will still be eligible to be returned.<br>
+    <td>Filter on a comma separated list of network ids to exclude. Passing “exclude_networks=1” will exclude locations which exclusively have ChargePoint stations. If a location has both a ChargePoint station and a station of another network or a non-networked station it will still be eligible to be returned.<br>
     See <a href="#networks-list">Networks List</a></td>
   </tr>
   <tr>
@@ -832,7 +834,7 @@ You may want to apply some filters to the search queries to return only relevant
 
 ### Additional Examples
 
-`GET https://api.plugshare.com/locations/region?spanLat=0.15&spanLng=0.10&latitude=33.992476&longitude=-118.4721&count=10&outlets`
+`GET https://api.plugshare.com/locations/region?spanLat=0.15&spanLng=0.10&latitude=33.992476&longitude=-118.4721&count=10&outlets=[{"connector":2}]`
 
 `GET https://api.plugshare.com/locations/region?spanLat=0.15&spanLng=0.10&latitude=33.992476&longitude=-118.4721&count=10&cost=false`
 
@@ -918,7 +920,7 @@ This endpoint returns locations whose name or address contains a specified searc
       <div class="field">count</div>
       <div class="type">optional</div>
     </td>
-    <td>Maximum count of locations to return.<br>
+    <td>Maximum count of locations to return. Count is capped at 500 regardless of specified value.<br>
     200-500 is a recommended value for most applications.</td>
   </tr>
   <tr>
@@ -957,7 +959,7 @@ This endpoint returns locations whose name or address contains a specified searc
       <div class="field">exclude_networks</div>
       <div class="type">optional</div>
     </td>
-    <td>Filter on a comma separated list of network ids to exlude. Passing “exclude_networks=1” will exclude locations which exclusively have ChargePoint stations. If a location has both a ChargePoint station and a station of another network or a non-networked station it will still be eligible to be returned.<br>
+    <td>Filter on a comma separated list of network ids to exclude. Passing “exclude_networks=1” will exclude locations which exclusively have ChargePoint stations. If a location has both a ChargePoint station and a station of another network or a non-networked station it will still be eligible to be returned.<br>
     See <a href="#networks-list">Networks List</a></td>
   </tr>
   <tr>
@@ -1073,7 +1075,7 @@ This endpoint returns locations who are a certain `distance` away from the `poly
       <div class="field">count</div>
       <div class="type">optional</div>
     </td>
-    <td>Maximum count of locations to return.<br>
+    <td>Maximum count of locations to return. Count is capped at 500 regardless of specified value.<br>
     200-500 is a recommended value for most applications</td>
   </tr>
   <tr>
@@ -1112,7 +1114,7 @@ This endpoint returns locations who are a certain `distance` away from the `poly
       <div class="field">exclude_networks</div>
       <div class="type">optional</div>
     </td>
-    <td>Filter on a comma separated list of network ids to exlude. Passing “exclude_networks=1” will exclude locations which exclusively have ChargePoint stations. If a location has both a ChargePoint station and a station of another network or a non-networked station it will still be eligible to be returned.<br>
+    <td>Filter on a comma separated list of network ids to exclude. Passing “exclude_networks=1” will exclude locations which exclusively have ChargePoint stations. If a location has both a ChargePoint station and a station of another network or a non-networked station it will still be eligible to be returned.<br>
     See <a href="#networks-list">Networks List</a></td>
   </tr>
   <tr>
@@ -1154,7 +1156,7 @@ id | amenity |   | id | amenity |   | id | amenity
 
 # Station
 
-A physical charging unit installed on the ground or wall. In EV industry terms this is also frequently referred to as an EVSE (Electric Vehicle Service Equipment). Stations can be network managed. Stations frequently support near time availability data.
+A physical charging unit installed on the ground or wall. In EV industry terms this is also frequently referred to as an EVSE (Electric Vehicle Service Equipment). Stations can be network managed. Stations frequently support real time availability data.
 
 ## Object Properties
 
@@ -1185,7 +1187,6 @@ A physical charging unit installed on the ground or wall. In EV industry terms t
         ],
         "hours": "",
         "promos": [],
-        "requiresAccessCard": false,
         "manufacturer": "GE WattStation",
         "name": "PRIVATE LOCATION",
         "network_id": 4,
@@ -1213,7 +1214,7 @@ A physical charging unit installed on the ground or wall. In EV industry terms t
       <div class="field">name</div>
       <div class="type">String</div>
     </td>
-    <td>Name describing the station, typically a combination of an identifying number and network name.</td>
+    <td>The name attribute of a station is the user-facing identifier for the station. Typically the name is found somewhere on the physical station.</td>
   </tr>
   <tr>
     <td>
@@ -1299,11 +1300,11 @@ A physical charging unit installed on the ground or wall. In EV industry terms t
       <div class="field" id="availability-values">available</div>
       <div class="type">Number (integer enum)</div>
     </td>
-    <td><b>1</b> = Unknown<br>
-    <b>2</b> = Available<br>
-    <b>3</b> = In Use<br>
-    <b>4</b> = Offline<br>
-    <b>5</b> = Under Repair</td>
+    <td><b>0</b> = Unknown<br>
+    <b>1</b> = Available<br>
+    <b>2</b> = In Use<br>
+    <b>3</b> = Offline<br>
+    <b>4</b> = Under Repair</td>
   </tr>
   <tr>
     <td>
@@ -1332,13 +1333,6 @@ A physical charging unit installed on the ground or wall. In EV industry terms t
       <div class="type">Boolean</div>
     </td>
     <td>True if this station is tagged with a QR code for station identification and activation flows.</td>
-  </tr>
-  <tr>
-    <td>
-      <div class="field">requiresAccessCard</div>
-      <div class="type">Boolean</div>
-    </td>
-    <td>Requires an access card to use this station.</td>
   </tr>
   <tr>
     <td>
@@ -1389,7 +1383,7 @@ A physical vehicle-to-station connection point: either a plug or a socket. Stati
   </tr>
   <tr>
     <td>
-      <div class="field">Power</div>
+      <div class="field">power</div>
       <div class="type">Number (integer enum)</div>
     </td>
     <td>See <a href="#outlet-connector-types">Outlet Connector Types</a></td>
@@ -1676,7 +1670,7 @@ id | network |   | id | network |   | id | network |   | id | network
 -- | ------- | - | -- | ------- | - | -- | ------- | - | -- | -------
 1 | ChargePoint  | | 7 | AddEnergie | | 15 | Endesa | | 23 | Enel Drive
 2 | Blink  | | 8 | Tesla Supercharger | | 16 | ESB | | 25 | Volta
-3 | SemaCharge |  | 9 | AeroVironment | | 17 | Uppladdning | | 26 | Greenlots
+3 | Semaconnect |  | 9 | AeroVironment | | 17 | Uppladdning | | 26 | Greenlots
 4 | GE WattStation |  | 11 | OpenChargeMap | | 18 | Clever | | 34 | JNSH
 5 | Sun Country |  | 13 | RWE | | 19 | EVgo | 
 6 | Circuit Electrique |  | 14 | Oplaadpalen | | 22 | Lastestasjoner |
