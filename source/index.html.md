@@ -30,14 +30,6 @@ HTTPS + HTTP Basic auth is required when making API requests. After obtaining an
 
 URL: [https://api.plugshare.com/](https://api.plugshare.com/)
 
-## Localization
-
-Many of our fields are localized, so we suggest you build on these dynamic values instead of hardcoding static ones. By providing your country code, you will get localized datasets for your region.
-
-Passing your country code locale will result in an assignment of one of the following regions: 'US', 'JP', 'AU', 'UK', 'EU', or 'WW' (worldwide). You will then get localized arrays for outlet configurations, connectors, and an available make vehicle list.
-
-### Alex is writing some more extensive/accurate information on this section
-
 # Core Data Entities
 
 <img src="images/tables.png">
