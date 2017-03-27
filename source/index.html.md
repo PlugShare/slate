@@ -1142,9 +1142,9 @@ Returns an array of `location` objects, containing up to `count` locations
 
 id | amenity |   | id | amenity |   | id | amenity
 -- | ------- | - | -- | ------- | - | -- | -------
-1 | Hotel/Lodging | | 4 | EV Parking | |  7 | Wifi
-2 | Dining | | 5 | Valet | | 8 | Shopping
-3 | Restroom | | 6 | Park | | 9 | Grocery 
+1 | Lodging | | 4 | EV Parking | |  7 | WiFi
+2 | Dining | | 5 | Valet Parking | | 8 | Shopping
+3 | Restrooms | | 6 | Park | | 9 | Grocery 
 
 # Station
 
@@ -1660,15 +1660,12 @@ A company that operates stations and provides subscription services or access co
 
 id | network |   | id | network |   | id | network |   | id | network
 -- | ------- | - | -- | ------- | - | -- | ------- | - | -- | -------
-1 | ChargePoint | | 10 | PlugShare Stripe | | 20 | Chademo | | 32 | DOE AFDC
-2 | Blink | | 11 | OpenChargeMap | | 22 | Lastestasjoner | | 33 | CarCharging
-3 | SemaCharge | | 13 | RWE | | 23 | Enel Drive | | 34 | JNSH
-4 | GE WattStation | | 14 | Oplaadpalen | | 24 | ChargeMap | | 35 | Destination
-5 | Sun Country | | 15 | Endesa | | 25 | Volta | | 36 | ChargeNet
-6 | Circuit Electrique | | 16 | ESB | | 26 | Greenlots | | 39 | GreenFrontiers
-7 | AddEnergie | | 17 | Uppladdning | | 29 | OpConnect | | 40 | EVPoint
-8 | SuperCharger | | 18 | Clever | | 30 | Shorepower |
-9 | AeroVironment | | 19 | EVgo | | 31 | RechargeAccess |
+1 | ChargePoint  | | 7 | AddEnergie | | 19 | EVgo | | 30 | Shorepower
+2 | Blink  | | 8 | Tesla Supercharger | | 22 | Lastestasjoner | | 33 | CarCharging
+3 | Semaconnect  | | 9 | AeroVironment | | 23 | Enel Drive | | 34 | JNSH
+4 | GE WattStation  | | 13 | RWE eMobility | | 25 | Volta | | 35 | Tesla Destination
+5 | Sun Country  | | 14 | Oplaadpalen | | 26 | Greenlots | | 36 | ChargeNet
+6 | Circuit Electrique  | | 15 | Endesa | | 29 | OpConnect |
 
 # Photo
 
