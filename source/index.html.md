@@ -1409,7 +1409,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>1</td>
     <td></td>
     <td>US Wall Outlet</td>
-    <td><img src="http://developers.plugshare.com/images/image03.png"></td>
+    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image03.png"></td>
     <td>Y</td>
     <td></td>
     <td></td>
@@ -1420,7 +1420,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>2</td>
     <td></td>
     <td>J-1772</td>
-    <td><img src="http://developers.plugshare.com/images/image08.png"></td>
+    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image08.png"></td>
     <td>Y</td>
     <td>Y</td>
     <td>Y</td>
@@ -1431,7 +1431,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>3</td>
     <td></td>
     <td>CHAdeMO</td>
-    <td><img src="http://developers.plugshare.com/images/image04.png"></td>
+    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image04.png"></td>
     <td>Y</td>
     <td>Y</td>
     <td>Y</td>
@@ -1442,7 +1442,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>4</td>
     <td></td>
     <td>Tesla Roadster</td>
-    <td><img src="http://developers.plugshare.com/images/image00.png"></td>
+    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image00.png"></td>
     <td>Y</td>
     <td>Y</td>
     <td>Y</td>
@@ -1453,7 +1453,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>5</td>
     <td></td>
     <td>NEMA 14-50</td>
-    <td><img src="http://developers.plugshare.com/images/image10.png"></td>
+    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image10.png"></td>
     <td>Y</td>
     <td></td>
     <td></td>
@@ -1464,7 +1464,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>6</td>
     <td>0</td>
     <td>Tesla S HPWC</td>
-    <td><img src="http://developers.plugshare.com/images/image05.png"></td>
+    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image05.png"></td>
     <td>Y</td>
     <td>Y</td>
     <td>Y</td>
@@ -1475,7 +1475,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>6</td>
     <td>1</td>
     <td>Tesla Supercharger</td>
-    <td><img src="http://developers.plugshare.com/images/image05.png"></td>
+    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image05.png"></td>
     <td>Y</td>
     <td>Y</td>
     <td>Y</td>
@@ -1486,7 +1486,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>7</td>
     <td></td>
     <td>Type 2 (Mennekes)</td>
-    <td><img src="http://developers.plugshare.com/images/image06.png"></td>
+    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image06.png"></td>
     <td></td>
     <td>Y</td>
     <td>Y</td>
@@ -1508,7 +1508,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>9</td>
     <td></td>
     <td>BS1363</td>
-    <td><img src="http://developers.plugshare.com/images/image09.png"></td>
+    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image09.png"></td>
     <td></td>
     <td>Y</td>
     <td></td>
@@ -1519,7 +1519,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>10</td>
     <td></td>
     <td>Europlug</td>
-    <td><img src="http://developers.plugshare.com/images/image13.png"></td>
+    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image13.png"></td>
     <td></td>
     <td></td>
     <td>Y</td>
@@ -1530,7 +1530,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>11</td>
     <td></td>
     <td>UK Commando</td>
-    <td><img src="http://developers.plugshare.com/images/image12.png"></td>
+    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image12.png"></td>
     <td></td>
     <td>Y</td>
     <td></td>
@@ -1541,7 +1541,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>12</td>
     <td></td>
     <td>AS3112</td>
-    <td><img src="http://developers.plugshare.com/images/image01.png"></td>
+    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image01.png"></td>
     <td></td>
     <td></td>
     <td></td>
@@ -1552,7 +1552,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>13</td>
     <td></td>
     <td>SAE Combo DC CCS</td>
-    <td><img src="http://developers.plugshare.com/images/image02.png"></td>
+    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image02.png"></td>
     <td>Y</td>
     <td></td>
     <td>Y</td>
