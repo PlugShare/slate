@@ -644,6 +644,13 @@ This endpoint retrieves locations near a given coordinate.
     <td>Filter on a comma separated list of network ids to include. Matches if at least one network is present.<br>
     See <a href="#networks-list">Networks List</a></td>
   </tr>
+  <tr>
+    <td>
+      <div class="field">score</div>
+      <div class="type">optional</div>
+    </td>
+    <td>Filter on PlugShare score. Accepts a range from 0.0 to 10.0. Will return results greater than or equal to number provided.</td>
+  </tr>
 </table>
 
 <aside class="notice">
@@ -818,6 +825,13 @@ This endpoint retrieves locations in a region based on a given coordinate with l
     <td>Filter on a comma separated list of network ids to include. Matches if at least one network is present.<br>
     See <a href="#networks-list">Networks List</a></td>
   </tr>
+  <tr>
+    <td>
+      <div class="field">score</div>
+      <div class="type">optional</div>
+    </td>
+    <td>Filter on PlugShare score. Accepts a range from 0.0 to 10.0. Will return results greater than or equal to number provided.</td>
+  </tr>
 </table>
 
 <aside class="notice">
@@ -961,6 +975,13 @@ This endpoint returns locations whose name or address contains a specified searc
     </td>
     <td>Filter on a comma separated list of network ids to include. Matches if at least one network is present.<br>
     See <a href="#networks-list">Networks List</a></td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">score</div>
+      <div class="type">optional</div>
+    </td>
+    <td>Filter on PlugShare score. Accepts a range from 0.0 to 10.0. Will return results greater than or equal to number provided.</td>
   </tr>
 </table>
 
@@ -1116,6 +1137,13 @@ This endpoint returns locations who are a certain `distance` away from the `poly
     </td>
     <td>Filter on a comma separated list of network ids to include. Matches if at least one network is present.<br>
     See <a href="#networks-list">Networks List</a></td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">score</div>
+      <div class="type">optional</div>
+    </td>
+    <td>Filter on PlugShare score. Accepts a range from 0.0 to 10.0. Will return results greater than or equal to number provided.</td>
   </tr>
   <tr>
     <td>
