@@ -649,7 +649,7 @@ This endpoint retrieves locations near a given coordinate.
       <div class="field">score</div>
       <div class="type">optional</div>
     </td>
-    <td>Filter on PlugShare score. Accepts a range from 0.0 to 10.0. Will return results greater than or equal to number provided.</td>
+    <td>Filter on PlugScore. Accepts a range from 0.0 to 10.0. Will return results greater than or equal to the number provided.</td>
   </tr>
 </table>
 
@@ -830,7 +830,7 @@ This endpoint retrieves locations in a region based on a given coordinate with l
       <div class="field">score</div>
       <div class="type">optional</div>
     </td>
-    <td>Filter on PlugShare score. Accepts a range from 0.0 to 10.0. Will return results greater than or equal to number provided.</td>
+    <td>Filter on PlugScore. Accepts a range from 0.0 to 10.0. Will return results greater than or equal to the number provided.</td>
   </tr>
 </table>
 
@@ -981,7 +981,7 @@ This endpoint returns locations whose name or address contains a specified searc
       <div class="field">score</div>
       <div class="type">optional</div>
     </td>
-    <td>Filter on PlugShare score. Accepts a range from 0.0 to 10.0. Will return results greater than or equal to number provided.</td>
+    <td>Filter on PlugScore. Accepts a range from 0.0 to 10.0. Will return results greater than or equal to the number provided.</td>
   </tr>
 </table>
 
@@ -1143,7 +1143,7 @@ This endpoint returns locations who are a certain `distance` away from the `poly
       <div class="field">score</div>
       <div class="type">optional</div>
     </td>
-    <td>Filter on PlugShare score. Accepts a range from 0.0 to 10.0. Will return results greater than or equal to number provided.</td>
+    <td>Filter on PlugScore. Accepts a range from 0.0 to 10.0. Will return results greater than or equal to the number provided.</td>
   </tr>
   <tr>
     <td>
