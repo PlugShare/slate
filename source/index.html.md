@@ -1019,7 +1019,6 @@ POST body:
 {
    "distance":9654,
    "outlets":"[{\"connector\":2},{\"connector\":6,\"power\":1}]",
-   "fast":"add",
    "access":"1,2,3",
    "polyline":"33.96515,-118.38001000000001,33.96537,33.992140000000006,-118.47224000000001",
    "exclude_networks":"2,19,3,1,26,34,5"
