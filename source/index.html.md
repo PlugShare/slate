@@ -1524,7 +1524,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>8</td>
     <td></td>
     <td>Type 3</td>
-    <td><img src=""></td>
+    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image16.png"></td>
     <td></td>
     <td>Y</td>
     <td>Y</td>
@@ -1590,12 +1590,23 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>14</td>
     <td></td>
     <td>Three Phase 32A (UK)</td>
-    <td><img src=""></td>
+    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image06.png"></td>
     <td></td>
     <td>Y</td>
     <td></td>
     <td></td>
     <td></td>
+  </tr>
+  <tr>
+    <td>15</td>
+    <td></td>
+    <td>Caravan Mains Socket</td>
+    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image15.png"></td>
+    <td></td>
+    <td>Y</td>
+    <td>Y</td>
+    <td></td>
+    <td>Y</td>
   </tr>
 </table>
 
