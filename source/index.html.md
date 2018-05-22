@@ -1431,6 +1431,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <th>EU</th>
     <th>JP</th>
     <th>AU</th>
+    <th>WW</th>
   </tr>
   <tr>
     <td>1</td>
@@ -1442,12 +1443,14 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td></td>
     <td>Y</td>
     <td></td>
+    <td>Y</td>
   </tr>
   <tr>
     <td>2</td>
     <td></td>
     <td>J-1772</td>
     <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image08.png"></td>
+    <td>Y</td>
     <td>Y</td>
     <td>Y</td>
     <td>Y</td>
@@ -1464,12 +1467,14 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>Y</td>
     <td>Y</td>
     <td>Y</td>
+    <td>Y</td>
   </tr>
   <tr>
     <td>4</td>
     <td></td>
     <td>Tesla Roadster</td>
     <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image00.png"></td>
+    <td>Y</td>
     <td>Y</td>
     <td>Y</td>
     <td>Y</td>
@@ -1486,6 +1491,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td></td>
     <td></td>
     <td></td>
+    <td>Y</td>
   </tr>
   <tr>
     <td>6</td>
@@ -1497,6 +1503,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>Y</td>
     <td></td>
     <td></td>
+    <td>Y</td>
   </tr>
   <tr>
     <td>6</td>
@@ -1508,6 +1515,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>Y</td>
     <td></td>
     <td></td>
+    <td>Y</td>
   </tr>
   <tr>
     <td>7</td>
@@ -1518,6 +1526,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>Y</td>
     <td>Y</td>
     <td></td>
+    <td>Y</td>
     <td>Y</td>
   </tr>
   <tr>
@@ -1530,6 +1539,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>Y</td>
     <td></td>
     <td></td>
+    <td>Y</td>
   </tr>
   <tr>
     <td>9</td>
@@ -1541,6 +1551,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td></td>
     <td></td>
     <td></td>
+    <td>Y</td>
   </tr>
   <tr>
     <td>10</td>
@@ -1552,6 +1563,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>Y</td>
     <td></td>
     <td></td>
+    <td>Y</td>
   </tr>
   <tr>
     <td>11</td>
@@ -1563,6 +1575,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td></td>
     <td></td>
     <td></td>
+    <td>Y</td>
   </tr>
   <tr>
     <td>12</td>
@@ -1573,6 +1586,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td></td>
     <td></td>
     <td></td>
+    <td>Y</td>
     <td>Y</td>
   </tr>
   <tr>
@@ -1585,6 +1599,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>Y</td>
     <td></td>
     <td>Y</td>
+    <td>Y</td>
   </tr>
   <tr>
     <td>14</td>
@@ -1596,6 +1611,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td></td>
     <td></td>
     <td></td>
+    <td>Y</td>
   </tr>
   <tr>
     <td>15</td>
@@ -1605,6 +1621,43 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td></td>
     <td>Y</td>
     <td>Y</td>
+    <td></td>
+    <td>Y</td>
+    <td>Y</td>
+  </tr>
+  <tr>
+    <td>16</td>
+    <td></td>
+    <td>China BG/T</td>
+    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image06.png"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>Y</td>
+  </tr>
+  <tr>
+    <td>17</td>
+    <td></td>
+    <td>China BG/T</td>
+    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image17.png"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>Y</td>
+  </tr>
+  <tr>
+    <td>18</td>
+    <td></td>
+    <td>3 Phase</td>
+    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image16.png"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
     <td></td>
     <td>Y</td>
   </tr>
