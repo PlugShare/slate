@@ -1604,11 +1604,23 @@ PlugShare supports all EV charging connectors that are in active use globally.
   <tr>
     <td>14</td>
     <td></td>
-    <td>Three Phase 32A (UK)</td>
-    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image06.png"></td>
+    <td>Three Phase (AU)</td>
+    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image14.png"></td>
+    <td></td>
+    <td></td>
+    <td></td>
     <td></td>
     <td>Y</td>
+    <td>Y</td>
+  </tr>
+  <tr>
+    <td>14</td>
     <td></td>
+    <td>Three Phase (EU)<br>(currently same ID)</td>
+    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image23.png"></td>
+    <td></td>
+    <td></td>
+    <td>Y</td>
     <td></td>
     <td></td>
     <td>Y</td>
@@ -1640,20 +1652,8 @@ PlugShare supports all EV charging connectors that are in active use globally.
   <tr>
     <td>17</td>
     <td></td>
-    <td>China BG/T</td>
+    <td>China BG/T 2</td>
     <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image17.png"></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td>Y</td>
-  </tr>
-  <tr>
-    <td>18</td>
-    <td></td>
-    <td>3 Phase</td>
-    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image16.png"></td>
     <td></td>
     <td></td>
     <td></td>
