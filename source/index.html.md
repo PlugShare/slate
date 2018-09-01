@@ -1749,20 +1749,29 @@ A company that operates stations and provides subscription services or access co
 
 ## Networks List
 
-id | network |   | id | network |   | id | network |   | id | network
--- | ------- | - | -- | ------- | - | -- | ------- | - | -- | -------
-1 | ChargePoint  | | 7 | AddEnergie | | 19 | EVgo | | 30 | Shorepower
-2 | Blink  | | 8 | Tesla Supercharger | | 22 | Lastestasjoner | | 33 | CarCharging
-3 | Semaconnect  | | 9 | AeroVironment | | 23 | Enel Drive | | 34 | JNSH
-4 | GE WattStation  | | 13 | RWE eMobility | | 25 | Volta | | 35 | Tesla Destination
-5 | Sun Country  | | 14 | Oplaadpalen | | 26 | Greenlots | | 36 | ChargeNet
-6 | Circuit Electrique  | | 15 | Endesa | | 29 | OpConnect |
+id | network |   | id | network |   | id | network |
+-- | ------- | - | -- | ------- | - | -- | ------- |
+1 | ChargePoint  | | 15 | Endesa  | | 36 | ChargeNet
+2 | Blink  | | 19 | EVgo  | | 37 | Recargo
+3 | Semaconnect  | | 22 | Lastestasjoner  | | 41 | KSI
+4 | GE WattStation  | | 23 | EnelDrive  | | 45 | POLAR
+5 | Sun Country  | |  25 | Volta  | | 46 | EVConnect
+6 | Circuit Electrique  | | 26 | Greenlots
+7 | FLO | | 29 | OpConnect
+8 | Tesla Supercharger | | 30 | Shorepower
+9 | Webasto | | 33 | CarCharging
+13 | Innogy | | 34 | JNSH
+14 | Oplaadpalen | | 35 | Tesla Destination
+
 
 # Photo
 
 A location photo contributed by the PlugShare community.
 
 ## Object Properties
+
+Note that JSON objects described here will be enclosed within the
+location object.
 
 > Example Response:
 
@@ -1805,14 +1814,14 @@ A location photo contributed by the PlugShare community.
       <div class="field">thumbnail</div>
       <div class="type">String (URL)</div>
     </td>
-    <td>If available, link to a smaller version of the photo*.</td>
+    <td>If available, link to a smaller version of the photo(1).</td>
   </tr>
   <tr>
     <td>
       <div class="field">thumbnail2x</div>
       <div class="type">String (URL)</div>
     </td>
-    <td>If available, link to a smaller version of the photo*, rendered at 2x the standard thumbnail size.</td>
+    <td>If available, link to a smaller version of the photo(1), rendered at 2x the standard thumbnail size.</td>
   </tr>
   <tr>
     <td>
@@ -1844,7 +1853,85 @@ A location photo contributed by the PlugShare community.
   </tr>
 </table>
 
-*Service side processing of additional formats and dimensions are available as needed.
+(1) Service side processing of additional formats and dimensions are available as needed.
+
+## Get Network Photos
+
+Return a list of JSON objects representing photos at the network's locations
+ordered by creation time.  Each object represents data about a photo.  Note
+that JSON objects described here are NOT the same as the objects returned
+within the location object, described above.
+
+> Example Request:
+
+
+```plaintext
+GET https://api.plugshare.com/network/999/photos?start=2018-08-01T21:59:46Z&count=32
+```
+
+> Example Response:
+
+
+```json
+{
+    "created_at": "2018-08-01T23:00:00Z",
+    "url": "https://s3.amazonaws.com/photos/1.png",
+    "caption": "Had a great charge here",
+}
+```
+
+### HTTP Request
+`GET https://api.plugshare.com/network/{id}/photos`
+
+This functionality is only available by arrangement.  It returns photos associated with
+locations which contain the given network's stations.  The request must be issued with
+special authentication not described here.
+
+### Arguments
+
+<table>
+  <tr>
+    <td>
+      <div class="field">id</div>
+      <div class="type required">required</div>
+    </td>
+    <td>ID of network whose photos should be returned</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">start</div>
+      <div class="type required">required</div>
+    </td>
+    <td>A string representing a datetime in the format 2018-08-01T21:59:46Z.  Returns photos
+        created after this time.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">end</div>
+      <div class="type">optional</div>
+    </td>
+    <td>A string representing a datetime in the format 2018-08-01T21:59:46Z.  Returns photos
+        created on or before this time.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">count</div>
+      <div class="type">optional</div>
+    </td>
+    <td>An int representing the number of results to return.  Default 500, max 500.</td>
+  </tr>
+</table>
+
+### Returns
+A list of JSON objects.  Each object is a simplified Photo object.
+
+
+### Paging
+Make a query with a start time.  The response is a list of JSON objects representing photos,
+sorted in order of creation time.  If there are `count` results or fewer, issue another query
+where start is the created_at of the last item in the results.
 
 # Review (Check-In)
 
@@ -1940,6 +2027,81 @@ Check-Ins include:
     <td>When the Check-In was submitted.</td>
   </tr>
 </table>
+
+## Get Network Checkins
+
+Return a list of JSON objects representing checkins at the network's locations,
+ordered by creation time.  Each object represents a checkin.  Note that JSON objects
+described here are NOT the same as the objects returned within the location object,
+described above.
+
+> Example Request:
+
+
+```plaintext
+GET https://api.plugshare.com/network/999/checkins?start=2018-08-01T21:59:46Z&count=32
+```
+
+> Example Response:
+
+```json
+{
+    "created_at": "2018-08-01T23:00:00Z",
+    "rating": 1,
+    "comment": "Easy and fast",
+    "station_ids": ["75e8130c-27b6-4d9f-9918-b139dcc4f81e", "88b9c729-9209-4059-a895-d4b072b8b281"]
+}
+```
+
+
+### Arguments
+
+<table>
+  <tr>
+    <td>
+      <div class="field">id</div>
+      <div class="type required">required</div>
+    </td>
+    <td>ID of network whose photos should be returned</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">start</div>
+      <div class="type required">required</div>
+    </td>
+    <td>A string representing a datetime in the format 2018-08-01T21:59:46Z.  Returns reviews
+        created after this time.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">end</div>
+      <div class="type">optional</div>
+    </td>
+    <td>A string representing a datetime in the format 2018-08-01T21:59:46Z.  Returns reviews
+        created on or before this time.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">count</div>
+      <div class="type">optional</div>
+    </td>
+    <td>An int representing the number of results to return.  Default 500, max 500.</td>
+  </tr>
+</table>
+
+### Returns
+A list of JSON objects.  Each object is a simplified Review object.  The `stations`
+attribute lists the network's identifiers for the stations at that location.  The `rating`
+attribute can have the value -1, 0, or 1 indicating a negative, neutral, or positive checkin
+respectively.
+
+### Paging
+Make a query with a start time.  The response is a list of JSON objects representing reviews,
+sorted in order of creation time.  If there are `count` results or fewer, issue another query
+where start is the created_at of the last item in the results.
+
 
 # User
 
