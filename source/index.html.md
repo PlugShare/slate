@@ -2053,6 +2053,13 @@ GET https://api.plugshare.com/network/999/checkins?start=2018-08-01T21:59:46Z&co
 }
 ```
 
+### HTTP Request
+`GET https://api.plugshare.com/network/{id}/checkins`
+
+This functionality is only available by arrangement.  It returns checkins associated with
+locations which contain the given network's stations.  The request must be issued with
+special authentication not described here.
+
 
 ### Arguments
 
@@ -2062,14 +2069,14 @@ GET https://api.plugshare.com/network/999/checkins?start=2018-08-01T21:59:46Z&co
       <div class="field">id</div>
       <div class="type required">required</div>
     </td>
-    <td>ID of network whose photos should be returned</td>
+    <td>ID of network whose checkins should be returned</td>
   </tr>
   <tr>
     <td>
       <div class="field">start</div>
       <div class="type required">required</div>
     </td>
-    <td>A string representing a datetime in the format 2018-08-01T21:59:46Z.  Returns reviews
+    <td>A string representing a datetime in the format 2018-08-01T21:59:46Z.  Returns checkins
         created after this time.
     </td>
   </tr>
@@ -2078,7 +2085,7 @@ GET https://api.plugshare.com/network/999/checkins?start=2018-08-01T21:59:46Z&co
       <div class="field">end</div>
       <div class="type">optional</div>
     </td>
-    <td>A string representing a datetime in the format 2018-08-01T21:59:46Z.  Returns reviews
+    <td>A string representing a datetime in the format 2018-08-01T21:59:46Z.  Returns checkins
         created on or before this time.
     </td>
   </tr>
@@ -2098,7 +2105,7 @@ attribute can have the value -1, 0, or 1 indicating a negative, neutral, or posi
 respectively.
 
 ### Paging
-Make a query with a start time.  The response is a list of JSON objects representing reviews,
+Make a query with a start time.  The response is a list of JSON objects representing checkins,
 sorted in order of creation time.  If there are `count` results or fewer, issue another query
 where start is the created_at of the last item in the results.
 
