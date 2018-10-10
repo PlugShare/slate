@@ -7,6 +7,7 @@ toc_footers:
   - <a href='/access'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
   - API V3 - Updated 3/14/2017
+  - Questions? <a href="mailto:info@plugshare.com" class="contact-button">Contact Us</a>
 
 includes:
 
