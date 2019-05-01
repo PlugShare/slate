@@ -35,8 +35,11 @@ body {
 }
 
 .tocify-wrapper>img {
-  margin: 0 auto;
+  margin: 10px auto 0;
   display: block;
+  // border-radius: 3px;
+  // background-color: #2E3336 !important;
+  // -webkit-print-color-adjust: exact !important;
 }
 
 .content {
