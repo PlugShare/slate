@@ -27,8 +27,11 @@ body {
   @extend %default-font;
 }
 
-.tocify, .toc-footer, .lang-selector, .search, #nav-button {
+.toc-footer, .lang-selector, .search, #nav-button {
   display: none;
+}
+.tocify-header, .tocify-subheader {
+  text-decoration: underline;
 }
 
 .tocify-wrapper>img {
@@ -144,4 +147,20 @@ body {
   aside.success:before {
     @extend %icon-ok-sign;
   }
+}
+
+.connectors tr td, .connectors tr th {
+  text-align: center;
+  vertical-align: middle;
+}
+.connectors tr td img {
+  height: 40px;
+  display: block;
+}
+.content img {
+  max-width: 100%;
+}
+
+.highlight .s2, .highlight .kc, .content pre {
+  color: #968f47;
 }

@@ -1,3 +1,4 @@
+<meta name="description" content="Use our REST API to access PlugShare API endpoints, which can get information on charging stations, reviews, and photos in our database.">
 ---
 title: PlugShare API Reference
 
@@ -7,7 +8,7 @@ toc_footers:
   - <a href='/access'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
   - API V3 - Updated 3/14/2017
-  - Questions? <a href="mailto:info@plugshare.com" class="contact-button">Contact Us</a>
+  - Questions? <a href="https://recargo.freshdesk.com/support/solutions/folders/29000052288" class="contact-button">See our FAQ</a>
 
 includes:
 
