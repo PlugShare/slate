@@ -1758,12 +1758,12 @@ id | network |   | id | network |   | id | network |
 3 | Semaconnect  | | 22 | Lastestasjoner  | | 41 | KSI
 4 | GE WattStation  | | 23 | EnelDrive  | | 45 | POLAR
 5 | Sun Country  | |  25 | Volta  | | 46 | EVConnect
-6 | Circuit Electrique  | | 26 | Greenlots
-7 | FLO | | 29 | OpConnect
-8 | Tesla Supercharger | | 30 | Shorepower
-9 | Webasto | | 33 | CarCharging
-13 | Innogy | | 34 | JNSH
-14 | Oplaadpalen | | 35 | Tesla Destination
+6 | Circuit Electrique  | | 26 | Greenlots | | 47 | Electrify America
+7 | FLO | | 29 | OpConnect | | 48 | Chargefox
+8 | Tesla Supercharger | | 30 | Shorepower | | 49 | BC Hydro EV
+9 | Webasto | | 33 | CarCharging | | 50 | Irvine Company
+13 | Innogy | | 34 | JNSH | | 51 | Ionity
+14 | Oplaadpalen | | 35 | Tesla Destination | | 52 | Fastned
 
 
 # Photo
