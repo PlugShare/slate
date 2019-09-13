@@ -1751,9 +1751,9 @@ A company that operates stations and provides subscription services or access co
 
 ## Networks List
 
-id | network |   | id | network |   | id | network |
--- | ------- | - | -- | ------- | - | -- | ------- |
-1 | ChargePoint  | | 15 | Endesa  | | 36 | ChargeNet
+id | network |   | id | network |   | id | network |   | id | network |
+-- | ------- | - | -- | ------- | - | -- | ------- | - | -- | ------- |
+1 | ChargePoint  | | 15 | Endesa  | | 36 | ChargeNet  | | 54 | Electrify Canada
 2 | Blink  | | 19 | EVgo  | | 37 | Recargo
 3 | Semaconnect  | | 22 | Lastestasjoner  | | 41 | KSI
 4 | GE WattStation  | | 23 | EnelDrive  | | 45 | POLAR
