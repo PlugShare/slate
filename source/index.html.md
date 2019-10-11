@@ -1,4 +1,5 @@
 <meta name="description" content="Use our REST API to access PlugShare API endpoints, which can get information on charging stations, reviews, and photos in our database.">
+<link rel="canonical" href="https://developer.plugshare.com/docs/">
 ---
 title: PlugShare API Reference
 
