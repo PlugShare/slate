@@ -62,6 +62,11 @@ Now that Slate is all set up on your machine, you'll probably want to learn more
 
 If you'd prefer to use Docker, instructions are available [in the wiki](https://github.com/lord/slate/wiki/Docker).
 
+### slate repo and plugshare.github.io repo
+1. Modify the html in the slate repo.
+2. Run deploy.sh.
+3. Copy the contents of the build directory to plugshare.github.io repo
+4. Commit plugshare.github.io and push it to github.  That will make the changes live.
 Companies Using Slate
 ---------------------------------
 

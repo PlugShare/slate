@@ -2021,6 +2021,34 @@ Check-Ins include:
     </td>
   <td>User object including in depth information about the user who submitted this review (check-in).</td>
   </tr>
+i  <tr>
+    <td>
+      <div class="field">problem</div>
+      <div class="type">Number (integer)</div>
+    </td>
+  <td>Integer enum value corresponding to the problem_description property.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">problem_description</div>
+      <div class="type">String</div>
+    </td>
+    <td>
+      <b>1</b> = "Broken hardware"<br>
+      <b>2</b> = "In use"<br>
+      <b>3</b> = "Blocked by vehicle"<br>
+      <b>4</b> = "Could not activate"<br>
+      <b>5</b> = "Permanently closed"<br>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">waiting</div>
+      <div class="type">Boolean</div>
+    </td>
+    <td>Indicates whether the user is waiting to charge.</td>
+  </tr>
+
   <tr>
     <td>
       <div class="field">created_at</div>
