@@ -1,3 +1,7 @@
+<b>When updating documentation, update the html directly in plugshare.github.io/docs, this repo is outdated. Preview your changes by directly viewing the index.html file in browser</b>
+
+
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/lord/img/master/logo-slate.png" alt="Slate: API Documentation Generator" width="226">
   <br>
