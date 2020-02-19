@@ -590,7 +590,7 @@ This endpoint retrieves locations near a given coordinate.
       <div class="field">radius</div>
       <div class="type">optional</div>
     </td>
-    <td>Search radius in meters.</td>
+    <td>Search radius in meters. Maximum 50000 meters.</td>
   </tr>
   <tr>
     <td>
@@ -606,6 +606,13 @@ This endpoint retrieves locations near a given coordinate.
     </td>
     <td><b>true</b> = Returns all locations regardless of cost.<br>
     <b>false</b> = Does not return locations with a known fee (like parking or $/kw).</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">minimal</div>
+      <div class="type">optional, default 0</div>
+    </td>
+    <td>Accepts the value 1.  Speeds up the query by returning only core information for the location and stations.  Useful when populating a map view.</td>
   </tr>
   <tr>
     <td>
@@ -790,6 +797,13 @@ This endpoint retrieves locations in a region based on a given coordinate with l
   </tr>
   <tr>
     <td>
+      <div class="field">minimal</div>
+      <div class="type">optional, default 0</div>
+    </td>
+    <td>Accepts the value 1.  Speeds up the query by returning only core information for the location and stations.  Useful when populating a map view.</td>
+  </tr>
+  <tr>
+    <td>
       <div class="field">access</div>
       <div class="type">optional</div>
     </td>
@@ -957,6 +971,13 @@ This endpoint returns locations whose name or address contains a specified searc
   </tr>
   <tr>
     <td>
+      <div class="field">minimal</div>
+      <div class="type">optional, default 0</div>
+    </td>
+    <td>Accepts the value 1.  Speeds up the query by returning only core information for the location and stations.  Useful when populating a map view.</td>
+  </tr>
+  <tr>
+    <td>
       <div class="field">access</div>
       <div class="type">optional</div>
     </td>
@@ -1115,6 +1136,13 @@ This endpoint returns locations who are a certain `distance` away from the `poly
     </td>
     <td><b>true</b> = Returns all locations regardless of cost.<br>
     <b>false</b> = Does not return locations with a known fee (like parking or $/kw).</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">minimal</div>
+      <div class="type">optional, default 0</div>
+    </td>
+    <td>Accepts the value 1.  Speeds up the query by returning only core information for the location and stations.  Useful when populating a map view.</td>
   </tr>
   <tr>
     <td>
