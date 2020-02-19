@@ -661,6 +661,13 @@ This endpoint retrieves locations near a given coordinate.
     </td>
     <td>Filter on PlugScore. Accepts a range from 0.0 to 10.0. Will return results greater than or equal to the number provided.</td>
   </tr>
+  <tr>
+    <td>
+      <div class="field">minimal</div>
+      <div class="type">optional</div>
+    </td>
+    <td><b>1</b> = Return minimalized data as response is typically very large.</td>
+  </tr>
 </table>
 
 <aside class="notice">
@@ -848,6 +855,13 @@ This endpoint retrieves locations in a region based on a given coordinate with l
       <div class="type">optional</div>
     </td>
     <td>Filter on PlugScore. Accepts a range from 0.0 to 10.0. Will return results greater than or equal to the number provided.</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">minimal</div>
+      <div class="type">optional</div>
+    </td>
+    <td><b>1</b> = Return minimalized data as response is typically very large.</td>
   </tr>
 </table>
 
