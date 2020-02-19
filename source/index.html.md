@@ -1998,9 +1998,11 @@ Check-Ins include:
         "created_at": "2014-08-11T23:54:42Z",
         "finished": "2014-08-12T00:53:22Z",
         "waiting": false,
-        "user": ""
+        "user": "",
         "amps": null,
         "vehicle_type": 4,
+        "vehicle_name": "Nissan LEAF 2018",
+        "vehicle_default_img": "https://assets.plugshare.com/vehicles/2018_LEAF_WHITE.jpg",
         "id": 152385
     }
 ]
