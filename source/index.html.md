@@ -84,7 +84,7 @@ A driver identifiable destination where Charging Stations (Stations) are located
   "score": 10,
   "id": 20667,
   "parking_type_name": "Free",
-  "icon": "https://s3.amazonaws.com/plugshare.production.assets/icons/B.png",
+  "icon": "https://assets.plugshare.com/icons/B.png",
   "cost_description": "",
   "reviews": [],
   "name": "PlugShare API Station",
@@ -143,7 +143,7 @@ A driver identifiable destination where Charging Stations (Stations) are located
       "network": {
         "description": "GE's networked platform that allows users to manage and monitor the charging of their electric cars.",
         "url": "https://www.gewattstation.com/connect/",
-        "image": "https://s3.amazonaws.com/plugshare.production.assets/network-images/watt.png",
+        "image": "https://assets.plugshare.com/network-images/watt.png",
         "action_name": "Sign Up",
         "phone": "8554433873",
         "action_url": "https://www.gewattstation.com/connect/",
@@ -447,7 +447,7 @@ GET https://api.plugshare.com/locations/38606
     "score": 10,
     "id": 38606,
     "parking_type_name": "Free",
-    "icon": "https://s3.amazonaws.com/plugshare.production.assets/icons/B.png",
+    "icon": "https://assets.plugshare.com/icons/B.png",
     "cost_description": "",
     "reviews": [],
     "name": "PlugShare API Station",
@@ -521,7 +521,7 @@ GET https://api.plugshare.com/locations/nearby?latitude=33.992476&longitude=-118
         "score": 10,
         "id": 45911,
         "parking_type_name": "Free",
-        "icon": "https://s3.amazonaws.com/plugshare.production.assets/icons/B.png",
+        "icon": "https://assets.plugshare.com/icons/B.png",
         "cost_description": "",
         "name": "PlugShare API Station",
         "url": "http://api.plugshare.com/view/location/45911",
@@ -721,7 +721,7 @@ GET https://api.plugshare.com/locations/region?spanLat=0.15&spanLng=0.10&latitud
         "address": "210 Market Ave, Los Altos, CA 94022",
         "id": 40025,
         "parking_type_name": "Free",
-        "icon": "https://s3.amazonaws.com/plugshare.production.assets/icons/G.png",
+        "icon": "https://assets.plugshare.com/icons/G.png",
         "cost_description": "Variable: $3.00/hour to $6.00/hour",
         "name": "Central Charging Station",
         "url": "http://api.plugshare.com/view/location/40025",
@@ -915,7 +915,7 @@ GET https://api.plugshare.com/locations/search?query=venice%2C%20ca&count=10
     "owner": "",
     "id": 58226,
     "parking_type_name": null,
-    "icon": "https://s3.amazonaws.com/plugshare.production.assets/icons/H.png",
+    "icon": "https://assets.plugshare.com/icons/H.png",
     "cost_description": "",
     "name": "",
     "url": "http://api.plugshare.com/view/location/58226",
@@ -1482,7 +1482,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>1</td>
     <td></td>
     <td>US Wall Outlet</td>
-    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image03.png"></td>
+    <td><img src="https://assets.plugshare.com/assets/outlets/image03.png"></td>
     <td>Y</td>
     <td></td>
     <td></td>
@@ -1494,7 +1494,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>2</td>
     <td></td>
     <td>J-1772</td>
-    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image08.png"></td>
+    <td><img src="https://assets.plugshare.com/assets/outlets/image08.png"></td>
     <td>Y</td>
     <td>Y</td>
     <td>Y</td>
@@ -1506,7 +1506,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>3</td>
     <td></td>
     <td>CHAdeMO</td>
-    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image04.png"></td>
+    <td><img src="https://assets.plugshare.com/assets/outlets/image04.png"></td>
     <td>Y</td>
     <td>Y</td>
     <td>Y</td>
@@ -1518,7 +1518,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>4</td>
     <td></td>
     <td>Tesla Roadster</td>
-    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image00.png"></td>
+    <td><img src="https://assets.plugshare.com/assets/outlets/image00.png"></td>
     <td>Y</td>
     <td>Y</td>
     <td>Y</td>
@@ -1530,7 +1530,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>5</td>
     <td></td>
     <td>NEMA 14-50</td>
-    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image10.png"></td>
+    <td><img src="https://assets.plugshare.com/assets/outlets/image10.png"></td>
     <td>Y</td>
     <td></td>
     <td></td>
@@ -1542,7 +1542,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>6</td>
     <td>0</td>
     <td>Tesla S HPWC</td>
-    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image05.png"></td>
+    <td><img src="https://assets.plugshare.com/assets/outlets/image05.png"></td>
     <td>Y</td>
     <td>Y</td>
     <td>Y</td>
@@ -1554,7 +1554,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>6</td>
     <td>1</td>
     <td>Tesla Supercharger</td>
-    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image05.png"></td>
+    <td><img src="https://assets.plugshare.com/assets/outlets/image05.png"></td>
     <td>Y</td>
     <td>Y</td>
     <td>Y</td>
@@ -1566,7 +1566,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>7</td>
     <td></td>
     <td>Type 2 (Mennekes)</td>
-    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image06.png"></td>
+    <td><img src="https://assets.plugshare.com/assets/outlets/image06.png"></td>
     <td></td>
     <td>Y</td>
     <td>Y</td>
@@ -1578,7 +1578,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>8</td>
     <td></td>
     <td>Type 3</td>
-    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image16.png"></td>
+    <td><img src="https://assets.plugshare.com/assets/outlets/image16.png"></td>
     <td></td>
     <td>Y</td>
     <td>Y</td>
@@ -1590,7 +1590,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>9</td>
     <td></td>
     <td>BS1363</td>
-    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image09.png"></td>
+    <td><img src="https://assets.plugshare.com/assets/outlets/image09.png"></td>
     <td></td>
     <td>Y</td>
     <td></td>
@@ -1602,7 +1602,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>10</td>
     <td></td>
     <td>Europlug</td>
-    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image13.png"></td>
+    <td><img src="https://assets.plugshare.com/assets/outlets/image13.png"></td>
     <td></td>
     <td></td>
     <td>Y</td>
@@ -1614,7 +1614,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>11</td>
     <td></td>
     <td>UK Commando</td>
-    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image12.png"></td>
+    <td><img src="https://assets.plugshare.com/assets/outlets/image12.png"></td>
     <td></td>
     <td>Y</td>
     <td></td>
@@ -1626,7 +1626,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>12</td>
     <td></td>
     <td>AS3112</td>
-    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image01.png"></td>
+    <td><img src="https://assets.plugshare.com/assets/outlets/image01.png"></td>
     <td></td>
     <td></td>
     <td></td>
@@ -1638,7 +1638,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>13</td>
     <td></td>
     <td>SAE Combo DC CCS</td>
-    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image02.png"></td>
+    <td><img src="https://assets.plugshare.com/assets/outlets/image02.png"></td>
     <td>Y</td>
     <td></td>
     <td>Y</td>
@@ -1650,7 +1650,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>14</td>
     <td></td>
     <td>Three Phase (AU)</td>
-    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image14.png"></td>
+    <td><img src="https://assets.plugshare.com/assets/outlets/image14.png"></td>
     <td></td>
     <td></td>
     <td></td>
@@ -1662,7 +1662,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>14</td>
     <td></td>
     <td>Three Phase (EU)<br>(currently same ID)</td>
-    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image23.png"></td>
+    <td><img src="https://assets.plugshare.com/assets/outlets/image23.png"></td>
     <td></td>
     <td></td>
     <td>Y</td>
@@ -1674,7 +1674,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>15</td>
     <td></td>
     <td>Caravan Mains Socket</td>
-    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image15.png"></td>
+    <td><img src="https://assets.plugshare.com/assets/outlets/image15.png"></td>
     <td></td>
     <td>Y</td>
     <td>Y</td>
@@ -1686,7 +1686,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>16</td>
     <td></td>
     <td>China BG/T</td>
-    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image06.png"></td>
+    <td><img src="https://assets.plugshare.com/assets/outlets/image06.png"></td>
     <td></td>
     <td></td>
     <td></td>
@@ -1698,7 +1698,7 @@ PlugShare supports all EV charging connectors that are in active use globally.
     <td>17</td>
     <td></td>
     <td>China BG/T 2</td>
-    <td><img src="https://s3.amazonaws.com/plugshare.production.assets/assets/outlets/image17.png"></td>
+    <td><img src="https://assets.plugshare.com/assets/outlets/image17.png"></td>
     <td></td>
     <td></td>
     <td></td>
@@ -1720,7 +1720,7 @@ A company that operates stations and provides subscription services or access co
 {
     "description": "GE's networked platform that allows users to manage and monitor the charging of their electric cars.",
     "url": "https://www.gewattstation.com/connect/",
-    "image": "https://s3.amazonaws.com/plugshare.production.assets/network-images/watt.png",
+    "image": "https://assets.plugshare.com/network-images/watt.png",
     "action_name": "Sign Up",
     "phone": "8554433873",
     "action_url": "https://www.gewattstation.com/connect/",
