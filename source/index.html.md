@@ -121,11 +121,11 @@ A driver identifiable destination where Charging Stations (Stations) are located
   "photos": [
     {
       "user_id": 85274,
-      "url": "https://s3.amazonaws.com/plugshare.production.photos/photos/165827.jpg",
+      "url": "https://photos.plugshare.com/photos/165827.jpg",
       "created_at": "2016-11-29T17:57:14Z",
-      "thumbnail": "https://s3.amazonaws.com/plugshare.production.photos/thumb/165827.png",
+      "thumbnail": "https://photos.plugshare.com/thumb/165827.png",
       "caption": "PlugShare Garage",
-      "thumbnail2x": "https://s3.amazonaws.com/plugshare.production.photos/thumb2x/165827.png",
+      "thumbnail2x": "https://photos.plugshare.com/thumb2x/165827.png",
       "order": 1,
       "id": 127483
     }
@@ -1824,11 +1824,11 @@ location object.
 [
     {
         "user_id": 75733,
-        "url": "https://s3.amazonaws.com/plugshare.production.photos/photos/165827.jpg",
+        "url": "https://photos.plugshare.com/photos/165827.jpg",
         "created_at": "2016-11-29T17:57:14Z",
-        "thumbnail": "https://s3.amazonaws.com/plugshare.production.photos/thumb/165827.png",
+        "thumbnail": "https://photos.plugshare.com/thumb/165827.png",
         "caption": "PlugShare Garage",
-        "thumbnail2x": "https://s3.amazonaws.com/plugshare.production.photos/thumb2x/165827.png",
+        "thumbnail2x": "https://photos.plugshare.com/thumb2x/165827.png",
         "order": 1,
         "id": 192372
     }
@@ -2204,11 +2204,11 @@ A PlugShare user who may be owner of reviews, check-ins, or private locations.
     "photos": [
         {
             "user_id": 253,
-            "url": "https://s3.amazonaws.com/plugshare.production.photos/photos/41329.jpg",
+            "url": "https://photos.plugshare.com/photos/41329.jpg",
             "created_at": "2013-12-30T07:01:35Z",
-            "thumbnail": "https://s3.amazonaws.com/plugshare.production.photos/thumb/41329.png",
+            "thumbnail": "https://photos.plugshare.com/thumb/41329.png",
             "caption": "",
-            "thumbnail2x": "https://s3.amazonaws.com/plugshare.production.photos/thumb2x/41329.png",
+            "thumbnail2x": "https://photos.plugshare.com/thumb2x/41329.png",
             "order": 0,
             "id": 38376
         }
